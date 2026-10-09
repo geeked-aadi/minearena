@@ -38,29 +38,29 @@
 
 :root {
   --radius: 0.25rem;
-  /* Minecraft night theme */
-  --background: oklch(0.16 0.02 260);
-  --foreground: oklch(0.93 0.02 120);
-  --card: oklch(0.21 0.025 260);
-  --card-foreground: oklch(0.93 0.02 120);
-  --popover: oklch(0.21 0.025 260);
-  --popover-foreground: oklch(0.93 0.02 120);
-  --primary: oklch(0.72 0.19 145);
-  --primary-foreground: oklch(0.14 0.03 145);
-  --secondary: oklch(0.27 0.03 260);
-  --secondary-foreground: oklch(0.93 0.02 120);
-  --muted: oklch(0.27 0.03 260);
-  --muted-foreground: oklch(0.65 0.03 140);
-  --accent: oklch(0.72 0.19 145);
-  --accent-foreground: oklch(0.14 0.03 145);
+  /* Minecraft GUI theme — warm browns + gold (InnoHacks palette) */
+  --background: #1a1206;
+  --foreground: #f5f5f0;
+  --card: #241608;
+  --card-foreground: #f5f5f0;
+  --popover: #241608;
+  --popover-foreground: #f5f5f0;
+  --primary: #dba213;
+  --primary-foreground: #1a1206;
+  --secondary: #3a2a17;
+  --secondary-foreground: #f5f5f0;
+  --muted: #3a2a17;
+  --muted-foreground: #c6c6c6;
+  --accent: #dba213;
+  --accent-foreground: #1a1206;
   --destructive: oklch(0.6 0.22 27);
-  --destructive-foreground: oklch(0.97 0.01 90);
-  --border: oklch(0.32 0.03 260);
-  --input: oklch(0.32 0.03 260);
-  --ring: oklch(0.72 0.19 145);
+  --destructive-foreground: #f5f5f0;
+  --border: #493606;
+  --input: #493606;
+  --ring: #dba213;
   --creeper: oklch(0.72 0.19 145);
-  --gold: oklch(0.8 0.15 90);
-  --dirt: oklch(0.45 0.07 60);
+  --gold: #dba213;
+  --dirt: #3a2a17;
 }
 
 @layer base {
