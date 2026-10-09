@@ -88,12 +88,20 @@ function TierPanel({ tier, index }: { tier: Tier; index: number }) {
                     boxShadow: "inset 0 0 0 2px oklch(0.1 0.01 260 / 0.85)",
                   }}
                 >
-                  <span
-                    className="pixel-heading px-4 text-center text-[10px]"
-                    style={{ color: "oklch(0.3 0.03 260)" }}
-                  >
-                    {s.name}
-                  </span>
+                  {s.logo ? (
+                    <img
+                      src={s.logo}
+                      alt={s.name}
+                      className="max-h-12 max-w-[80%] object-contain"
+                    />
+                  ) : (
+                    <span
+                      className="pixel-heading px-4 text-center text-[10px]"
+                      style={{ color: "oklch(0.3 0.03 260)" }}
+                    >
+                      {s.name}
+                    </span>
+                  )}
                 </span>
               </a>
             ))}
