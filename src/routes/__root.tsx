@@ -83,7 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "description",
         content: "BIET's 24-hour Minecraft-themed hackathon.",
       },
-      { property: "og:title", content: "Mindcraft Hackathon" },
+      { property: "og:title", content: "MINEARENA 1.0 — National-Level 24-Hour Hackathon" },
       {
         property: "og:description",
         content: "BIET's 24-hour Minecraft-themed hackathon.",

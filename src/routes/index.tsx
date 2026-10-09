@@ -91,7 +91,7 @@ const FAQ_GROUPS = [
     items: [
       { q: "What facilities will be provided to the participants?", a: "Meals, snacks, coffee, Wi-Fi, power, rest zones and mentor support — all on us." },
       { q: "Will the organizers carry the cost of travel for shortlisted teams?", a: "Travel is on the participants; everything inside the venue is covered by us." },
-      { q: "What if I have more queries?", a: "Reach out anytime at hello@mindcrafthacks.dev — we reply within a day." },
+      { q: "What if I have more queries?", a: "Reach out to the Code Commit team at BIET Davangere — we reply within a day." },
     ],
   },
 ];
