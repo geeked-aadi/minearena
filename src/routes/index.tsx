@@ -4,6 +4,7 @@ import {
   MapPin,
   Users,
   Clock,
+  Trophy,
   ScrollText,
   HelpCircle,
   ChevronDown,
