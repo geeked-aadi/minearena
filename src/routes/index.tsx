@@ -203,10 +203,10 @@ function Index() {
         <SectionHeading>DETAILS</SectionHeading>
         <div className="grid gap-6 sm:grid-cols-2">
           {[
-            { icon: CalendarDays, title: "When", body: "October 10–11, 2026. Check-in opens 9:00 AM on Day 1, prize ceremony wraps by 5:00 PM on Day 2." },
-            { icon: MapPin, title: "Where", body: "BIET Main Campus — Central Block & Innovation Labs. Overnight stay zones included." },
-            { icon: Users, title: "Who", body: "Teams of 2–4 college students from any stream. Solo registrations get matched with a team." },
-            { icon: ScrollText, title: "What to build", body: "Problem statements across Web, AI/ML, Hardware and Open Innovation, revealed at the opening ceremony." },
+            { icon: CalendarDays, title: "When", body: "November 13–14, 2026. Registrations open Oct 15; idea submissions close Oct 30; top 50 teams announced Nov 5." },
+            { icon: MapPin, title: "Where", body: "SSM Cultural Hall, BIET Campus, Davangere, Karnataka. On-campus round for shortlisted teams." },
+            { icon: Users, title: "Who", body: "Students from institutions across the country. Top 50 teams from the ideation round make it to campus." },
+            { icon: ScrollText, title: "What to build", body: "Identify a real-world problem, develop an innovative solution, and build a working prototype within 24 hours." },
           ].map(({ icon: Icon, title, body }) => (
             <div key={title} className="mc-card p-6">
               <Icon className="h-6 w-6 text-primary" />
@@ -274,13 +274,13 @@ function Index() {
       {/* FOOTER */}
       <footer className="border-t-2 border-border px-4 py-10 text-center">
         <p className="pixel-heading text-[10px] text-primary text-glow-green">
-          MINDCRAFT HACKATHON
+          MINEARENA 1.0
         </p>
         <p className="mt-3 font-terminal text-lg text-muted-foreground">
-          Organized by the BIET Developer Society · hello@mindcrafthacks.dev
+          Organized by Code Commit — Build fast. Commit to it. · Student tech club, BIET Davangere
         </p>
         <p className="mt-1 font-terminal text-lg text-muted-foreground">
-          Not affiliated with Mojang or Microsoft. Made with ⛏ by students.
+          An Institution's Innovation Council (Ministry of Education) initiative · Not affiliated with Mojang or Microsoft.
         </p>
       </footer>
 
