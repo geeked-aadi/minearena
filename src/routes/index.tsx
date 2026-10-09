@@ -12,6 +12,8 @@ import {
 import { Navbar } from "../components/Navbar";
 import { MusicBar } from "../components/MusicBar";
 import { CursorFollower } from "../components/CursorFollower";
+import { PrizesSection } from "../components/PrizesSection";
+import { SponsorsSection } from "../components/SponsorsSection";
 import campusHero from "../assets/voxel-biet-campus.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -57,12 +59,6 @@ const RULES = [
   "Hardware hacks are welcome — bring your own components.",
   "Be respectful. Griefing other teams means instant disqualification.",
   "Judges' decisions are final, like bedrock.",
-];
-
-const PRIZES = [
-  { place: "1ST", amount: "₹50,000", note: "+ Diamond trophies & swag", highlight: true },
-  { place: "2ND", amount: "₹30,000", note: "+ Gold trophies & swag", highlight: false },
-  { place: "3RD", amount: "₹20,000", note: "+ Iron trophies & swag", highlight: false },
 ];
 
 const FAQS = [
@@ -226,28 +222,11 @@ function Index() {
         </div>
       </section>
 
-      {/* PRIZES */}
-      <section id="prizes" className="mx-auto max-w-5xl px-4 py-24">
-        <SectionHeading>PRIZES</SectionHeading>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {PRIZES.map((p) => (
-            <div
-              key={p.place}
-              className={`mc-card p-8 text-center ${p.highlight ? "border-primary" : ""}`}
-            >
-              <Trophy
-                className={`mx-auto h-10 w-10 ${p.highlight ? "text-gold" : "text-muted-foreground"}`}
-              />
-              <p className="pixel-heading mt-4 text-xs text-primary">{p.place} PLACE</p>
-              <p className="pixel-heading mt-3 text-lg text-foreground">{p.amount}</p>
-              <p className="mt-2 font-terminal text-lg text-muted-foreground">{p.note}</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-8 text-center font-terminal text-xl text-muted-foreground">
-          Plus track prizes, best all-girls team, and best freshman team awards.
-        </p>
-      </section>
+      {/* PRIZES — podium with floating plaques & glowing crystals */}
+      <PrizesSection />
+
+      {/* SPONSORS — Minecraft advancement-window panels */}
+      <SponsorsSection />
 
       {/* FAQ */}
       <section id="faq" className="mx-auto max-w-3xl px-4 py-24">
