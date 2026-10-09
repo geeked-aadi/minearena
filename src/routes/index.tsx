@@ -41,15 +41,13 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const FLOW = [
-  { time: "09:00", title: "Check-in & Team Assembly", desc: "Collect your badges, find your crafting table." },
-  { time: "10:00", title: "Opening Ceremony", desc: "Theme reveal and problem statements drop." },
-  { time: "11:00", title: "Hacking Begins", desc: "24 hours on the clock. Start building." },
-  { time: "20:00", title: "Mentor Round 1", desc: "Mentors visit every team for feedback." },
-  { time: "08:00", title: "Mentor Round 2", desc: "Final polish guidance before submissions." },
-  { time: "11:00", title: "Submissions Close", desc: "Push your build to the portal. Tools down." },
-  { time: "13:00", title: "Judging & Demos", desc: "Present your creation to the panel." },
-  { time: "16:00", title: "Prize Ceremony", desc: "Winners crowned. Loot distributed." },
+const TIMELINE = [
+  { date: "Sep 1, 2026", title: "Registrations Open", desc: "Portals open. Assemble your party and sign up." },
+  { date: "Sep 2, 2026", title: "PPT Submissions Begin", desc: "Submit your idea deck for the first screening round." },
+  { date: "Oct 3, 2026", title: "PPT Submissions Close", desc: "Final call — no entries accepted after this date." },
+  { date: "Oct 5, 2026", title: "Team Shortlisting Ends", desc: "Shortlisted teams announced via email and the portal." },
+  { date: "Oct 10, 2026", title: "Hackathon Begins", desc: "Check-in, opening ceremony, and 24 hours on the clock." },
+  { date: "Oct 11, 2026", title: "Hackathon Ends", desc: "Demos, judging, and the prize ceremony. Loot distributed." },
 ];
 
 const RULES = [
@@ -61,26 +59,41 @@ const RULES = [
   "Judges' decisions are final, like bedrock.",
 ];
 
-const FAQS = [
+const FAQ_GROUPS = [
   {
-    q: "Who can participate?",
-    a: "Any college student with a valid ID. Beginners and veterans alike — the Overworld welcomes all.",
+    category: "Eligibility & Teams",
+    items: [
+      { q: "Who can participate?", a: "Any college student with a valid ID — beginners and veterans alike. The Overworld welcomes all." },
+      { q: "Can we apply as a team?", a: "Yes! Teams of 2–4 can register together. Solo adventurers are welcome too." },
+      { q: "Can I have team members from other colleges?", a: "Absolutely — cross-college teams are allowed, as long as every member is a current student." },
+      { q: "What if I don't have a team?", a: "Register solo and we'll match you with teammates at the team-formation session." },
+      { q: "What if I don't know how to code?", a: "No problem — design, hardware and idea tracks exist, and mentors will help you level up." },
+    ],
   },
   {
-    q: "Is there a registration fee?",
-    a: "No. Entry is completely free, including food, drinks and a place to crash overnight.",
+    category: "Format & Schedule",
+    items: [
+      { q: "How can I apply?", a: "Hit the Register button, fill the form, and submit your idea deck before Oct 3, 2026." },
+      { q: "How much will it cost?", a: "Nothing. Entry is completely free, including food, drinks and a place to crash overnight." },
+      { q: "Is the hackathon online or offline?", a: "Fully offline at the BIET campus — 24 hours, doors open round the clock." },
+    ],
   },
   {
-    q: "Do I need a team before registering?",
-    a: "No. Register solo and we'll help you find teammates at the team-formation session.",
+    category: "Building & Judging",
+    items: [
+      { q: "What are the problem statements?", a: "Tracks across Web, AI/ML, Hardware and Open Innovation — revealed at the opening ceremony." },
+      { q: "What can I build?", a: "Anything that solves the problem: apps, tools, games, hardware — if you can demo it, it counts." },
+      { q: "Can I start working on my hack before the event?", a: "No — all code must be written during the 24-hour window. Ideas and research beforehand are fine." },
+      { q: "What are the prizes to be won?", a: "Check the Prizes section — a prize pool worth ₹1L+ across the podium and special tracks." },
+    ],
   },
   {
-    q: "What should I bring?",
-    a: "Your laptop, charger, college ID and any hardware you want to hack with. We provide the rest.",
-  },
-  {
-    q: "Can I stay overnight at the venue?",
-    a: "Yes — the campus stays open all 24 hours with rest zones, snacks and plenty of coffee.",
+    category: "Logistics & Support",
+    items: [
+      { q: "What facilities will be provided to the participants?", a: "Meals, snacks, coffee, Wi-Fi, power, rest zones and mentor support — all on us." },
+      { q: "Will the organizers carry the cost of travel for shortlisted teams?", a: "Travel is on the participants; everything inside the venue is covered by us." },
+      { q: "What if I have more queries?", a: "Reach out anytime at hello@mindcrafthacks.dev — we reply within a day." },
+    ],
   },
 ];
 
@@ -167,14 +180,14 @@ function Index() {
         </div>
       </section>
 
-      {/* FLOW */}
+      {/* TIMELINE */}
       <section id="flow" className="mx-auto max-w-3xl px-4 py-24">
-        <SectionHeading>EVENT FLOW</SectionHeading>
+        <SectionHeading>TIMELINE</SectionHeading>
         <ol className="relative border-l-2 border-border pl-8">
-          {FLOW.map((item) => (
-            <li key={item.time + item.title} className="relative pb-8 last:pb-0">
+          {TIMELINE.map((item) => (
+            <li key={item.date + item.title} className="relative pb-8 last:pb-0">
               <span className="absolute -left-[41px] flex h-4 w-4 items-center justify-center border-2 border-primary bg-background" />
-              <p className="pixel-heading text-[10px] text-gold">{item.time}</p>
+              <p className="pixel-heading text-[10px] text-gold">{item.date}</p>
               <h3 className="pixel-heading mt-2 text-[11px] text-foreground">
                 {item.title}
               </h3>
@@ -231,19 +244,28 @@ function Index() {
       {/* FAQ */}
       <section id="faq" className="mx-auto max-w-3xl px-4 py-24">
         <SectionHeading>FAQ</SectionHeading>
-        <div className="space-y-4">
-          {FAQS.map((f) => (
-            <details key={f.q} className="mc-card group p-6">
-              <summary className="flex cursor-pointer list-none items-center gap-3">
-                <HelpCircle className="h-5 w-5 shrink-0 text-primary" />
-                <span className="pixel-heading text-[10px] leading-relaxed text-foreground">
-                  {f.q}
-                </span>
-              </summary>
-              <p className="mt-4 pl-8 font-terminal text-xl text-muted-foreground">
-                {f.a}
-              </p>
-            </details>
+        <div className="space-y-10">
+          {FAQ_GROUPS.map((group) => (
+            <div key={group.category}>
+              <h3 className="pixel-heading mb-4 text-[11px] text-gold">
+                {group.category}
+              </h3>
+              <div className="space-y-4">
+                {group.items.map((f) => (
+                  <details key={f.q} className="mc-card group p-6">
+                    <summary className="flex cursor-pointer list-none items-center gap-3">
+                      <HelpCircle className="h-5 w-5 shrink-0 text-primary" />
+                      <span className="pixel-heading text-[10px] leading-relaxed text-foreground">
+                        {f.q}
+                      </span>
+                    </summary>
+                    <p className="mt-4 pl-8 font-terminal text-xl text-muted-foreground">
+                      {f.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
