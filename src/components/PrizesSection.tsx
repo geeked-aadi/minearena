@@ -23,9 +23,9 @@ type Prize = {
 
 // Order matches a winners' podium: 2nd, 1st, 3rd
 const PRIZES: Prize[] = [
-  { place: "2ND", plaque: plaque2.url, pillar: pillar2.url, width: 120, podiumWidth: 190, alt: "Second place plaque — ₹20,000" },
-  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, podiumWidth: 190, alt: "First place plaque — ₹30,000" },
-  { place: "3RD", plaque: plaque3.url, pillar: pillar3.url, width: 110, podiumWidth: 190, alt: "Third place plaque — ₹10,000" },
+  { place: "2ND", plaque: plaque2.url, pillar: pillar2.url, width: 120, podiumWidth: 270, alt: "Second place plaque — ₹20,000" },
+  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, podiumWidth: 300, alt: "First place plaque — ₹30,000" },
+  { place: "3RD", plaque: plaque3.url, pillar: pillar3.url, width: 110, podiumWidth: 250, alt: "Third place plaque — ₹10,000" },
 ];
 
 function PodiumColumn({ prize, index }: { prize: Prize; index: number }) {
