@@ -19,20 +19,20 @@ import campusHero from "../assets/voxel-biet-campus.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mindcraft Hackathon — BIET's Minecraft-Themed Hackathon" },
+      { title: "MINEARENA 1.0 — National-Level 24-Hour Hackathon at BIET Davangere" },
       {
         name: "description",
         content:
-          "Mindcraft Hackathon at BIET: a 24-hour Minecraft-themed hackathon. Build, craft and innovate in the Overworld. Oct 10–11, 2026.",
+          "MINEARENA 1.0 is a national-level 24-hour Minecraft-themed hackathon at Bapuji Institute of Engineering and Technology, Davangere. ₹75,000 prize pool. Nov 13–14, 2026.",
       },
       {
         property: "og:title",
-        content: "Mindcraft Hackathon — BIET's Minecraft-Themed Hackathon",
+        content: "MINEARENA 1.0 — National-Level 24-Hour Hackathon at BIET Davangere",
       },
       {
         property: "og:description",
         content:
-          "A 24-hour Minecraft-themed hackathon at BIET. Build, craft and innovate in the Overworld. Oct 10–11, 2026.",
+          "Innovate. Build. Transform. A national-level 24-hour hackathon at BIET Davangere with a ₹75,000 prize pool. Nov 13–14, 2026.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -42,12 +42,11 @@ export const Route = createFileRoute("/")({
 });
 
 const TIMELINE = [
-  { date: "Sep 1, 2026", title: "Registrations Open", desc: "Portals open. Assemble your party and sign up." },
-  { date: "Sep 2, 2026", title: "PPT Submissions Begin", desc: "Submit your idea deck for the first screening round." },
-  { date: "Oct 3, 2026", title: "PPT Submissions Close", desc: "Final call — no entries accepted after this date." },
-  { date: "Oct 5, 2026", title: "Team Shortlisting Ends", desc: "Shortlisted teams announced via email and the portal." },
-  { date: "Oct 10, 2026", title: "Hackathon Begins", desc: "Check-in, opening ceremony, and 24 hours on the clock." },
-  { date: "Oct 11, 2026", title: "Hackathon Ends", desc: "Demos, judging, and the prize ceremony. Loot distributed." },
+  { date: "Oct 15, 2026", title: "Registrations Open", desc: "Registration and first-round ideation submissions begin." },
+  { date: "Oct 30, 2026", title: "Idea Submission Deadline", desc: "First-round ideation submissions close. Final call." },
+  { date: "Nov 5, 2026", title: "Top 50 Teams Announced", desc: "Selected teams qualify for the on-campus round." },
+  { date: "Nov 5–12, 2026", title: "Confirmation & Fee Payment", desc: "Selected teams complete registration formalities and fee payment." },
+  { date: "Nov 13–14, 2026", title: "24-Hour On-Campus Hackathon", desc: "The main event at BIET Campus, Davangere. Loot distributed." },
 ];
 
 const RULES = [
