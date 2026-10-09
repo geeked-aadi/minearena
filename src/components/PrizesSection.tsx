@@ -6,7 +6,7 @@ import pillar1 from "../assets/pillar-1.webp.asset.json";
 import pillar2 from "../assets/pillar-2.webp.asset.json";
 import pillar3 from "../assets/pillar-3.webp.asset.json";
 import crystal from "../assets/crystal.webp.asset.json";
-import podiumBase from "../assets/podium-base.png";
+import podiumBase from "../assets/podium-2.webp.asset.json";
 
 type Prize = {
   place: string;
@@ -23,9 +23,9 @@ type Prize = {
 
 // Order matches a winners' podium: 2nd, 1st, 3rd
 const PRIZES: Prize[] = [
-  { place: "2ND", plaque: plaque2.url, pillar: pillar2.url, width: 120, podiumWidth: 170, alt: "Second place plaque — ₹20,000" },
-  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, podiumWidth: 210, alt: "First place plaque — ₹30,000" },
-  { place: "3RD", plaque: plaque3.url, pillar: pillar3.url, width: 110, podiumWidth: 155, alt: "Third place plaque — ₹10,000" },
+  { place: "2ND", plaque: plaque2.url, pillar: pillar2.url, width: 120, podiumWidth: 190, alt: "Second place plaque — ₹20,000" },
+  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, podiumWidth: 190, alt: "First place plaque — ₹30,000" },
+  { place: "3RD", plaque: plaque3.url, pillar: pillar3.url, width: 110, podiumWidth: 190, alt: "Third place plaque — ₹10,000" },
 ];
 
 function PodiumColumn({ prize, index }: { prize: Prize; index: number }) {
@@ -69,7 +69,7 @@ function PodiumColumn({ prize, index }: { prize: Prize; index: number }) {
           style={{ width: prize.width }}
         />
         <img
-          src={podiumBase}
+          src={podiumBase.url}
           alt=""
           loading="lazy"
           className="relative z-10 -mt-7"
@@ -93,7 +93,7 @@ export function PrizesSection() {
       </Reveal>
 
       <div className="mx-auto max-w-3xl">
-        <div className="flex items-end justify-center gap-2 sm:gap-6">
+        <div className="flex items-end justify-center gap-8 sm:gap-16">
           {PRIZES.map((p, i) => (
             <Reveal key={p.place} delay={0.15 * i} className="flex justify-center">
               <PodiumColumn prize={p} index={i} />
