@@ -1,5 +1,5 @@
 import { Reveal } from "./Reveal";
-import plaque1 from "../assets/plaque-1.jpg.asset.json";
+import plaque1 from "../assets/plaque-1.png.asset.json";
 import plaque2 from "../assets/plaque-2.webp.asset.json";
 import plaque3 from "../assets/plaque-3.webp.asset.json";
 import pillar1 from "../assets/pillar-1.webp.asset.json";
@@ -22,7 +22,7 @@ type Prize = {
 // Order matches a winners' podium: 2nd, 1st, 3rd
 const PRIZES: Prize[] = [
   { place: "2ND", plaque: plaque2.url, pillar: pillar2.url, width: 120, alt: "Second place plaque — ₹20,000" },
-  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, alt: "First place plaque — ₹30,000", blend: true },
+  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, alt: "First place plaque — ₹30,000" },
   { place: "3RD", plaque: plaque3.url, pillar: pillar3.url, width: 110, alt: "Third place plaque — ₹10,000" },
 ];
 
