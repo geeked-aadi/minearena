@@ -12,9 +12,9 @@ type Prize = {
 
 // Order matches a winners' podium: 2nd, 1st, 3rd
 const PRIZES: Prize[] = [
-  { place: "2ND", amount: "₹30,000", note: "Gold trophies & swag", pillar: 150, glow: "oklch(0.8 0.15 90 / 0.45)" },
-  { place: "1ST", amount: "₹50,000", note: "Diamond trophies & swag", pillar: 220, glow: "oklch(0.75 0.18 200 / 0.5)" },
-  { place: "3RD", amount: "₹20,000", note: "Iron trophies & swag", pillar: 110, glow: "oklch(0.7 0.1 60 / 0.45)" },
+  { place: "2ND", amount: "₹25,000", note: "Gold trophies & certificates", pillar: 150, glow: "oklch(0.8 0.15 90 / 0.45)" },
+  { place: "1ST", amount: "₹35,000", note: "Diamond trophies & certificates", pillar: 220, glow: "oklch(0.75 0.18 200 / 0.5)" },
+  { place: "3RD", amount: "₹15,000", note: "Iron trophies & certificates", pillar: 110, glow: "oklch(0.7 0.1 60 / 0.45)" },
 ];
 
 function Podium({ prize, index }: { prize: Prize; index: number }) {

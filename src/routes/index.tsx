@@ -19,20 +19,20 @@ import campusHero from "../assets/voxel-biet-campus.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mindcraft Hackathon — BIET's Minecraft-Themed Hackathon" },
+      { title: "MINEARENA 1.0 — National-Level 24-Hour Hackathon at BIET Davangere" },
       {
         name: "description",
         content:
-          "Mindcraft Hackathon at BIET: a 24-hour Minecraft-themed hackathon. Build, craft and innovate in the Overworld. Oct 10–11, 2026.",
+          "MINEARENA 1.0 is a national-level 24-hour Minecraft-themed hackathon at Bapuji Institute of Engineering and Technology, Davangere. ₹75,000 prize pool. Nov 13–14, 2026.",
       },
       {
         property: "og:title",
-        content: "Mindcraft Hackathon — BIET's Minecraft-Themed Hackathon",
+        content: "MINEARENA 1.0 — National-Level 24-Hour Hackathon at BIET Davangere",
       },
       {
         property: "og:description",
         content:
-          "A 24-hour Minecraft-themed hackathon at BIET. Build, craft and innovate in the Overworld. Oct 10–11, 2026.",
+          "Innovate. Build. Transform. A national-level 24-hour hackathon at BIET Davangere with a ₹75,000 prize pool. Nov 13–14, 2026.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -42,12 +42,11 @@ export const Route = createFileRoute("/")({
 });
 
 const TIMELINE = [
-  { date: "Sep 1, 2026", title: "Registrations Open", desc: "Portals open. Assemble your party and sign up." },
-  { date: "Sep 2, 2026", title: "PPT Submissions Begin", desc: "Submit your idea deck for the first screening round." },
-  { date: "Oct 3, 2026", title: "PPT Submissions Close", desc: "Final call — no entries accepted after this date." },
-  { date: "Oct 5, 2026", title: "Team Shortlisting Ends", desc: "Shortlisted teams announced via email and the portal." },
-  { date: "Oct 10, 2026", title: "Hackathon Begins", desc: "Check-in, opening ceremony, and 24 hours on the clock." },
-  { date: "Oct 11, 2026", title: "Hackathon Ends", desc: "Demos, judging, and the prize ceremony. Loot distributed." },
+  { date: "Oct 15, 2026", title: "Registrations Open", desc: "Registration and first-round ideation submissions begin." },
+  { date: "Oct 30, 2026", title: "Idea Submission Deadline", desc: "First-round ideation submissions close. Final call." },
+  { date: "Nov 5, 2026", title: "Top 50 Teams Announced", desc: "Selected teams qualify for the on-campus round." },
+  { date: "Nov 5–12, 2026", title: "Confirmation & Fee Payment", desc: "Selected teams complete registration formalities and fee payment." },
+  { date: "Nov 13–14, 2026", title: "24-Hour On-Campus Hackathon", desc: "The main event at BIET Campus, Davangere. Loot distributed." },
 ];
 
 const RULES = [
@@ -73,8 +72,8 @@ const FAQ_GROUPS = [
   {
     category: "Format & Schedule",
     items: [
-      { q: "How can I apply?", a: "Hit the Register button, fill the form, and submit your idea deck before Oct 3, 2026." },
-      { q: "How much will it cost?", a: "Nothing. Entry is completely free, including food, drinks and a place to crash overnight." },
+      { q: "How can I apply?", a: "Registrations open Oct 15, 2026 — fill the form and submit your ideation entry before Oct 30." },
+      { q: "How much will it cost?", a: "The ideation round is free. Shortlisted teams complete a participation-fee payment during Nov 5–12 to confirm their on-campus slot." },
       { q: "Is the hackathon online or offline?", a: "Fully offline at the BIET campus — 24 hours, doors open round the clock." },
     ],
   },
@@ -84,7 +83,7 @@ const FAQ_GROUPS = [
       { q: "What are the problem statements?", a: "Tracks across Web, AI/ML, Hardware and Open Innovation — revealed at the opening ceremony." },
       { q: "What can I build?", a: "Anything that solves the problem: apps, tools, games, hardware — if you can demo it, it counts." },
       { q: "Can I start working on my hack before the event?", a: "No — all code must be written during the 24-hour window. Ideas and research beforehand are fine." },
-      { q: "What are the prizes to be won?", a: "Check the Prizes section — a prize pool worth ₹1L+ across the podium and special tracks." },
+      { q: "What are the prizes to be won?", a: "Check the Prizes section — a ₹75,000 prize pool across the podium and special awards." },
     ],
   },
   {
@@ -92,7 +91,7 @@ const FAQ_GROUPS = [
     items: [
       { q: "What facilities will be provided to the participants?", a: "Meals, snacks, coffee, Wi-Fi, power, rest zones and mentor support — all on us." },
       { q: "Will the organizers carry the cost of travel for shortlisted teams?", a: "Travel is on the participants; everything inside the venue is covered by us." },
-      { q: "What if I have more queries?", a: "Reach out anytime at hello@mindcrafthacks.dev — we reply within a day." },
+      { q: "What if I have more queries?", a: "Reach out to the Code Commit team at BIET Davangere — we reply within a day." },
     ],
   },
 ];
@@ -124,23 +123,23 @@ function Index() {
         <div className="absolute inset-0 bg-background/55" />
         <div className="relative z-10 px-4 text-center">
           <p className="pixel-heading mb-4 text-[10px] tracking-widest text-gold sm:text-xs">
-            BIET PRESENTS
+            BIET DAVANGERE PRESENTS
           </p>
           <h1 className="pixel-heading text-2xl leading-relaxed text-foreground sm:text-4xl lg:text-5xl">
-            MINDCRAFT
+            MINEARENA
           </h1>
           <h2 className="pixel-heading mt-3 text-lg text-primary text-glow-green sm:text-2xl">
-            HACKATHON
+            1.0 · NATIONAL HACKATHON
           </h2>
           <p className="mx-auto mt-6 max-w-xl font-terminal text-2xl text-foreground/90">
-            24 hours. One Overworld. Build something legendary.
+            Innovate. Build. Transform. 24 hours in the Overworld.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4 font-terminal text-xl text-foreground/80">
             <span className="flex items-center gap-2">
-              <CalendarDays className="h-5 w-5 text-primary" /> Oct 10–11, 2026
+              <CalendarDays className="h-5 w-5 text-primary" /> Nov 13–14, 2026
             </span>
             <span className="flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-primary" /> BIET Campus
+              <MapPin className="h-5 w-5 text-primary" /> SSM Cultural Hall, BIET Davangere
             </span>
           </div>
           <a
@@ -158,17 +157,19 @@ function Index() {
         <SectionHeading>ABOUT</SectionHeading>
         <div className="mc-card p-8 text-center">
           <p className="font-terminal text-2xl leading-relaxed text-foreground/90">
-            Mindcraft Hackathon is BIET's flagship 24-hour build-a-thon, themed
-            around the blocky universe we all grew up in. Just like Minecraft,
-            there are no limits here — only the ones you haven't broken yet.
-            Gather your party, pick a problem statement, and craft a working
-            prototype before the sun rises twice.
+            MINEARENA 1.0 is a national-level, 24-hour hackathon at Bapuji
+            Institute of Engineering and Technology, Davangere — a platform for
+            innovation, collaboration and technology-driven problem-solving.
+            Bringing together passionate students, developers and creative
+            thinkers from across the country, it transforms ideas into impactful
+            solutions. Just like Minecraft, there are no limits here — only the
+            ones you haven't broken yet.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
               { icon: Clock, stat: "24", label: "Hours of hacking" },
-              { icon: Users, stat: "300+", label: "Builders expected" },
-              { icon: Trophy, stat: "₹1L+", label: "Prize pool" },
+              { icon: Users, stat: "Top 50", label: "Teams on campus" },
+              { icon: Trophy, stat: "₹75,000", label: "Prize pool" },
             ].map(({ icon: Icon, stat, label }) => (
               <div key={label} className="border-2 border-border bg-secondary p-4">
                 <Icon className="mx-auto h-6 w-6 text-primary" />
@@ -202,10 +203,10 @@ function Index() {
         <SectionHeading>DETAILS</SectionHeading>
         <div className="grid gap-6 sm:grid-cols-2">
           {[
-            { icon: CalendarDays, title: "When", body: "October 10–11, 2026. Check-in opens 9:00 AM on Day 1, prize ceremony wraps by 5:00 PM on Day 2." },
-            { icon: MapPin, title: "Where", body: "BIET Main Campus — Central Block & Innovation Labs. Overnight stay zones included." },
-            { icon: Users, title: "Who", body: "Teams of 2–4 college students from any stream. Solo registrations get matched with a team." },
-            { icon: ScrollText, title: "What to build", body: "Problem statements across Web, AI/ML, Hardware and Open Innovation, revealed at the opening ceremony." },
+            { icon: CalendarDays, title: "When", body: "November 13–14, 2026. Registrations open Oct 15; idea submissions close Oct 30; top 50 teams announced Nov 5." },
+            { icon: MapPin, title: "Where", body: "SSM Cultural Hall, BIET Campus, Davangere, Karnataka. On-campus round for shortlisted teams." },
+            { icon: Users, title: "Who", body: "Students from institutions across the country. Top 50 teams from the ideation round make it to campus." },
+            { icon: ScrollText, title: "What to build", body: "Identify a real-world problem, develop an innovative solution, and build a working prototype within 24 hours." },
           ].map(({ icon: Icon, title, body }) => (
             <div key={title} className="mc-card p-6">
               <Icon className="h-6 w-6 text-primary" />
@@ -273,13 +274,13 @@ function Index() {
       {/* FOOTER */}
       <footer className="border-t-2 border-border px-4 py-10 text-center">
         <p className="pixel-heading text-[10px] text-primary text-glow-green">
-          MINDCRAFT HACKATHON
+          MINEARENA 1.0
         </p>
         <p className="mt-3 font-terminal text-lg text-muted-foreground">
-          Organized by the BIET Developer Society · hello@mindcrafthacks.dev
+          Organized by Code Commit — Build fast. Commit to it. · Student tech club, BIET Davangere
         </p>
         <p className="mt-1 font-terminal text-lg text-muted-foreground">
-          Not affiliated with Mojang or Microsoft. Made with ⛏ by students.
+          An Institution's Innovation Council (Ministry of Education) initiative · Not affiliated with Mojang or Microsoft.
         </p>
       </footer>
 

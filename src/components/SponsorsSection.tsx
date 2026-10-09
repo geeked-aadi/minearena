@@ -106,7 +106,7 @@ export function SponsorsSection() {
     <section id="sponsors" className="mx-auto max-w-5xl px-4 py-24">
       <Reveal>
         <p className="mb-2 text-center font-terminal text-xl text-muted-foreground">
-          ▸ The bedrock Mindcraft is built on
+          ▸ The bedrock MineArena is built on
         </p>
         <h2 className="pixel-heading mb-14 text-center text-lg text-primary text-glow-green sm:text-2xl">
           SPONSORS
@@ -119,7 +119,7 @@ export function SponsorsSection() {
       </div>
       <Reveal delay={0.4}>
         <p className="mt-10 text-center font-terminal text-xl text-muted-foreground">
-          Want to sponsor? Write to hello@mindcrafthacks.dev
+          Want to sponsor? Write to codecommit@bietdvg.edu
         </p>
       </Reveal>
     </section>

@@ -47,10 +47,10 @@ export function Navbar() {
           </span>
           <span className="text-left leading-tight">
             <span className="pixel-heading block text-[10px] text-foreground">
-              MINDCRAFT
+              MINE ARENA
             </span>
             <span className="pixel-heading block text-[8px] text-primary text-glow-green">
-              HACKATHON
+              1.0 · HACKATHON
             </span>
           </span>
         </button>
