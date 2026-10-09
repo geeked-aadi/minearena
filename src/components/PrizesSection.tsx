@@ -15,12 +15,14 @@ type Prize = {
   /** pillar width in px — 1st place tallest/widest */
   width: number;
   alt: string;
+  /** blend black JPG backgrounds into the dark page */
+  blend?: boolean;
 };
 
 // Order matches a winners' podium: 2nd, 1st, 3rd
 const PRIZES: Prize[] = [
   { place: "2ND", plaque: plaque2.url, pillar: pillar2.url, width: 120, alt: "Second place plaque — ₹20,000" },
-  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, alt: "First place plaque — ₹30,000" },
+  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, alt: "First place plaque — ₹30,000", blend: true },
   { place: "3RD", plaque: plaque3.url, pillar: pillar3.url, width: 110, alt: "Third place plaque — ₹10,000" },
 ];
 
@@ -32,7 +34,7 @@ function PodiumColumn({ prize, index }: { prize: Prize; index: number }) {
       <img
         src={prize.plaque}
         alt={prize.alt}
-        className="mc-bob relative z-10 w-36 sm:w-44"
+        className={`mc-bob relative z-10 w-36 sm:w-44 ${prize.blend ? "mix-blend-screen" : ""}`}
         style={{ "--bob-delay": bobDelay } as React.CSSProperties}
       />
 
