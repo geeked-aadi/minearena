@@ -1,69 +1,70 @@
-import { Gem } from "lucide-react";
 import { Reveal } from "./Reveal";
+import plaque1 from "../assets/plaque-1.png.asset.json";
+import plaque2 from "../assets/plaque-2.webp.asset.json";
+import plaque3 from "../assets/plaque-3.webp.asset.json";
+import pillar1 from "../assets/pillar-1.webp.asset.json";
+import pillar2 from "../assets/pillar-2.webp.asset.json";
+import pillar3 from "../assets/pillar-3.webp.asset.json";
+import crystal from "../assets/crystal.webp.asset.json";
+import podium from "../assets/podium.webp.asset.json";
 
 type Prize = {
   place: string;
-  amount: string;
-  note: string;
-  /** pillar height in px — 1st place tallest */
-  pillar: number;
-  glow: string;
+  plaque: string;
+  pillar: string;
+  /** pillar width in px — 1st place tallest/widest */
+  width: number;
+  alt: string;
+  /** blend black JPG backgrounds into the dark page */
+  blend?: boolean;
 };
 
 // Order matches a winners' podium: 2nd, 1st, 3rd
 const PRIZES: Prize[] = [
-  { place: "2ND", amount: "₹25,000", note: "Gold trophies & certificates", pillar: 150, glow: "oklch(0.8 0.15 90 / 0.45)" },
-  { place: "1ST", amount: "₹35,000", note: "Diamond trophies & certificates", pillar: 220, glow: "oklch(0.75 0.18 200 / 0.5)" },
-  { place: "3RD", amount: "₹15,000", note: "Iron trophies & certificates", pillar: 110, glow: "oklch(0.7 0.1 60 / 0.45)" },
+  { place: "2ND", plaque: plaque2.url, pillar: pillar2.url, width: 120, alt: "Second place plaque — ₹20,000" },
+  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, alt: "First place plaque — ₹30,000" },
+  { place: "3RD", plaque: plaque3.url, pillar: pillar3.url, width: 110, alt: "Third place plaque — ₹10,000" },
 ];
 
-function Podium({ prize, index }: { prize: Prize; index: number }) {
+function PodiumColumn({ prize, index }: { prize: Prize; index: number }) {
   const bobDelay = `${index * 0.45}s`;
   return (
-    <div className="flex w-full max-w-44 flex-col items-center">
+    <div className="flex flex-col items-center">
       {/* Floating plaque with the prize amount */}
-      <div
-        className="mc-bob mc-gui mc-notch relative z-10 w-full px-3 py-4 text-center"
+      <img
+        src={prize.plaque}
+        alt={prize.alt}
+        className={`mc-bob relative z-10 w-36 sm:w-44 ${prize.blend ? "mix-blend-screen" : ""}`}
         style={{ "--bob-delay": bobDelay } as React.CSSProperties}
-      >
-        <p className="pixel-heading text-[10px] text-primary">{prize.place}</p>
-        <p className="pixel-heading mt-2 text-sm" style={{ color: "oklch(0.25 0.03 260)" }}>
-          {prize.amount}
-        </p>
-        <p className="mt-1 font-terminal text-base" style={{ color: "oklch(0.35 0.03 260)" }}>
-          {prize.note}
-        </p>
-      </div>
+      />
 
       {/* Glowing crystal hovering above the pillar */}
-      <div className="relative mt-3 flex h-12 w-12 items-center justify-center">
+      <div className="relative mt-2 flex h-14 w-14 items-center justify-center">
         <div
           className="mc-glow pointer-events-none absolute -inset-6 rounded-full"
           style={
             {
-              background: `radial-gradient(closest-side, ${prize.glow}, transparent 70%)`,
+              background:
+                "radial-gradient(closest-side, oklch(0.65 0.25 310 / 0.5), transparent 70%)",
               "--bob-delay": bobDelay,
             } as React.CSSProperties
           }
         />
-        <Gem
-          className="mc-crystal relative h-8 w-8 text-primary"
+        <img
+          src={crystal.url}
+          alt=""
+          className="mc-crystal relative h-10 w-10"
           style={{ "--bob-delay": bobDelay } as React.CSSProperties}
         />
       </div>
 
-      {/* Pixel pillar */}
-      <div
-        className="mc-notch mt-2 w-3/5 border-2 border-border bg-secondary"
-        style={{
-          height: prize.pillar,
-          boxShadow:
-            "inset 4px 0 0 oklch(0.35 0.035 260), inset -4px 0 0 oklch(0.18 0.02 260)",
-        }}
+      {/* Banner pillar */}
+      <img
+        src={prize.pillar}
+        alt={`${prize.place} place pillar`}
+        className="mt-1"
+        style={{ width: prize.width }}
       />
-
-      {/* Podium base */}
-      <div className="mc-gui mc-notch -mt-1 h-10 w-full" />
     </div>
   );
 }
@@ -79,13 +80,24 @@ export function PrizesSection() {
           The loot waiting at the end of the dungeon.
         </p>
       </Reveal>
-      <div className="flex items-end justify-center gap-4 sm:gap-8">
-        {PRIZES.map((p, i) => (
-          <Reveal key={p.place} delay={0.15 * i} className="flex justify-center">
-            <Podium prize={p} index={i} />
-          </Reveal>
-        ))}
+
+      <div className="mx-auto max-w-3xl">
+        <div className="flex items-end justify-center gap-2 sm:gap-6">
+          {PRIZES.map((p, i) => (
+            <Reveal key={p.place} delay={0.15 * i} className="flex justify-center">
+              <PodiumColumn prize={p} index={i} />
+            </Reveal>
+          ))}
+        </div>
+        <Reveal delay={0.45}>
+          <img
+            src={podium.url}
+            alt="Winners' podium"
+            className="-mt-2 w-full"
+          />
+        </Reveal>
       </div>
+
       <Reveal delay={0.5}>
         <p className="mt-12 text-center font-terminal text-xl text-muted-foreground">
           Plus track prizes, best all-girls team, and best freshman team awards.
