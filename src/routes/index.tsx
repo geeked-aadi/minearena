@@ -123,23 +123,23 @@ function Index() {
         <div className="absolute inset-0 bg-background/55" />
         <div className="relative z-10 px-4 text-center">
           <p className="pixel-heading mb-4 text-[10px] tracking-widest text-gold sm:text-xs">
-            BIET PRESENTS
+            BIET DAVANGERE PRESENTS
           </p>
           <h1 className="pixel-heading text-2xl leading-relaxed text-foreground sm:text-4xl lg:text-5xl">
-            MINDCRAFT
+            MINEARENA
           </h1>
           <h2 className="pixel-heading mt-3 text-lg text-primary text-glow-green sm:text-2xl">
-            HACKATHON
+            1.0 · NATIONAL HACKATHON
           </h2>
           <p className="mx-auto mt-6 max-w-xl font-terminal text-2xl text-foreground/90">
-            24 hours. One Overworld. Build something legendary.
+            Innovate. Build. Transform. 24 hours in the Overworld.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4 font-terminal text-xl text-foreground/80">
             <span className="flex items-center gap-2">
-              <CalendarDays className="h-5 w-5 text-primary" /> Oct 10–11, 2026
+              <CalendarDays className="h-5 w-5 text-primary" /> Nov 13–14, 2026
             </span>
             <span className="flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-primary" /> BIET Campus
+              <MapPin className="h-5 w-5 text-primary" /> SSM Cultural Hall, BIET Davangere
             </span>
           </div>
           <a
@@ -157,17 +157,19 @@ function Index() {
         <SectionHeading>ABOUT</SectionHeading>
         <div className="mc-card p-8 text-center">
           <p className="font-terminal text-2xl leading-relaxed text-foreground/90">
-            Mindcraft Hackathon is BIET's flagship 24-hour build-a-thon, themed
-            around the blocky universe we all grew up in. Just like Minecraft,
-            there are no limits here — only the ones you haven't broken yet.
-            Gather your party, pick a problem statement, and craft a working
-            prototype before the sun rises twice.
+            MINEARENA 1.0 is a national-level, 24-hour hackathon at Bapuji
+            Institute of Engineering and Technology, Davangere — a platform for
+            innovation, collaboration and technology-driven problem-solving.
+            Bringing together passionate students, developers and creative
+            thinkers from across the country, it transforms ideas into impactful
+            solutions. Just like Minecraft, there are no limits here — only the
+            ones you haven't broken yet.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
               { icon: Clock, stat: "24", label: "Hours of hacking" },
-              { icon: Users, stat: "300+", label: "Builders expected" },
-              { icon: Trophy, stat: "₹1L+", label: "Prize pool" },
+              { icon: Users, stat: "Top 50", label: "Teams on campus" },
+              { icon: Trophy, stat: "₹75,000", label: "Prize pool" },
             ].map(({ icon: Icon, stat, label }) => (
               <div key={label} className="border-2 border-border bg-secondary p-4">
                 <Icon className="mx-auto h-6 w-6 text-primary" />
