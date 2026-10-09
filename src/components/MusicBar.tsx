@@ -39,7 +39,7 @@ export function MusicBar() {
       while (nextTime < ctx.currentTime + 0.4) {
         const osc = ctx.createOscillator();
         osc.type = "square";
-        osc.frequency.value = notes[step % notes.length];
+        osc.frequency.value = notes[step % notes.length] ?? 261.6;
         const env = ctx.createGain();
         env.gain.setValueAtTime(0.5, nextTime);
         env.gain.exponentialRampToValueAtTime(0.001, nextTime + 0.28);
