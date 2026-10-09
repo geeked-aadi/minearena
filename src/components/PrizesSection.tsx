@@ -72,7 +72,7 @@ function PodiumColumn({ prize, index }: { prize: Prize; index: number }) {
           src={podiumBase.url}
           alt=""
           loading="lazy"
-          className="relative z-10 -mt-7"
+          className="relative z-10 -mt-16"
           style={{ width: prize.podiumWidth }}
         />
       </div>
