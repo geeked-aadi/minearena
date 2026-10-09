@@ -72,8 +72,8 @@ const FAQ_GROUPS = [
   {
     category: "Format & Schedule",
     items: [
-      { q: "How can I apply?", a: "Hit the Register button, fill the form, and submit your idea deck before Oct 3, 2026." },
-      { q: "How much will it cost?", a: "Nothing. Entry is completely free, including food, drinks and a place to crash overnight." },
+      { q: "How can I apply?", a: "Registrations open Oct 15, 2026 — fill the form and submit your ideation entry before Oct 30." },
+      { q: "How much will it cost?", a: "The ideation round is free. Shortlisted teams complete a participation-fee payment during Nov 5–12 to confirm their on-campus slot." },
       { q: "Is the hackathon online or offline?", a: "Fully offline at the BIET campus — 24 hours, doors open round the clock." },
     ],
   },
@@ -83,7 +83,7 @@ const FAQ_GROUPS = [
       { q: "What are the problem statements?", a: "Tracks across Web, AI/ML, Hardware and Open Innovation — revealed at the opening ceremony." },
       { q: "What can I build?", a: "Anything that solves the problem: apps, tools, games, hardware — if you can demo it, it counts." },
       { q: "Can I start working on my hack before the event?", a: "No — all code must be written during the 24-hour window. Ideas and research beforehand are fine." },
-      { q: "What are the prizes to be won?", a: "Check the Prizes section — a prize pool worth ₹1L+ across the podium and special tracks." },
+      { q: "What are the prizes to be won?", a: "Check the Prizes section — a ₹75,000 prize pool across the podium and special awards." },
     ],
   },
   {
