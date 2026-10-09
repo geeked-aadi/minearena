@@ -1,11 +1,14 @@
 import { Diamond, Beef, Scroll, Sparkles } from "lucide-react";
 import { Reveal } from "./Reveal";
+import ibmLogo from "@/assets/sponsor-ibm.png.asset.json";
+import microsoftLogo from "@/assets/sponsor-microsoft.png.asset.json";
+import lovableLogo from "@/assets/sponsor-lovable.png.asset.json";
 
 type Tier = {
   icon: typeof Diamond;
   title: string;
   lamp: string;
-  sponsors: { name: string; url: string }[];
+  sponsors: { name: string; url: string; logo?: string }[];
 };
 
 // Placeholder tiers — swap in real sponsors when details arrive.
@@ -14,19 +17,19 @@ const TIERS: Tier[] = [
     icon: Diamond,
     title: "Title Sponsor",
     lamp: "oklch(0.7 0.2 145)",
-    sponsors: [{ name: "Your Company", url: "#" }],
+    sponsors: [{ name: "IBM", url: "#", logo: ibmLogo.url }],
   },
   {
     icon: Sparkles,
     title: "Hosting Partner",
     lamp: "oklch(0.85 0.15 200)",
-    sponsors: [{ name: "Your Company", url: "#" }],
+    sponsors: [{ name: "Microsoft", url: "#", logo: microsoftLogo.url }],
   },
   {
     icon: Beef,
     title: "Refreshment Partner",
     lamp: "oklch(0.8 0.12 30)",
-    sponsors: [{ name: "Your Company", url: "#" }],
+    sponsors: [{ name: "Lovable", url: "#", logo: lovableLogo.url }],
   },
   {
     icon: Scroll,
@@ -85,12 +88,20 @@ function TierPanel({ tier, index }: { tier: Tier; index: number }) {
                     boxShadow: "inset 0 0 0 2px oklch(0.1 0.01 260 / 0.85)",
                   }}
                 >
-                  <span
-                    className="pixel-heading px-4 text-center text-[10px]"
-                    style={{ color: "oklch(0.3 0.03 260)" }}
-                  >
-                    {s.name}
-                  </span>
+                  {s.logo ? (
+                    <img
+                      src={s.logo}
+                      alt={s.name}
+                      className="max-h-12 max-w-[80%] object-contain"
+                    />
+                  ) : (
+                    <span
+                      className="pixel-heading px-4 text-center text-[10px]"
+                      style={{ color: "oklch(0.3 0.03 260)" }}
+                    >
+                      {s.name}
+                    </span>
+                  )}
                 </span>
               </a>
             ))}
