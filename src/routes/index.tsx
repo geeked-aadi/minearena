@@ -12,6 +12,8 @@ import {
 import { Navbar } from "../components/Navbar";
 import { MusicBar } from "../components/MusicBar";
 import { CursorFollower } from "../components/CursorFollower";
+import { PrizesSection } from "../components/PrizesSection";
+import { SponsorsSection } from "../components/SponsorsSection";
 import campusHero from "../assets/voxel-biet-campus.png.asset.json";
 
 export const Route = createFileRoute("/")({
