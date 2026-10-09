@@ -100,13 +100,6 @@ export function PrizesSection() {
             </Reveal>
           ))}
         </div>
-        <Reveal delay={0.45}>
-          <img
-            src={podium.url}
-            alt="Winners' podium"
-            className="-mt-2 w-full"
-          />
-        </Reveal>
       </div>
 
       <Reveal delay={0.5}>
