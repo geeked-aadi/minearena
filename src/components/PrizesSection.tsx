@@ -60,13 +60,22 @@ function PodiumColumn({ prize, index }: { prize: Prize; index: number }) {
         />
       </div>
 
-      {/* Banner pillar */}
-      <img
-        src={prize.pillar}
-        alt={`${prize.place} place pillar`}
-        className="mt-1"
-        style={{ width: prize.width }}
-      />
+      {/* Banner pillar rising out of its own podium base */}
+      <div className="mt-1 flex flex-col items-center">
+        <img
+          src={prize.pillar}
+          alt={`${prize.place} place pillar`}
+          className="mc-pillar-rise"
+          style={{ width: prize.width }}
+        />
+        <img
+          src={podiumBase}
+          alt=""
+          loading="lazy"
+          className="relative z-10 -mt-7"
+          style={{ width: prize.podiumWidth }}
+        />
+      </div>
     </div>
   );
 }
