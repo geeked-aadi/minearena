@@ -69,7 +69,7 @@ function PodiumColumn({ prize, index }: { prize: Prize; index: number }) {
           style={{ width: prize.width }}
         />
         <img
-          src={podiumBase}
+          src={podiumBase.url}
           alt=""
           loading="lazy"
           className="relative z-10 -mt-7"
