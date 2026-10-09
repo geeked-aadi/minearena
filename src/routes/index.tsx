@@ -180,14 +180,14 @@ function Index() {
         </div>
       </section>
 
-      {/* FLOW */}
+      {/* TIMELINE */}
       <section id="flow" className="mx-auto max-w-3xl px-4 py-24">
-        <SectionHeading>EVENT FLOW</SectionHeading>
+        <SectionHeading>TIMELINE</SectionHeading>
         <ol className="relative border-l-2 border-border pl-8">
-          {FLOW.map((item) => (
-            <li key={item.time + item.title} className="relative pb-8 last:pb-0">
+          {TIMELINE.map((item) => (
+            <li key={item.date + item.title} className="relative pb-8 last:pb-0">
               <span className="absolute -left-[41px] flex h-4 w-4 items-center justify-center border-2 border-primary bg-background" />
-              <p className="pixel-heading text-[10px] text-gold">{item.time}</p>
+              <p className="pixel-heading text-[10px] text-gold">{item.date}</p>
               <h3 className="pixel-heading mt-2 text-[11px] text-foreground">
                 {item.title}
               </h3>
@@ -244,19 +244,28 @@ function Index() {
       {/* FAQ */}
       <section id="faq" className="mx-auto max-w-3xl px-4 py-24">
         <SectionHeading>FAQ</SectionHeading>
-        <div className="space-y-4">
-          {FAQS.map((f) => (
-            <details key={f.q} className="mc-card group p-6">
-              <summary className="flex cursor-pointer list-none items-center gap-3">
-                <HelpCircle className="h-5 w-5 shrink-0 text-primary" />
-                <span className="pixel-heading text-[10px] leading-relaxed text-foreground">
-                  {f.q}
-                </span>
-              </summary>
-              <p className="mt-4 pl-8 font-terminal text-xl text-muted-foreground">
-                {f.a}
-              </p>
-            </details>
+        <div className="space-y-10">
+          {FAQ_GROUPS.map((group) => (
+            <div key={group.category}>
+              <h3 className="pixel-heading mb-4 text-[11px] text-gold">
+                {group.category}
+              </h3>
+              <div className="space-y-4">
+                {group.items.map((f) => (
+                  <details key={f.q} className="mc-card group p-6">
+                    <summary className="flex cursor-pointer list-none items-center gap-3">
+                      <HelpCircle className="h-5 w-5 shrink-0 text-primary" />
+                      <span className="pixel-heading text-[10px] leading-relaxed text-foreground">
+                        {f.q}
+                      </span>
+                    </summary>
+                    <p className="mt-4 pl-8 font-terminal text-xl text-muted-foreground">
+                      {f.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
