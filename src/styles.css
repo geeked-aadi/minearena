@@ -210,6 +210,25 @@
     animation-delay: var(--reveal-delay, 0s);
   }
 
+  /* Pillar rises out of its podium once the column scrolls into view */
+  @keyframes mc-pillar-up {
+    from {
+      transform: translateY(46%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .mc-pillar-rise {
+    transform: translateY(46%);
+  }
+
+  .mc-reveal.is-visible .mc-pillar-rise {
+    animation: mc-pillar-up 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
+    animation-delay: calc(var(--reveal-delay, 0s) + 0.25s);
+  }
+
   /* ---- Minecraft advancement-window panel (sponsors) ---- */
 
   /* Notched pixel corners shared by GUI frames */
@@ -306,6 +325,14 @@
 
     .mc-reveal.is-visible {
       animation-duration: 0.01s;
+    }
+
+    .mc-pillar-rise {
+      transform: none;
+    }
+
+    .mc-reveal.is-visible .mc-pillar-rise {
+      animation: none;
     }
   }
 }

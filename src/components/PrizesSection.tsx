@@ -6,7 +6,7 @@ import pillar1 from "../assets/pillar-1.webp.asset.json";
 import pillar2 from "../assets/pillar-2.webp.asset.json";
 import pillar3 from "../assets/pillar-3.webp.asset.json";
 import crystal from "../assets/crystal.webp.asset.json";
-import podium from "../assets/podium.webp.asset.json";
+import podiumBase from "../assets/podium-base.png";
 
 type Prize = {
   place: string;
@@ -14,6 +14,8 @@ type Prize = {
   pillar: string;
   /** pillar width in px — 1st place tallest/widest */
   width: number;
+  /** podium base width in px — scales with the pillar */
+  podiumWidth: number;
   alt: string;
   /** blend black JPG backgrounds into the dark page */
   blend?: boolean;
@@ -21,9 +23,9 @@ type Prize = {
 
 // Order matches a winners' podium: 2nd, 1st, 3rd
 const PRIZES: Prize[] = [
-  { place: "2ND", plaque: plaque2.url, pillar: pillar2.url, width: 120, alt: "Second place plaque — ₹20,000" },
-  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, alt: "First place plaque — ₹30,000" },
-  { place: "3RD", plaque: plaque3.url, pillar: pillar3.url, width: 110, alt: "Third place plaque — ₹10,000" },
+  { place: "2ND", plaque: plaque2.url, pillar: pillar2.url, width: 120, podiumWidth: 170, alt: "Second place plaque — ₹20,000" },
+  { place: "1ST", plaque: plaque1.url, pillar: pillar1.url, width: 150, podiumWidth: 210, alt: "First place plaque — ₹30,000" },
+  { place: "3RD", plaque: plaque3.url, pillar: pillar3.url, width: 110, podiumWidth: 155, alt: "Third place plaque — ₹10,000" },
 ];
 
 function PodiumColumn({ prize, index }: { prize: Prize; index: number }) {
@@ -58,13 +60,22 @@ function PodiumColumn({ prize, index }: { prize: Prize; index: number }) {
         />
       </div>
 
-      {/* Banner pillar */}
-      <img
-        src={prize.pillar}
-        alt={`${prize.place} place pillar`}
-        className="mt-1"
-        style={{ width: prize.width }}
-      />
+      {/* Banner pillar rising out of its own podium base */}
+      <div className="mt-1 flex flex-col items-center">
+        <img
+          src={prize.pillar}
+          alt={`${prize.place} place pillar`}
+          className="mc-pillar-rise"
+          style={{ width: prize.width }}
+        />
+        <img
+          src={podiumBase}
+          alt=""
+          loading="lazy"
+          className="relative z-10 -mt-7"
+          style={{ width: prize.podiumWidth }}
+        />
+      </div>
     </div>
   );
 }
@@ -89,13 +100,6 @@ export function PrizesSection() {
             </Reveal>
           ))}
         </div>
-        <Reveal delay={0.45}>
-          <img
-            src={podium.url}
-            alt="Winners' podium"
-            className="-mt-2 w-full"
-          />
-        </Reveal>
       </div>
 
       <Reveal delay={0.5}>
