@@ -326,5 +326,13 @@
     .mc-reveal.is-visible {
       animation-duration: 0.01s;
     }
+
+    .mc-pillar-rise {
+      transform: none;
+    }
+
+    .mc-reveal.is-visible .mc-pillar-rise {
+      animation: none;
+    }
   }
 }
