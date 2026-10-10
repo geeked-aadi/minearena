@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Pickaxe, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import dirt from "../assets/dirt.png.asset.json";
 import grass from "../assets/grass.png.asset.json";
 
@@ -64,8 +64,12 @@ export function Navbar() {
           }}
         >
           <button onClick={() => scrollTo("home")} className="flex shrink-0 items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center border-2 border-[#1f2e14] bg-background/70">
-              <Pickaxe className="h-5 w-5 text-primary" />
+            <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-md border-2 border-[#1f2e14] bg-background/70 p-1 shadow-[inset_0_0_0_2px_rgba(255,255,255,0.15)]">
+              <img
+                src="/nav_logo.jpg"
+                alt="MineArena logo"
+                className="h-full w-full rounded-sm object-cover"
+              />
             </span>
             <span className="text-left leading-tight" style={textShadow}>
               <span className="pixel-heading block text-[10px] text-foreground">MINE ARENA</span>

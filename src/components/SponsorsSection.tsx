@@ -2,129 +2,150 @@ import sponsorBg from "@/assets/SPONSOR_BG.png";
 import sponsorBgLeft from "@/assets/SPONSOR_BG_LEFT.png";
 import sponsorBgRight from "@/assets/SPONSOR_BG_RIGHT.png";
 import { Reveal } from "./Reveal";
-import ibmLogo from "@/assets/sponsor-ibm.png.asset.json";
-import microsoftLogo from "@/assets/sponsor-microsoft.png.asset.json";
-import lovableLogo from "@/assets/sponsor-lovable.png.asset.json";
 
-import truscholarLogo from "@/assets/truscholar.jpg";
-import pruneLogo from "@/assets/prune.jpg";
-import lazercrazerLogo from "@/assets/lazercrazer.png";
+/*
+  HOW TO ADD A REAL SPONSOR LATER
+  1. Import the logo:      import acmeLogo from "@/assets/acme.png";
+  2. Replace the placeholder entry with:
+        { name: "Acme", url: "https://acme.com", logo: acmeLogo }
+  Entries without a `logo` show the dashed "YOUR LOGO HERE" placeholder.
+  Entries with url "#" are not clickable.
+*/
+
+type Sponsor = { name: string; url: string; logo?: string };
 
 type Tier = {
   itemIcon: string;
   title: string;
   lamp: string;
-  sponsors: { name: string; url: string; logo?: string }[];
+  sponsors: Sponsor[];
 };
+
+const PLACEHOLDER: Sponsor = { name: "Sponsor logo", url: "#" };
 
 const TIERS: Tier[] = [
   {
     itemIcon: "/item-diamond.png",
     title: "Title Sponsor",
     lamp: "#41c65b",
-    sponsors: [{ name: "IBM", url: "https://www.ibm.com", logo: ibmLogo.url }],
+    sponsors: [PLACEHOLDER],
   },
   {
     itemIcon: "/item-lapis.png",
     title: "Hosting Partner",
     lamp: "#5ff2f2",
-    sponsors: [{ name: "Microsoft", url: "https://www.microsoft.com", logo: microsoftLogo.url }],
+    sponsors: [PLACEHOLDER],
   },
   {
     itemIcon: "/item-porkchop.png",
     title: "Refreshment Partner",
     lamp: "#e79ba9",
-    sponsors: [{ name: "Lovable", url: "https://lovable.dev", logo: lovableLogo.url }],
+    sponsors: [PLACEHOLDER],
   },
   {
     itemIcon: "/item-glowstone.png",
     title: "Certificate Partner",
     lamp: "#e0dca8",
-    sponsors: [{ name: "TruScholar", url: "https://www.truscholar.io", logo: truscholarLogo }],
+    sponsors: [PLACEHOLDER],
   },
   {
     itemIcon: "/item-ender-eye.png",
     title: "AI Partner",
     lamp: "#a855f7",
-    sponsors: [{ name: "Prune", url: "https://www.withprune.com", logo: pruneLogo }],
+    sponsors: [PLACEHOLDER],
   },
   {
     itemIcon: "/item-firework.png",
     title: "Fun & Media Partner",
     lamp: "#fbbf24",
-    sponsors: [{ name: "Lazer Crazer", url: "https://lazercrazer.in", logo: lazercrazerLogo }],
+    sponsors: [PLACEHOLDER],
   },
 ];
 
 function TierPanel({ tier, index }: { tier: Tier; index: number }) {
   return (
     <Reveal delay={index * 0.12}>
-      {/* Minecraft advancement-window panel */}
-      <div className="mc-gui mc-notch p-3">
-        {/* Title bar: item icon + inset label + status lamp */}
-        <div className="flex items-center gap-3">
-          <span className="mc-gui mc-notch flex h-11 w-11 shrink-0 items-center justify-center bg-[#c6c6c6] p-1">
-            <img
-              src={tier.itemIcon}
-              alt=""
-              className="h-7 w-7 object-contain"
-              style={{ imageRendering: "pixelated" }}
-            />
-          </span>
-          <div className="mc-slot flex h-8 min-w-0 flex-1 items-center justify-center px-3">
-            <h3
-              className="pixel-heading truncate text-[10px] uppercase sm:text-xs"
-              style={{ color: "oklch(0.85 0.02 120)" }}
-            >
-              {tier.title}
-            </h3>
-          </div>
-          <span className="mc-gui mc-notch hidden h-6 w-6 shrink-0 items-center justify-center sm:flex">
-            <span
-              className="block h-3 w-3"
-              style={{
-                backgroundColor: tier.lamp,
-                boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.55)",
-              }}
-            />
-          </span>
-        </div>
-
-        {/* Inset slot area holding the sponsor tiles */}
-        <div className="mc-slot mt-3 p-4">
-          <div className="flex flex-wrap justify-center gap-4">
-            {tier.sponsors.map((s) => (
-              <a
-                key={s.name}
-                href={s.url}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label={`${s.name} — ${tier.title}`}
-                className="mc-gold-frame mc-notch mc-shine block w-full max-w-xs transition-transform hover:-translate-y-1"
+      {/*
+        MOBILE SIZE KNOB: the whole panel is built at its normal (desktop) proportions and then
+        shrunk on phones with CSS `zoom`, so borders, bevels, notches and text all scale together.
+        - w-[66%]   → how wide the panel is on mobile (reference poster is ~55%)
+        - zoom:0.6  → how small everything inside is (lower = smaller)
+        From md up, both are reset so desktop is unchanged.
+      */}
+      <div className="mx-auto w-[66%] [zoom:0.6] md:w-auto md:[zoom:1]">
+        {/* Minecraft advancement-window panel */}
+        <div className="mc-gui mc-notch p-3">
+          {/* Title bar: item icon + inset label + status lamp */}
+          <div className="flex items-center gap-3">
+            <span className="mc-gui mc-notch flex h-11 w-11 shrink-0 items-center justify-center bg-[#c6c6c6] p-1">
+              <img
+                src={tier.itemIcon}
+                alt=""
+                className="h-7 w-7 object-contain"
+                style={{ imageRendering: "pixelated" }}
+              />
+            </span>
+            <div className="mc-slot flex h-8 min-w-0 flex-1 items-center justify-center px-3">
+              <h3
+                className="pixel-heading truncate text-xs uppercase"
+                style={{ color: "oklch(0.85 0.02 120)" }}
               >
-                <span
-                  className="m-2 flex aspect-[2.6/1] items-center justify-center bg-white"
-                  style={{
-                    boxShadow: "inset 0 0 0 2px rgba(0,0,0,0.85)",
-                  }}
-                >
-                  {s.logo ? (
-                    <img
-                      src={s.logo}
-                      alt={s.name}
-                      className="max-h-12 max-w-[80%] object-contain"
-                    />
-                  ) : (
+                {tier.title}
+              </h3>
+            </div>
+            <span className="mc-gui mc-notch flex h-6 w-6 shrink-0 items-center justify-center">
+              <span
+                className="block h-3 w-3"
+                style={{
+                  backgroundColor: tier.lamp,
+                  boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.55)",
+                }}
+              />
+            </span>
+          </div>
+
+          {/* Inset slot area holding the sponsor tiles */}
+          <div className="mc-slot mt-2 p-2 md:mt-3 md:p-4">
+            <div className="flex flex-wrap justify-center gap-4">
+              {tier.sponsors.map((s) => {
+                const isLink = s.url && s.url !== "#";
+                return (
+                  <a
+                    key={s.name}
+                    href={isLink ? s.url : undefined}
+                    target={isLink ? "_blank" : undefined}
+                    rel={isLink ? "noreferrer noopener" : undefined}
+                    aria-label={`${s.name} — ${tier.title}`}
+                    className="mc-gold-frame mc-notch mc-shine block w-full max-w-xs transition-transform hover:-translate-y-1"
+                  >
                     <span
-                      className="pixel-heading px-4 text-center text-[10px]"
-                      style={{ color: "oklch(0.3 0.03 260)" }}
+                      className="m-2 flex aspect-[5/1] items-center justify-center bg-white md:aspect-[2.6/1]"
+                      style={{
+                        boxShadow: "inset 0 0 0 2px rgba(0,0,0,0.85)",
+                      }}
                     >
-                      {s.name}
+                      {s.logo ? (
+                        <img
+                          src={s.logo}
+                          alt={s.name}
+                          className="max-h-8 max-w-[80%] object-contain md:max-h-12"
+                        />
+                      ) : (
+                        /* Placeholder: dashed slot with label */
+                        <span className="flex h-[74%] w-[88%] items-center justify-center border-2 border-dashed border-[#9aa0aa]">
+                          <span
+                            className="pixel-heading px-2 text-center text-xs uppercase leading-[1.6] md:text-[10px]"
+                            style={{ color: "#7b818c" }}
+                          >
+                            Your logo here
+                          </span>
+                        </span>
+                      )}
                     </span>
-                  )}
-                </span>
-              </a>
-            ))}
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -136,9 +157,9 @@ export function SponsorsSection() {
   return (
     <section
       id="sponsors"
-      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-24 sm:px-6"
+      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 sm:px-6 md:py-24"
     >
-      {/* Background layer and flanks */}
+      {/* Background layer and flanks (unchanged) */}
       <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden bg-[#1a1d20]">
         <div
           className="absolute inset-0"
@@ -163,7 +184,7 @@ export function SponsorsSection() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl text-center">
+      <div className="relative z-10 mx-auto w-full min-w-0 max-w-5xl text-center">
         {/* Glow halo behind advancement window */}
         <div
           aria-hidden="true"
@@ -175,22 +196,22 @@ export function SponsorsSection() {
         />
 
         <Reveal>
-          <p className="mb-2 text-center font-terminal text-xl tracking-wider text-white/80">
-            ▸ The bedrock MineArena is built on
+          <p className="mb-2 text-center font-terminal text-lg tracking-wider text-white/80 md:text-xl">
+            ▸ The MineArena is built on
           </p>
-          <h2 className="pixel-heading mb-12 text-center text-2xl uppercase text-foreground text-glow-green sm:text-4xl">
+          <h2 className="pixel-heading mb-8 text-center text-2xl uppercase text-foreground text-glow-green sm:text-4xl md:mb-12">
             SPONSORS
           </h2>
         </Reveal>
 
-        <div className="grid items-start gap-6 md:grid-cols-2 lg:gap-8">
+        <div className="grid items-start gap-3 md:grid-cols-2 md:gap-6 lg:gap-8">
           {TIERS.map((t, i) => (
             <TierPanel key={t.title} tier={t} index={i} />
           ))}
         </div>
 
         <Reveal delay={0.4}>
-          <p className="mt-12 text-center font-terminal text-xl text-white/80">
+          <p className="mt-10 text-center font-terminal text-lg text-white/80 md:mt-12 md:text-xl">
             Want to sponsor? Write to{" "}
             <a
               href="mailto:codecommit@bietdvg.edu"

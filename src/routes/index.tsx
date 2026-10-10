@@ -209,6 +209,8 @@ const FAQ_GROUPS = [
   },
 ];
 
+const REVEALING_SOON = true;
+
 function Index() {
   return (
     <div className="min-h-screen bg-background pb-16">
@@ -313,182 +315,199 @@ function Index() {
       <SectionSeam />
 
       {/* ===================== ABOUT SECTION ===================== */}
-      <section
-        id="about"
-        className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-24 sm:px-6"
-        style={{
-          backgroundImage: `url(${aboutBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="absolute inset-0 bg-[#0c0c0e]/20" />
-        <img
-          src={aboutLeft}
-          alt=""
-          className="pointer-events-none absolute bottom-0 left-0 z-10 h-full w-auto max-w-[46vw] select-none object-cover object-left"
-        />
-        <img
-          src={aboutRight}
-          alt=""
-          className="pointer-events-none absolute bottom-0 right-0 z-10 h-full w-auto max-w-[46vw] select-none object-cover object-right"
-        />
+      {/*
+  About section: drop-in replacement for your <section id="about"> block.
+  Desktop (md and up) is unchanged. Changes are mobile-only:
+  - Both book pages are narrower (72% of the screen) and centered, so the lanterns / vines / shelves
+    in the left and right background art show on either side, like the poster.
+  - More side padding inside the book so text and buttons no longer touch the red dashed frame
+    (on the right page they overlapped it before).
+  - Quest rows stack (title above reward) instead of squeezing side by side.
+  - Slightly smaller text, stat numbers and tighter line spacing.
+  Knob: change w-[78%] on the grid below to make the pages wider or narrower on phones
+  (the poster is ~61%).
+*/}
+<section
+  id="about"
+  className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 sm:px-6 md:py-24"
+  style={{
+    backgroundImage: `url(${aboutBg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  <div className="absolute inset-0 bg-[#0c0c0e]/20" />
+  <img
+    src={aboutLeft}
+    alt=""
+    className="pointer-events-none absolute bottom-0 left-0 z-10 h-full w-auto max-w-[46vw] select-none object-cover object-left"
+  />
+  <img
+    src={aboutRight}
+    alt=""
+    className="pointer-events-none absolute bottom-0 right-0 z-10 h-full w-auto max-w-[46vw] select-none object-cover object-right"
+  />
 
-        <div className="relative z-30 mx-auto w-full max-w-5xl text-left">
-          <div className="grid w-full gap-6 md:grid-cols-2 md:items-stretch md:gap-6">
-            {/* Left Page: About overview */}
-            <Reveal className="h-full z-30 relative">
-              <div className="relative h-full z-30">
-                <div
-                  className="absolute inset-0 z-20"
-                  style={{
-                    backgroundImage: "url('/book_bg.png')",
-                    backgroundSize: "100% 100%",
-                    backgroundRepeat: "no-repeat",
-                    imageRendering: "pixelated",
-                    transform: "scaleX(-1)",
-                  }}
-                />
-                <div className="relative z-30 flex h-full flex-col justify-between px-8 py-10 sm:px-10 sm:py-12 md:px-14 md:py-16">
-                  <div>
-                    <h2 className="pixel-heading text-2xl uppercase text-[#3a2a17] sm:text-3xl md:text-4xl font-bold">
-                      ABOUT
-                    </h2>
-                    <div className="my-3 h-1 w-16 bg-[#3a2a17]/40" />
-                    <p className="font-terminal text-sm leading-relaxed text-[#3a2a17d9] sm:text-base">
-                      MINEARENA 1.0 is BIET Davangere's flagship 24-hour national
-                      hackathon, uniting top student developers, creators, and
-                      innovators from across India to solve high-impact challenges.
-                    </p>
-                    <p className="mt-3 font-terminal text-sm leading-relaxed text-[#3a2a17d9] sm:text-base">
-                      Hosted at the historic SSM Cultural Hall, participants
-                      receive dedicated mentorship, high-speed connectivity, meals,
-                      and a platform to build solutions from scratch. Just like
-                      Minecraft, there are no boundaries — only the blocks you
-                      place.
-                    </p>
-                  </div>
+  <div className="relative z-30 mx-auto w-full min-w-0 max-w-5xl text-left">
+    <div className="mx-auto grid w-[78%] gap-4 sm:w-full md:grid-cols-2 md:items-stretch md:gap-6">
+      {/* Left Page: About overview */}
+      <Reveal className="relative z-30 h-full">
+        <div className="relative z-30 h-full">
+          <div
+            className="absolute inset-0 z-20"
+            style={{
+              backgroundImage: "url('/book_bg.png')",
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
+              imageRendering: "pixelated",
+              transform: "scaleX(-1)",
+            }}
+          />
+          <div className="relative z-30 flex h-full flex-col justify-between px-8 py-7 sm:px-10 sm:py-12 md:px-14 md:py-16">
+            <div>
+              <h2 className="pixel-heading text-xl font-bold uppercase text-[#3a2a17] sm:text-3xl md:text-4xl">
+                ABOUT
+              </h2>
+              <div className="my-2 h-[3px] w-12 bg-[#3a2a17]/40 sm:my-3 sm:h-1 sm:w-16" />
+              <p className="font-terminal text-xs leading-[1.2] text-[#3a2a17d9] sm:text-base sm:leading-relaxed">
+                MINEARENA 1.0 is BIET Davangere's flagship 24-hour national
+                hackathon, uniting top student developers, creators, and
+                innovators from across India to solve high-impact challenges.
+              </p>
+              <p className="mt-2 font-terminal text-xs leading-[1.2] text-[#3a2a17d9] sm:mt-3 sm:text-base sm:leading-relaxed">
+                Hosted at the historic SSM Cultural Hall, participants
+                receive dedicated mentorship, high-speed connectivity, meals,
+                and a platform to build solutions from scratch. Just like
+                Minecraft, there are no boundaries — only the blocks you
+                place.
+              </p>
+            </div>
 
-                  <div className="mt-6 rounded-none border-2 border-[#3a2a17] bg-[#e9e0ca]/90 p-2 shadow-[inset_0_0_0_2px_rgba(255,255,255,0.2)]">
-                    <div className="grid grid-cols-3 text-center">
-                      <div className="border-r-2 border-[#3a2a17]/40 px-1 py-2">
-                        <Clock className="mx-auto h-6 w-6 text-[#3a2a17] sm:h-7 sm:w-7" />
-                        <span className="pixel-heading mt-1 block text-[20px] leading-none text-[#3a2a17] sm:text-[28px]">24</span>
-                        <span className="pixel-heading block text-[10px] text-[#3a2a17] sm:text-xs">HRS</span>
-                        <span className="font-terminal text-[10px] text-[#3a2a17]/80 sm:text-xs">Hacking</span>
-                      </div>
-                      <div className="border-r-2 border-[#3a2a17]/40 px-1 py-2">
-                        <Users className="mx-auto h-6 w-6 text-[#3a2a17] sm:h-7 sm:w-7" />
-                        <span className="pixel-heading mt-1 block text-[20px] leading-none text-[#3a2a17] sm:text-[28px]">50</span>
-                        <span className="pixel-heading block text-[10px] text-[#3a2a17] sm:text-xs">TOP</span>
-                        <span className="font-terminal text-[10px] text-[#3a2a17]/80 sm:text-xs">Teams</span>
-                      </div>
-                      <div className="px-1 py-2">
-                        <Trophy className="mx-auto h-6 w-6 text-[#3a2a17] sm:h-7 sm:w-7" />
-                        <span className="pixel-heading mt-1 block text-[18px] leading-none text-[#3a2a17] sm:text-[26px]">₹75K</span>
-                        <span className="pixel-heading block text-[10px] text-[#3a2a17] sm:text-xs">POOL</span>
-                        <span className="font-terminal text-[10px] text-[#3a2a17]/80 sm:text-xs">Prize</span>
-                      </div>
-                    </div>
-                  </div>
+            <div className="mt-4 rounded-none border-2 border-[#3a2a17] bg-[#e9e0ca]/90 p-1.5 shadow-[inset_0_0_0_2px_rgba(255,255,255,0.2)] sm:mt-6 sm:p-2">
+              <div className="grid grid-cols-3 text-center">
+                <div className="border-r-2 border-[#3a2a17]/40 px-1 py-1.5 sm:py-2">
+                  <Clock className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
+                  <span className="pixel-heading mt-1 block text-[12px] leading-none text-[#3a2a17] sm:text-[28px]">24</span>
+                  <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">HRS</span>
+                  <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">Hacking</span>
+                </div>
+                <div className="border-r-2 border-[#3a2a17]/40 px-1 py-1.5 sm:py-2">
+                  <Users className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
+                  <span className="pixel-heading mt-1 block text-[12px] leading-none text-[#3a2a17] sm:text-[28px]">50</span>
+                  <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">TOP</span>
+                  <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">Teams</span>
+                </div>
+                <div className="px-1 py-1.5 sm:py-2">
+                  <Trophy className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
+                  <span className="pixel-heading mt-1 block text-[10px] leading-none text-[#3a2a17] sm:text-[26px]">₹75K</span>
+                  <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">POOL</span>
+                  <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">Prize</span>
                 </div>
               </div>
-            </Reveal>
-
-            {/* Right Page: Notice Board Quests */}
-            <Reveal delay={0.2} className="h-full z-30 relative">
-              <div className="relative h-full z-30">
-                <div
-                  className="absolute inset-0 z-20"
-                  style={{
-                    backgroundImage: "url('/book_bg.png')",
-                    backgroundSize: "100% 100%",
-                    backgroundRepeat: "no-repeat",
-                    imageRendering: "pixelated",
-                  }}
-                />
-                <div className="relative z-30 flex h-full flex-col justify-between px-6 py-8 sm:px-10 sm:py-10 md:px-12 md:py-14">
-                  <div>
-                    <div className="flex items-center justify-between border-b-2 border-dashed border-[#3a2a17]/50 pb-3">
-                      <span className="pixel-heading flex items-center gap-2 text-[14px] uppercase tracking-[0.08em] text-[#3a2a17] sm:text-xl">
-                        <span className="text-lg sm:text-2xl">📜</span>
-                        NOTICE BOARD
-                      </span>
-                      <span className="font-terminal text-[10px] text-[#3a2a17]/80 sm:text-sm">
-                        Open Bounties
-                      </span>
-                    </div>
-
-                    <div className="mt-4 space-y-4">
-                      {/* Quest 1 */}
-                      <div className="border-b border-dashed border-[#3a2a17]/35 pb-3">
-                        <div className="flex items-center justify-between gap-3">
-                          <span className="pixel-heading text-[11px] text-[#3a2a17] sm:text-sm">
-                            📦 Quest: Sponsor
-                          </span>
-                          <span className="font-terminal text-[10px] text-[#3a2a17]/80 sm:text-xs">
-                            Reward: Campus brand reach
-                          </span>
-                        </div>
-                        <a
-                          href="mailto:codecommit@bietdvg.edu?subject=Sponsor%20Inquiry%20MineArena"
-                          className="mc-shine mt-2 block border-2 border-[#7a4f05] bg-[#fbbf24] px-3 py-2 text-center font-pixel text-[10px] uppercase text-[#1a1206] shadow-[inset_2px_2px_0_rgba(255,255,255,0.3),inset_-2px_-2px_0_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 sm:text-[12px]"
-                        >
-                          Accept Quest →
-                        </a>
-                      </div>
-
-                      {/* Quest 2 */}
-                      <div className="border-b border-dashed border-[#3a2a17]/35 pb-3">
-                        <div className="flex items-center justify-between gap-3">
-                          <span className="pixel-heading text-[11px] text-[#3a2a17] sm:text-sm">
-                            ⚖ Quest: Judge / Mentor
-                          </span>
-                          <span className="font-terminal text-[10px] text-[#3a2a17]/80 sm:text-xs">
-                            Reward: Front-row seat to talent
-                          </span>
-                        </div>
-                        <a
-                          href="mailto:codecommit@bietdvg.edu?subject=Judge%20Inquiry%20MineArena"
-                          className="mc-shine mt-2 block border-2 border-[#0b5f6e] bg-[#22d3ee] px-3 py-2 text-center font-pixel text-[10px] uppercase text-[#1a1206] shadow-[inset_2px_2px_0_rgba(255,255,255,0.3),inset_-2px_-2px_0_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 sm:text-[12px]"
-                        >
-                          Accept Quest →
-                        </a>
-                      </div>
-
-                      {/* Quest 3 */}
-                      <div>
-                        <div className="flex items-center justify-between gap-3">
-                          <span className="pixel-heading text-[11px] text-[#3a2a17] sm:text-sm">
-                            🤝 Quest: Community Partner
-                          </span>
-                          <span className="font-terminal text-[10px] text-[#3a2a17]/80 sm:text-xs">
-                            Reward: Co-branded student network
-                          </span>
-                        </div>
-                        <a
-                          href="mailto:codecommit@bietdvg.edu?subject=Partner%20Inquiry%20MineArena"
-                          className="mc-shine mt-2 block border-2 border-[#5b2d80] bg-[#c084fc] px-3 py-2 text-center font-pixel text-[10px] uppercase text-[#1a1206] shadow-[inset_2px_2px_0_rgba(255,255,255,0.3),inset_-2px_-2px_0_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 sm:text-[12px]"
-                        >
-                          Accept Quest →
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
+            </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
+      {/* Right Page: Notice Board Quests */}
+      <Reveal delay={0.2} className="relative z-30 h-full">
+        <div className="relative z-30 h-full">
+          <div
+            className="absolute inset-0 z-20"
+            style={{
+              backgroundImage: "url('/book_bg.png')",
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
+              imageRendering: "pixelated",
+            }}
+          />
+          <div className="relative z-30 flex h-full flex-col justify-between px-8 py-7 sm:px-10 sm:py-10 md:px-12 md:py-14">
+            <div>
+              <div className="flex items-center justify-between gap-2 border-b-2 border-dashed border-[#3a2a17]/50 pb-2 sm:pb-3">
+                <span className="pixel-heading flex items-center gap-1.5 text-[9px] uppercase tracking-[0.04em] text-[#3a2a17] sm:gap-2 sm:text-xl sm:tracking-[0.08em]">
+                  <span className="text-sm sm:text-2xl">📜</span>
+                  NOTICE BOARD
+                </span>
+                <span className="shrink-0 font-terminal text-[9px] text-[#3a2a17]/80 sm:text-sm">
+                  Open Bounties
+                </span>
+              </div>
+
+              <div className="mt-2.5 space-y-2.5 sm:mt-4 sm:space-y-4">
+                {/* Quest 1 */}
+                <div className="border-b border-dashed border-[#3a2a17]/35 pb-2.5 sm:pb-3">
+                  <div className="flex flex-col items-start gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                    <span className="pixel-heading text-[9px] leading-[1.4] text-[#3a2a17] sm:text-sm">
+                      📦 Quest: Sponsor
+                    </span>
+                    <span className="font-terminal text-[10px] leading-tight text-[#3a2a17]/80 sm:text-xs">
+                      Reward: Campus brand reach
+                    </span>
+                  </div>
+                  <a
+                    href="mailto:codecommit@bietdvg.edu?subject=Sponsor%20Inquiry%20MineArena"
+                    className="mc-shine mt-2 block border-2 border-[#7a4f05] bg-[#fbbf24] px-3 py-1.5 text-center font-pixel text-[8px] sm:py-2 uppercase text-[#1a1206] shadow-[inset_2px_2px_0_rgba(255,255,255,0.3),inset_-2px_-2px_0_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 sm:text-[12px]"
+                  >
+                    Accept Quest →
+                  </a>
+                </div>
+
+                {/* Quest 2 */}
+                <div className="border-b border-dashed border-[#3a2a17]/35 pb-2.5 sm:pb-3">
+                  <div className="flex flex-col items-start gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                    <span className="pixel-heading text-[9px] leading-[1.4] text-[#3a2a17] sm:text-sm">
+                      ⚖ Quest: Judge / Mentor
+                    </span>
+                    <span className="font-terminal text-[10px] leading-tight text-[#3a2a17]/80 sm:text-xs">
+                      Reward: Front-row seat to talent
+                    </span>
+                  </div>
+                  <a
+                    href="mailto:codecommit@bietdvg.edu?subject=Judge%20Inquiry%20MineArena"
+                    className="mc-shine mt-2 block border-2 border-[#0b5f6e] bg-[#22d3ee] px-3 py-1.5 text-center font-pixel text-[8px] sm:py-2 uppercase text-[#1a1206] shadow-[inset_2px_2px_0_rgba(255,255,255,0.3),inset_-2px_-2px_0_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 sm:text-[12px]"
+                  >
+                    Accept Quest →
+                  </a>
+                </div>
+
+                {/* Quest 3 */}
+                <div>
+                  <div className="flex flex-col items-start gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                    <span className="pixel-heading text-[9px] leading-[1.4] text-[#3a2a17] sm:text-sm">
+                      🤝 Quest: Community Partner
+                    </span>
+                    <span className="font-terminal text-[10px] leading-tight text-[#3a2a17]/80 sm:text-xs">
+                      Reward: Co-branded student network
+                    </span>
+                  </div>
+                  <a
+                    href="mailto:codecommit@bietdvg.edu?subject=Partner%20Inquiry%20MineArena"
+                    className="mc-shine mt-2 block border-2 border-[#5b2d80] bg-[#c084fc] px-3 py-1.5 text-center font-pixel text-[8px] sm:py-2 uppercase text-[#1a1206] shadow-[inset_2px_2px_0_rgba(255,255,255,0.3),inset_-2px_-2px_0_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 sm:text-[12px]"
+                  >
+                    Accept Quest →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Reveal>
+    </div>
+  </div>
+</section>
       <SectionSeam />
 
       {/* ===================== TRACKS SECTION ===================== */}
+      {/*
+  FINAL Tracks section: drop-in replacement for your <section id="tracks"> block.
+  No extra component, no extra imports. Just two things:
+    1. Add this line above your component:   const REVEALING_SOON = true;   (set false to show the real text)
+    2. Paste tracks-swing.css into styles.css (adds .mc-swing + the swing keyframes)
+*/}
       <section
         id="tracks"
-        className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-24 sm:px-6"
+        className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 sm:px-6 md:py-24"
       >
         {/* Background & Flanks */}
         <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden bg-[#8a8a8a]">
@@ -498,22 +517,25 @@ function Index() {
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-[#0c0c0e]/30" />
+
+          {/* Flanks: on phones pinned top-to-bottom with a fixed width (always stretched, cropped to an
+              edge strip). From sm up your original sizing is restored. */}
           <img
             src={tracksLeft}
             alt=""
-            className="pointer-events-none absolute bottom-0 left-0 h-[min(100%,calc(40vw/0.46))] w-auto max-w-none select-none object-cover object-left sm:h-[min(100%,calc(38vw/0.46))] lg:h-full lg:max-w-[46vw]"
+            className="pointer-events-none absolute inset-y-0 left-0 h-full w-[34vw] select-none object-cover object-left sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.46))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
           />
           <img
             src={tracksRight}
             alt=""
-            className="pointer-events-none absolute bottom-0 right-0 h-[min(100%,calc(40vw/0.5))] w-auto max-w-none select-none object-cover object-right sm:h-[min(100%,calc(38vw/0.5))] lg:h-full lg:max-w-[46vw]"
+            className="pointer-events-none absolute inset-y-0 right-0 h-full w-[34vw] select-none object-cover object-right sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
           />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-4xl text-left">
+        <div className="relative z-10 mx-auto w-full min-w-0 max-w-4xl text-center sm:text-left">
           <Reveal>
             <h2
-              className="pixel-heading mb-10 text-2xl uppercase text-[#f5f5f0] sm:text-4xl md:text-5xl"
+              className="pixel-heading mb-8 text-2xl uppercase text-[#f5f5f0] sm:mb-10 sm:text-4xl md:text-5xl"
               style={{ textShadow: "3px 3px 0 rgba(0,0,0,0.6)" }}
             >
               TRACKS
@@ -521,14 +543,15 @@ function Index() {
           </Reveal>
 
           {/* Hanging Minecraft Oak Signs */}
-          <div className="grid w-full grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2">
+          <div className="grid w-full grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-10">
             {TRACKS.map((t, idx) => (
               <Reveal key={t.title} delay={idx * 0.1}>
-                <div className="relative pt-3">
-                  {/* Oak Log Header Beam */}
+                {/* Phones: narrow sign under its beam (like the poster). sm and up: full column width. */}
+                <div className="relative mx-auto w-[70%] pt-2.5 sm:w-full sm:pt-3">
+                  {/* Oak Log Header Beam (stays still) */}
                   <div
                     aria-hidden="true"
-                    className="pointer-events-none absolute -left-3 -right-3 top-0 h-3"
+                    className="pointer-events-none absolute -left-2.5 -right-2.5 top-0 h-2.5 sm:-left-3 sm:-right-3 sm:h-3"
                     style={{
                       backgroundImage: "url('/oak_log.png')",
                       backgroundSize: "16px 16px",
@@ -538,70 +561,68 @@ function Index() {
                     }}
                   />
 
-                  {/* Dual Iron Chains */}
-                  <div className="mx-auto flex w-1/2 justify-between">
-                    <div
-                      aria-hidden="true"
-                      className="h-5 w-1.5"
-                      style={{
-                        backgroundColor: "#6e6e6e",
-                        borderLeft: "2px solid #8f8f8f",
-                        borderRight: "2px solid #2e2e2e",
-                        boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.45)",
-                      }}
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="h-5 w-1.5"
-                      style={{
-                        backgroundColor: "#6e6e6e",
-                        borderLeft: "2px solid #8f8f8f",
-                        borderRight: "2px solid #2e2e2e",
-                        boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.45)",
-                      }}
-                    />
-                  </div>
-
-                  {/* Signboard */}
-                  <div
-                    className="flex w-full flex-1 flex-col gap-2 p-4"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(rgba(233,207,157,0.65), rgba(233,207,157,0.65)), url('/oak_sign.png')",
-                      backgroundSize: "auto, 48px 48px",
-                      imageRendering: "pixelated",
-                      border: "3px solid #4b3418",
-                      boxShadow:
-                        "inset 0 3px 0 rgba(255,255,255,0.18), inset 0 -3px 0 rgba(0,0,0,0.28), 0 10px 24px rgba(0,0,0,0.45)",
-                    }}
-                  >
-                    <div className="flex items-center gap-3">
-                      <img
-                        src={t.oreIcon}
-                        alt=""
-                        className="h-7 w-7 shrink-0"
-                        style={{ imageRendering: "pixelated" }}
-                      />
-                      <h3
-                        className="pixel-heading text-sm uppercase sm:text-base"
-                        style={{
-                          color: "#241608",
-                          textShadow: "1px 1px 0 rgba(255,255,255,0.3)",
-                        }}
-                      >
-                        {t.title}
-                      </h3>
+                  {/* Swinging part: chains + signboard pivot from the beam (hover / focus / tap) */}
+                  <div className="mc-swing outline-none" tabIndex={0}>
+                    {/* Dual Iron Chains */}
+                    <div className="mx-auto flex w-[64%] justify-between sm:w-1/2">
+                      {[0, 1].map((n) => (
+                        <div
+                          key={n}
+                          aria-hidden="true"
+                          className="h-3 w-1 sm:h-5 sm:w-1.5"
+                          style={{
+                            backgroundColor: "#6e6e6e",
+                            borderLeft: "2px solid #8f8f8f",
+                            borderRight: "2px solid #2e2e2e",
+                            boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.45)",
+                          }}
+                        />
+                      ))}
                     </div>
 
+                    {/* Signboard */}
                     <div
-                      aria-hidden="true"
-                      className="h-[2px] w-full"
-                      style={{ backgroundColor: t.barColor, opacity: 0.8 }}
-                    />
+                      className="flex w-full flex-col gap-1.5 p-2.5 text-left sm:gap-2 sm:p-4"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(rgba(233,207,157,0.65), rgba(233,207,157,0.65)), url('/oak_sign.png')",
+                        backgroundSize: "auto, 48px 48px",
+                        imageRendering: "pixelated",
+                        border: "3px solid #4b3418",
+                        boxShadow:
+                          "inset 0 3px 0 rgba(255,255,255,0.18), inset 0 -3px 0 rgba(0,0,0,0.28), 0 10px 24px rgba(0,0,0,0.45)",
+                      }}
+                    >
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <img
+                          src={t.oreIcon}
+                          alt=""
+                          className="h-4 w-4 shrink-0 sm:h-7 sm:w-7"
+                          style={{ imageRendering: "pixelated" }}
+                        />
+                        <h3
+                          className="pixel-heading text-[8px] uppercase leading-[1.5] sm:text-base sm:leading-normal"
+                          style={{
+                            color: "#241608",
+                            textShadow: "1px 1px 0 rgba(255,255,255,0.3)",
+                          }}
+                        >
+                          {REVEALING_SOON ? "Revealing soon" : t.title}
+                        </h3>
+                      </div>
 
-                    <p className="font-terminal text-2xl leading-relaxed text-[#241608]">
-                      {t.desc}
-                    </p>
+                      <div
+                        aria-hidden="true"
+                        className="h-[2px] w-full"
+                        style={{ backgroundColor: t.barColor, opacity: 0.8 }}
+                      />
+
+                      {!REVEALING_SOON && (
+                        <p className="font-terminal text-base leading-snug text-[#241608] sm:text-2xl sm:leading-relaxed">
+                          {t.desc}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -609,191 +630,212 @@ function Index() {
           </div>
         </div>
       </section>
-
       <SectionSeam />
+      {/*
+  Responsive TIMELINE section — drop-in replacement for the <section id="timeline"> block.
 
-      {/* ===================== TIMELINE SECTION ===================== */}
-      <section
-        id="timeline"
-        className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-24 sm:px-6"
+  v2 changes:
+  - Flank images (left/right) now stretch to the FULL section height on mobile (cropped to a slim
+    strip at each screen edge, like the poster). Desktop (lg) and tablet (sm) values are unchanged.
+  - Cards, rail, minecart, chains are smaller on mobile; more side padding so the flanks show.
+  - Container is hard-bounded (min-w-0 + explicit minmax(0,1fr) columns) so the left cards
+    can't push past the left screen edge.
+  - Minecart no longer uses pixelated scaling on mobile (it's a 384px image shrunk to ~40px).
+*/}
+<section
+  id="timeline"
+  className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-6 py-20 md:py-24"
+>
+  {/* Background & Flanks */}
+  <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden bg-[#3a3a3e]">
+    <img
+      src={timelineBg}
+      alt=""
+      className="absolute inset-0 h-full w-full object-cover object-center"
+    />
+    <div className="absolute inset-0 bg-[#0c0c0e]/55 md:bg-[#0c0c0e]/45" />
+
+    {/* LEFT flank: full height on mobile, original sizing from sm and up */}
+    <img
+      src={timelineLeft}
+      alt=""
+      className="pointer-events-none absolute bottom-0 left-0 h-full w-auto max-w-[26vw] select-none object-cover object-left sm:h-[min(100%,calc(38vw/0.64))] sm:max-w-none lg:h-full lg:max-w-[46vw]"
+    />
+    {/* RIGHT flank */}
+    <img
+      src={timelineRight}
+      alt=""
+      className="pointer-events-none absolute bottom-0 right-0 h-full w-auto max-w-[26vw] select-none object-cover object-right sm:h-[min(100%,calc(38vw/0.82))] sm:max-w-none lg:h-full lg:max-w-[46vw]"
+    />
+  </div>
+
+  <div className="relative z-10 mx-auto w-full min-w-0 max-w-4xl text-center">
+    <Reveal>
+      <h2
+        className="pixel-heading mb-10 text-2xl uppercase text-[#f5f5f0] sm:text-4xl md:mb-14 md:text-5xl"
+        style={{ textShadow: "3px 3px 0 rgba(0,0,0,0.6)" }}
       >
-        {/* Background & Flanks */}
-        <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden bg-[#3a3a3e]">
-          <img
-            src={timelineBg}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-[#0c0c0e]/45" />
-          <img
-            src={timelineLeft}
-            alt=""
-            className="pointer-events-none absolute bottom-0 left-0 h-[min(100%,calc(40vw/0.64))] w-auto max-w-none select-none object-cover object-left sm:h-[min(100%,calc(38vw/0.64))] lg:h-full lg:max-w-[46vw]"
-          />
-          <img
-            src={timelineRight}
-            alt=""
-            className="pointer-events-none absolute bottom-0 right-0 h-[min(100%,calc(40vw/0.82))] w-auto max-w-none select-none object-cover object-right sm:h-[min(100%,calc(38vw/0.82))] lg:h-full lg:max-w-[46vw]"
-          />
-        </div>
+        TIMELINE
+      </h2>
+    </Reveal>
 
-        <div className="relative z-10 mx-auto w-full max-w-4xl text-center">
-          <Reveal>
-            <h2
-              className="pixel-heading mb-14 text-2xl uppercase text-[#f5f5f0] sm:text-4xl md:text-5xl"
-              style={{ textShadow: "3px 3px 0 rgba(0,0,0,0.6)" }}
-            >
-              TIMELINE
-            </h2>
-          </Reveal>
+    {/* Rail Track. CSS variables: mobile value first, desktop (md:) restores the original design. */}
+    <div
+      className={[
+        "relative flex min-w-0 flex-col gap-10 py-6 md:gap-14",
+        "[--chain-w:6px] md:[--chain-w:12px]",
+        "[--rail-h:24px] md:[--rail-h:47px]",
+        "[--rail-mt:-14px] md:[--rail-mt:-28px]",
+        "[--cart-w:40px] md:[--cart-w:76px]",
+        "[--cart-h:23px] md:[--cart-h:45px]",
+        "[--cart-gap:16px] md:[--cart-gap:32px]",
+        "[--conn-h:3px] md:[--conn-h:4px]",
+        "[--hang-h:6px] md:[--hang-h:12px]",
+        "[--hang-top:-8px] md:[--hang-top:-15px]",
+        "[--hang-x:-7px] md:[--hang-x:-13px]",
+      ].join(" ")}
+    >
+      {/* Center vertical chain — centered on ALL screen sizes */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 top-0 left-1/2 -translate-x-1/2"
+        style={{
+          width: "var(--chain-w)",
+          backgroundImage: "url('/chain_strip.png')",
+          backgroundSize: "var(--chain-w) calc(var(--chain-w) * 2.667)",
+          backgroundRepeat: "repeat-y",
+          imageRendering: "pixelated",
+          filter:
+            "drop-shadow(0 0 2px rgba(233,240,255,0.85)) drop-shadow(0 0 6px rgba(198,213,255,0.4))",
+        }}
+      />
 
-          {/* Rail Track with Milestone Cards */}
-          <div className="relative flex flex-col gap-14 py-6">
-            {/* Center vertical chain */}
+      {TIMELINE.map((item, i) => {
+        const isEven = i % 2 === 0;
+        return (
+          <div
+            key={item.date}
+            className="relative grid min-w-0 grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-2 md:gap-x-10"
+          >
+            {/* Horizontal rail backdrop across the row */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute bottom-0 top-0 left-6 md:left-1/2 md:-translate-x-1/2"
+              className="pointer-events-none absolute inset-x-0 top-1/2"
               style={{
-                width: 12,
-                backgroundImage: "url('/chain_strip.png')",
-                backgroundSize: "12px 32px",
-                backgroundRepeat: "repeat-y",
+                height: "var(--rail-h)",
+                marginTop: "var(--rail-mt)",
+                backgroundImage: "url('/rail_strip.png')",
+                backgroundSize: "calc(var(--rail-h) * 0.68) var(--rail-h)",
+                backgroundRepeat: "repeat-x",
                 imageRendering: "pixelated",
-                filter:
-                  "drop-shadow(0 0 2px rgba(233,240,255,0.85)) drop-shadow(0 0 6px rgba(198,213,255,0.4))",
+                maskImage:
+                  "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
               }}
             />
 
-            {TIMELINE.map((item, i) => {
-              const isEven = i % 2 === 0;
-              return (
+            {/* Milestone Card: column 1 on even rows, column 2 on odd rows */}
+            <Reveal
+              delay={i * 0.1}
+              className={`relative flex min-w-0 flex-col gap-1.5 ${
+                isEven ? "col-start-1" : "col-start-2"
+              }`}
+            >
+              <div
+                className="relative flex min-w-0 flex-col gap-1 border-2 border-[#212752] px-2 py-2.5 text-left md:gap-1.5 md:border-[3px] md:px-6 md:py-5"
+                style={{
+                  backgroundColor: "#39418a",
+                  backgroundImage:
+                    "repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 2px, rgba(0,0,0,0.05) 2px 4px), repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0 2px, rgba(255,255,255,0.04) 2px 4px)",
+                  boxShadow:
+                    "inset 0 3px 0 rgba(255,255,255,0.12), inset 0 -6px 10px rgba(0,0,0,0.28), 0 12px 24px rgba(0,0,0,0.45)",
+                }}
+              >
+                {/* Top chain hanging strip */}
                 <div
-                  key={item.date}
-                  className="relative grid grid-cols-1 md:grid-cols-2 md:gap-10"
+                  aria-hidden="true"
+                  className="pointer-events-none absolute"
+                  style={{
+                    top: "var(--hang-top)",
+                    left: "var(--hang-x)",
+                    right: "var(--hang-x)",
+                    height: "var(--hang-h)",
+                    backgroundImage: "url('/chain_strip_rotated.png')",
+                    backgroundSize: "calc(var(--hang-h) * 2.667) var(--hang-h)",
+                    backgroundRepeat: "repeat-x",
+                    imageRendering: "pixelated",
+                    filter:
+                      "drop-shadow(0 0 2px rgba(233,240,255,0.85)) drop-shadow(0 0 6px rgba(198,213,255,0.4))",
+                  }}
+                />
+
+                {/* Inner border highlight */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-[2px] border-2 border-[#ced6ff3d] md:inset-[5px] md:border-[3px]"
+                />
+
+                <span
+                  className="pixel-heading text-[7px] uppercase leading-[1.6] tracking-normal text-white/70 sm:text-[9px] md:text-sm md:tracking-[0.2em]"
+                  style={{ textShadow: "1px 1px 0 #000" }}
                 >
-                  {/* Horizontal Rail Track backdrop across the row */}
+                  {item.date}
+                </span>
+                <h3
+                  className="pixel-heading break-words text-[8px] uppercase leading-[1.6] text-white sm:text-[10px] md:text-base md:leading-normal"
+                  style={{ textShadow: "1px 1px 0 #000" }}
+                >
+                  {item.title}
+                </h3>
+
+                {/* Description: desktop only */}
+                <p className="font-terminal hidden text-2xl text-white/85 md:block">
+                  {item.desc}
+                </p>
+
+                {/* Minecart connected alongside rail */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute"
+                  style={{
+                    ...(isEven
+                      ? { left: "100%", marginLeft: "var(--cart-gap)" }
+                      : { right: "100%", marginRight: "var(--cart-gap)" }),
+                    bottom: "calc(50% + 1px)",
+                    width: "var(--cart-w)",
+                    height: "var(--cart-h)",
+                  }}
+                >
                   <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 top-1/2 hidden md:block"
+                    className="absolute"
                     style={{
-                      height: 47,
-                      marginTop: -28,
-                      backgroundImage: "url('/rail_strip.png')",
-                      backgroundSize: "32px 47px",
-                      backgroundRepeat: "repeat-x",
-                      imageRendering: "pixelated",
-                      maskImage:
-                        "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
-                      WebkitMaskImage:
-                        "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+                      ...(isEven ? { right: "100%" } : { left: "100%" }),
+                      bottom: "calc(var(--cart-h) * 0.24)",
+                      width: "var(--cart-gap)",
+                      height: "var(--conn-h)",
+                      backgroundColor: "#6e6e6e",
+                      borderTop: "1px solid #8f8f8f",
+                      borderBottom: "1px solid #2e2e2e",
                     }}
                   />
-
-                  {/* Milestone Card */}
-                  <Reveal
-                    delay={i * 0.1}
-                    className={`relative ml-14 flex flex-col gap-1.5 md:ml-0 ${
-                      isEven ? "" : "md:col-start-2"
-                    }`}
-                  >
-                    <div
-                      className="relative flex flex-col gap-1.5 px-6 py-5 text-left"
-                      style={{
-                        backgroundColor: "#39418a",
-                        backgroundImage:
-                          "repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 2px, rgba(0,0,0,0.05) 2px 4px), repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0 2px, rgba(255,255,255,0.04) 2px 4px)",
-                        border: "3px solid #212752",
-                        boxShadow:
-                          "inset 0 3px 0 rgba(255,255,255,0.12), inset 0 -6px 10px rgba(0,0,0,0.28), 0 12px 24px rgba(0,0,0,0.45)",
-                      }}
-                    >
-                      {/* Top chain hanging strip */}
-                      <div
-                        aria-hidden="true"
-                        className="pointer-events-none absolute"
-                        style={{
-                          top: -15,
-                          left: -13,
-                          right: -13,
-                          height: 12,
-                          backgroundImage: "url('/chain_strip_rotated.png')",
-                          backgroundSize: "32px 12px",
-                          backgroundRepeat: "repeat-x",
-                          imageRendering: "pixelated",
-                          filter:
-                            "drop-shadow(0 0 2px rgba(233,240,255,0.85)) drop-shadow(0 0 6px rgba(198,213,255,0.4))",
-                        }}
-                      />
-
-                      {/* Inner border highlight */}
-                      <div
-                        aria-hidden="true"
-                        className="pointer-events-none absolute"
-                        style={{
-                          inset: 5,
-                          border: "3px solid rgba(206, 214, 255, 0.24)",
-                        }}
-                      />
-
-                      <span
-                        className="pixel-heading text-xs uppercase tracking-[0.2em] text-white/70 md:text-sm"
-                        style={{ textShadow: "1px 1px 0 #000" }}
-                      >
-                        {item.date}
-                      </span>
-                      <h3
-                        className="pixel-heading text-sm uppercase text-white md:text-base"
-                        style={{ textShadow: "1px 1px 0 #000" }}
-                      >
-                        {item.title}
-                      </h3>
-                      <p className="font-terminal text-2xl text-white/85">
-                        {item.desc}
-                      </p>
-
-                      {/* Minecart connected alongside rail */}
-                      <div
-                        aria-hidden="true"
-                        className="pointer-events-none absolute hidden md:block"
-                        style={{
-                          ...(isEven
-                            ? { left: "100%", marginLeft: 32 }
-                            : { right: "100%", marginRight: 32 }),
-                          bottom: "calc(50% + 2px)",
-                          width: 76,
-                          height: 45,
-                        }}
-                      >
-                        <div
-                          className="absolute"
-                          style={{
-                            ...(isEven ? { right: "100%" } : { left: "100%" }),
-                            bottom: 11,
-                            width: 32,
-                            height: 4,
-                            backgroundColor: "#6e6e6e",
-                            borderTop: "1px solid #8f8f8f",
-                            borderBottom: "1px solid #2e2e2e",
-                          }}
-                        />
-                        <img
-                          src="/minecart.png"
-                          alt=""
-                          width={76}
-                          height={45}
-                          className="block drop-shadow-md"
-                          style={isEven ? undefined : { transform: "scaleX(-1)" }}
-                        />
-                      </div>
-                    </div>
-                  </Reveal>
+                  <img
+                    src="/minecart.png"
+                    alt=""
+                    width={76}
+                    height={45}
+                    className="block h-full w-full drop-shadow-md"
+                    style={isEven ? undefined : { transform: "scaleX(-1)" }}
+                  />
                 </div>
-              );
-            })}
+              </div>
+            </Reveal>
           </div>
-        </div>
-      </section>
-
+        );
+      })}
+    </div>
+  </div>
+</section>
       <SectionSeam />
 
       {/* ===================== RULES SECTION ===================== */}
