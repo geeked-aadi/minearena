@@ -1008,7 +1008,7 @@ function Index() {
               <span className="font-terminal text-xl text-white/70">SSM Cultural Hall, BIET Campus</span>
               <span className="font-terminal text-xl text-white/70">Davangere, Karnataka 577004</span>
               <a
-                href="https://maps.app.goo.gl/"
+                href="https://maps.app.goo.gl/1RL2HmrRsG5S7Ego8"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="font-terminal text-xl -my-1.5 mt-1 inline-block py-1.5 text-white/70 underline underline-offset-4 transition-colors hover:text-white"
