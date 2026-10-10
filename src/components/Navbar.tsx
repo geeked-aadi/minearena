@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Pickaxe } from "lucide-react";
+import { Pickaxe, Menu, X } from "lucide-react";
 import dirt from "../assets/dirt.png.asset.json";
 import grass from "../assets/grass.png.asset.json";
 
 const LINKS = [
   { id: "about", label: "ABOUT" },
-  { id: "flow", label: "TIMELINE" },
-  { id: "details", label: "DETAILS" },
+  { id: "tracks", label: "TRACKS" },
+  { id: "timeline", label: "TIMELINE" },
   { id: "rules", label: "RULES" },
   { id: "prizes", label: "PRIZES" },
   { id: "sponsors", label: "SPONSORS" },
@@ -15,7 +15,7 @@ const LINKS = [
 
 export function Navbar() {
   const [active, setActive] = useState("home");
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,7 +34,7 @@ export function Navbar() {
   }, []);
 
   const scrollTo = (id: string) => {
-    setOpen(false);
+    setMobileOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -47,8 +47,9 @@ export function Navbar() {
         <div
           className="absolute inset-x-0 top-0 h-[10px] -translate-y-[9px] border-2 border-b-0 border-[#1f2e14]"
           style={{
-            backgroundImage: `url(${grass.url})`,
+            backgroundImage: `url(${grass.url || "/grass.png"})`,
             backgroundSize: "16px 16px",
+            backgroundRepeat: "repeat",
             imageRendering: "pixelated",
           }}
         />
@@ -56,8 +57,9 @@ export function Navbar() {
         <div
           className="flex items-center justify-between gap-4 rounded-b-[14px] border-2 border-[#1f2e14] px-4 py-2 shadow-[0_10px_28px_rgb(0_0_0/0.4)] md:px-6"
           style={{
-            backgroundImage: `url(${dirt.url})`,
+            backgroundImage: `url(${dirt.url || "/dirt.png"})`,
             backgroundSize: "32px 32px",
+            backgroundRepeat: "repeat",
             imageRendering: "pixelated",
           }}
         >
@@ -88,30 +90,34 @@ export function Navbar() {
 
           <button
             type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen((o) => !o)}
-            className="flex shrink-0 flex-col items-center justify-center gap-1.5 p-3 md:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="flex h-9 w-9 items-center justify-center border border-border bg-secondary/80 md:hidden text-foreground"
+            aria-label="Toggle navigation menu"
           >
-            <span className={`block h-[2px] w-5 bg-foreground/85 transition-transform ${open ? "translate-y-[8px] rotate-45" : ""}`} />
-            <span className={`block h-[2px] w-5 bg-foreground/85 transition-opacity ${open ? "opacity-0" : ""}`} />
-            <span className={`block h-[2px] w-5 bg-foreground/85 transition-transform ${open ? "-translate-y-[8px] -rotate-45" : ""}`} />
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
-        {open && (
+        {/* Mobile dropdown */}
+        {mobileOpen && (
           <div
-            className="mt-2 flex flex-col border-2 border-[#1f2e14] p-2 md:hidden"
-            style={{ backgroundImage: `url(${dirt.url})`, backgroundSize: "32px 32px", imageRendering: "pixelated" }}
+            className="mt-2 flex flex-col gap-1 border-2 border-[#1f2e14] p-3 shadow-xl md:hidden"
+            style={{
+              backgroundImage: `url(${dirt.url})`,
+              backgroundSize: "32px 32px",
+              imageRendering: "pixelated",
+            }}
           >
             {LINKS.map(({ id, label }) => (
               <button
                 key={id}
                 onClick={() => scrollTo(id)}
                 style={textShadow}
-                className="pixel-heading px-3 py-3 text-left text-[10px] tracking-[0.15em] text-foreground"
+                className={`pixel-heading py-2 text-left text-[10px] tracking-wider transition-colors ${
+                  active === id ? "text-primary" : "text-foreground/90 hover:text-primary"
+                }`}
               >
-                {label}
+                ▸ {label}
               </button>
             ))}
           </div>

@@ -128,13 +128,11 @@
 
   .pixel-heading {
     font-family: var(--font-pixel);
-    text-shadow: 3px 3px 0 #0d0802;
+    text-shadow: none;
   }
 
   .text-glow-green {
-    text-shadow:
-      0 0 8px rgb(219 162 19 / 0.7),
-      3px 3px 0 #0d0802;
+    text-shadow: none;
   }
 
   /* ---- Prize podium animations (innohacks-style) ---- */
