@@ -1,11 +1,24 @@
 import { Reveal } from "./Reveal";
 
+/*
+  Mobile changes only (lg and up is unchanged), to match the prizes poster:
+  - Podium (2nd, 1st, 3rd) comes first in one row, with 1st raised slightly;
+    the four category prizes follow in a single row of four.
+    (Before, the first two category prizes were shown above the podium in 2-per-row.)
+  - Pillars are shorter on phones (cropped via pillarAr) to match the poster's stubby pillars.
+  - Tighter heading / section spacing on phones.
+  Layout notes: grid is 12 columns below lg (main = 4 cols, category = 3 cols);
+  lg switches back to your original 7 columns with the same order.
+*/
+
 type Prize = {
   place: string;
   plaque: string;
   pillar: string;
   width: number;
   podiumWidth: number;
+  /** Phones only: pillar box width / height. Lower = taller visible pillar. The pillar image is cropped from the bottom (the podium covers that part). */
+  pillarAr: number;
   alt: string;
 };
 
@@ -17,6 +30,7 @@ const MAIN_PRIZES: Prize[] = [
     pillar: "/pillar-2.png",
     width: 120,
     podiumWidth: 260,
+    pillarAr: 0.54,
     alt: "2nd Place Plaque — ₹20,000",
   },
   {
@@ -25,6 +39,7 @@ const MAIN_PRIZES: Prize[] = [
     pillar: "/pillar-1.png",
     width: 150,
     podiumWidth: 300,
+    pillarAr: 0.39,
     alt: "1st Place Plaque — ₹30,000",
   },
   {
@@ -33,6 +48,7 @@ const MAIN_PRIZES: Prize[] = [
     pillar: "/pillar-3.png",
     width: 110,
     podiumWidth: 240,
+    pillarAr: 0.54,
     alt: "3rd Place Plaque — ₹10,000",
   },
 ];
@@ -44,6 +60,7 @@ const CATEGORY_PRIZES: Prize[] = [
     pillar: "/pillar-4.png",
     width: 90,
     podiumWidth: 190,
+    pillarAr: 0.49,
     alt: "Best Girls Team Plaque",
   },
   {
@@ -52,6 +69,7 @@ const CATEGORY_PRIZES: Prize[] = [
     pillar: "/pillar-5.png",
     width: 90,
     podiumWidth: 190,
+    pillarAr: 0.49,
     alt: "Best Use of IoT Plaque",
   },
   {
@@ -60,6 +78,7 @@ const CATEGORY_PRIZES: Prize[] = [
     pillar: "/pillar-6.png",
     width: 90,
     podiumWidth: 190,
+    pillarAr: 0.49,
     alt: "Best Use of GenAI Plaque",
   },
   {
@@ -68,6 +87,7 @@ const CATEGORY_PRIZES: Prize[] = [
     pillar: "/pillar-7.png",
     width: 90,
     podiumWidth: 190,
+    pillarAr: 0.49,
     alt: "Best Use of Web3 Plaque",
   },
 ];
@@ -120,12 +140,20 @@ export function PrizeColumn({
       </div>
 
       {/* Pillar Container: 59% width, 2% mt, hidden overflow for rising animation */}
-      <div className="relative z-10 overflow-hidden" style={{ width: "59%", marginTop: "2%" }}>
-        <div className="h-full w-full mc-pillar-rise" style={{ animationDelay: `${0.1 * index + 0.25}s` }}>
+      {/* Phones/tablets (below lg): the box gets a fixed aspect ratio (--pillar-ar) and the image is
+          cropped from the bottom, so pillars are shorter like the poster. lg: original natural height. */}
+      <div
+        className="relative z-10 overflow-hidden [aspect-ratio:var(--pillar-ar,0.5)] lg:[aspect-ratio:auto]"
+        style={{ width: "59%", marginTop: "2%", "--pillar-ar": prize.pillarAr } as React.CSSProperties}
+      >
+        <div
+          className="absolute inset-0 mc-pillar-rise lg:static lg:inset-auto lg:h-full lg:w-full"
+          style={{ animationDelay: `${0.1 * index + 0.25}s` }}
+        >
           <img
             src={prize.pillar}
             alt={`${prize.place} pillar`}
-            className="relative block h-auto w-full"
+            className="relative block h-full w-full object-cover object-top lg:h-auto"
           />
         </div>
       </div>
@@ -147,7 +175,7 @@ export function PrizesSection() {
   return (
     <section
       id="prizes"
-      className="relative isolate flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-24 sm:px-6"
+      className="relative isolate flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-20 sm:px-6 sm:py-24"
     >
       {/* Sculk background ambiance */}
       <div
@@ -161,42 +189,46 @@ export function PrizesSection() {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl text-center">
+      <div className="relative z-10 mx-auto w-full min-w-0 max-w-6xl text-center">
         <Reveal>
-          <p className="mb-2 text-center font-terminal text-xl tracking-wider text-white/80">
+          <p className="mb-2 text-center font-terminal text-lg tracking-wider text-white/80 sm:text-xl">
             ▸ Loot for the last ones standing
           </p>
-          <h2 className="pixel-heading mb-14 text-center text-2xl uppercase text-foreground text-glow-green sm:text-4xl">
+          <h2 className="pixel-heading mb-8 text-center text-2xl uppercase text-foreground text-glow-green sm:mb-14 sm:text-4xl">
             PRIZES
           </h2>
         </Reveal>
 
-        <div className="mt-12 grid w-full grid-cols-6 items-end gap-x-2 gap-y-10 sm:grid-cols-12 sm:gap-x-4 lg:grid-cols-7 lg:gap-x-3">
-          <Reveal key={CATEGORY_PRIZES[0].place} delay={0.0} className="mx-auto flex w-full flex-col items-center justify-end col-span-3 max-w-[8rem] sm:max-w-[9rem] lg:col-span-1 lg:max-w-none lg:order-1">
-            <PrizeColumn prize={CATEGORY_PRIZES[0]} index={0} isSmall={true} />
-          </Reveal>
-          
-          <Reveal key={CATEGORY_PRIZES[1].place} delay={0.1} className="mx-auto flex w-full flex-col items-center justify-end col-span-3 max-w-[8rem] sm:max-w-[9rem] lg:col-span-1 lg:max-w-none lg:order-2">
-            <PrizeColumn prize={CATEGORY_PRIZES[1]} index={1} isSmall={true} />
-          </Reveal>
-          
-          <Reveal key={MAIN_PRIZES[0].place} delay={0.2} className="mx-auto flex w-full flex-col items-center justify-end col-span-2 max-w-[11rem] sm:col-span-4 lg:col-span-1 lg:max-w-none lg:order-3">
+        {/* Below lg: 12 columns, podium first (order-1) then the four category prizes (order-2).
+            lg: your original 7-column single row (lg:order-1..7). */}
+        <div className="mt-6 grid w-full grid-cols-12 items-end gap-x-2 gap-y-8 sm:mt-12 sm:gap-x-4 sm:gap-y-10 lg:grid-cols-7 lg:gap-x-3">
+          {/* Podium: 2nd, 1st (raised a bit), 3rd */}
+          <Reveal key={MAIN_PRIZES[0].place} delay={0.0} className="order-1 mx-auto flex w-full max-w-[11rem] flex-col items-center justify-end col-span-4 lg:order-3 lg:col-span-1 lg:max-w-none">
             <PrizeColumn prize={MAIN_PRIZES[0]} index={2} isSmall={false} />
           </Reveal>
-          
-          <Reveal key={MAIN_PRIZES[1].place} delay={0.3} className="mx-auto flex w-full flex-col items-center justify-end col-span-2 max-w-[11rem] sm:col-span-4 lg:col-span-1 lg:max-w-none lg:order-4">
+
+          <Reveal key={MAIN_PRIZES[1].place} delay={0.1} className="order-1 mx-auto mb-[15%] flex w-full max-w-[11rem] flex-col items-center justify-end col-span-4 lg:order-4 lg:col-span-1 lg:mb-0 lg:max-w-none">
             <PrizeColumn prize={MAIN_PRIZES[1]} index={3} isSmall={false} />
           </Reveal>
-          
-          <Reveal key={MAIN_PRIZES[2].place} delay={0.4} className="mx-auto flex w-full flex-col items-center justify-end col-span-2 max-w-[11rem] sm:col-span-4 lg:col-span-1 lg:max-w-none lg:order-5">
+
+          <Reveal key={MAIN_PRIZES[2].place} delay={0.2} className="order-1 mx-auto flex w-full max-w-[11rem] flex-col items-center justify-end col-span-4 lg:order-5 lg:col-span-1 lg:max-w-none">
             <PrizeColumn prize={MAIN_PRIZES[2]} index={4} isSmall={false} />
           </Reveal>
-          
-          <Reveal key={CATEGORY_PRIZES[2].place} delay={0.5} className="mx-auto flex w-full flex-col items-center justify-end col-span-3 max-w-[8rem] sm:max-w-[9rem] lg:col-span-1 lg:max-w-none lg:order-6">
+
+          {/* Category prizes: 4 in a row on phones */}
+          <Reveal key={CATEGORY_PRIZES[0].place} delay={0.3} className="order-2 mx-auto flex w-full max-w-[8rem] flex-col items-center justify-end col-span-3 sm:max-w-[9rem] lg:order-1 lg:col-span-1 lg:max-w-none">
+            <PrizeColumn prize={CATEGORY_PRIZES[0]} index={0} isSmall={true} />
+          </Reveal>
+
+          <Reveal key={CATEGORY_PRIZES[1].place} delay={0.4} className="order-2 mx-auto flex w-full max-w-[8rem] flex-col items-center justify-end col-span-3 sm:max-w-[9rem] lg:order-2 lg:col-span-1 lg:max-w-none">
+            <PrizeColumn prize={CATEGORY_PRIZES[1]} index={1} isSmall={true} />
+          </Reveal>
+
+          <Reveal key={CATEGORY_PRIZES[2].place} delay={0.5} className="order-2 mx-auto flex w-full max-w-[8rem] flex-col items-center justify-end col-span-3 sm:max-w-[9rem] lg:order-6 lg:col-span-1 lg:max-w-none">
             <PrizeColumn prize={CATEGORY_PRIZES[2]} index={5} isSmall={true} />
           </Reveal>
-          
-          <Reveal key={CATEGORY_PRIZES[3].place} delay={0.6} className="mx-auto flex w-full flex-col items-center justify-end col-span-3 max-w-[8rem] sm:max-w-[9rem] lg:col-span-1 lg:max-w-none lg:order-7">
+
+          <Reveal key={CATEGORY_PRIZES[3].place} delay={0.6} className="order-2 mx-auto flex w-full max-w-[8rem] flex-col items-center justify-end col-span-3 sm:max-w-[9rem] lg:order-7 lg:col-span-1 lg:max-w-none">
             <PrizeColumn prize={CATEGORY_PRIZES[3]} index={6} isSmall={true} />
           </Reveal>
         </div>
