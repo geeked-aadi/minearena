@@ -27,7 +27,7 @@ const CONSOLATION_PLAQUE = consolationPlaque;
 const MAIN_PRIZES: Prize[] = [
   {
     place: "1ST",
-    plaque: "/plaque-1.jpg",
+    plaque: "/plaque-1.png",
     pillar: "/pillar-1.webp",
     width: 150,
     podiumWidth: 300,
@@ -68,7 +68,7 @@ const OTHER_PRIZES: Prize[] = [
   {
     place: "Consolation Prize",
     plaque: CONSOLATION_PLAQUE,
-    pillar: "/pillar-5.webp",
+    pillar: "/pillar-5.png",
     width: 90,
     podiumWidth: 190,
     pillarAr: 0.49,

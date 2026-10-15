@@ -1,8 +1,9 @@
+import { render, screen } from "@testing-library/react";
 import { QueryClient } from "@tanstack/react-query";
 import { createRouter, rootRouteId } from "@tanstack/react-router";
 import { describe, expect, it } from "vitest";
 
-import { getPrizeGlowColor } from "@/components/PrizesSection";
+import { getPrizeGlowColor, PrizesSection } from "@/components/PrizesSection";
 import { routeTree } from "@/routeTree.gen";
 
 // Match routes without running loaders or rendering: loaders may need a server or
@@ -19,5 +20,14 @@ describe("App routing", () => {
   it("uses the gold glow for the 1ST prize", () => {
     expect(getPrizeGlowColor("1ST")).toBe("rgba(252, 220, 95,0.45)");
     expect(getPrizeGlowColor("2ND")).toBe("rgba(255, 110, 230,0.5)");
+  });
+
+  it("uses the actual prize asset files that exist in the public folder", () => {
+    render(<PrizesSection />);
+
+    const imageSrcs = Array.from(screen.getAllByRole("img")).map((img) => img.getAttribute("src"));
+
+    expect(imageSrcs).toContain("/plaque-1.png");
+    expect(imageSrcs).toContain("/pillar-5.png");
   });
 });

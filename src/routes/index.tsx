@@ -980,7 +980,7 @@ function Index() {
                 Davangere, Karnataka 577004
               </span>
               <a
-                href="https://maps.app.goo.gl/Lu44xXnxbPg5pUDB8"
+                href="https://maps.app.goo.gl/jFaJEdzr6Njg5zSb8"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="font-terminal text-xl -my-1.5 mt-1 inline-block py-1.5 text-white/70 underline underline-offset-4 transition-colors hover:text-white"
