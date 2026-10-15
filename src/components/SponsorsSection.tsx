@@ -7,7 +7,7 @@ import prolim from "@/assets/prolim.png";
 import namana from "@/assets/namana.jpeg";
 import logicBrackets from "@/assets/logicbrackets.jpeg";
 import elevenLabs from "@/assets/elevenlabs.jpeg";
-import devfolio from "@/assets/devfolio.svg";
+import devpost from "@/assets/devpost.jpg";
 import { Reveal } from "./Reveal";
 
 type Sponsor = { name: string; url: string; logo: string };
@@ -29,7 +29,7 @@ const SPONSORS: Sponsor[] = [
   { name: "Namana", url: "https://namana.co.in", logo: namana },
   { name: "Logic Brackets", url: "https://logicbrackets.com", logo: logicBrackets },
   { name: "Eleven Labs", url: "https://elevenlabs.io", logo: elevenLabs },
-  { name: "Devfolio", url: "https://devfolio.co", logo: devfolio },
+  { name: "Devpost", url: "https://devpost.com", logo: devpost },
 ];
 
 function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
