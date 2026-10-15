@@ -117,7 +117,7 @@ const TIMELINE = [
 ];
 
 const RULES = [
-  "Teams of 2–4 players. Solo adventurers welcome — we will match you.",
+  "Teams of 2–4 players only.",
   "All code must be written during the 24-hour event window.",
   "Open-source libraries and APIs are allowed; pre-built projects are disqualified.",
   "Hardware hacks are welcome — bring your own components and boards.",
@@ -135,15 +135,11 @@ const FAQ_GROUPS = [
       },
       {
         q: "Can we apply as a team?",
-        a: "Yes! Teams of 2–4 can register together. Solo adventurers are welcome too.",
+        a: "Yes! Teams of 2–4 members can register together. Solo participation is not allowed.",
       },
       {
         q: "Can I have team members from other colleges?",
         a: "Absolutely — cross-college teams are allowed, as long as every member is a current college student.",
-      },
-      {
-        q: "What if I don't have a team?",
-        a: "Register solo and we'll match you with teammates at the team-formation session.",
       },
       {
         q: "What if I don't know how to code?",
@@ -980,9 +976,9 @@ function Index() {
                 Davangere, Karnataka 577004
               </span>
               <a
-                href="https://maps.app.goo.gl/jFaJEdzr6Njg5zSb8"
+                href="https://www.google.com/maps/search/?api=1&query=BIET%20Davangere%2C%20Shamanur%20Road%2C%20Karnataka%20577004"
                 target="_blank"
-                rel="noreferrer noopener"
+                rel="noopener noreferrer"
                 className="font-terminal text-xl -my-1.5 mt-1 inline-block py-1.5 text-white/70 underline underline-offset-4 transition-colors hover:text-white"
               >
                 View on Google Maps
