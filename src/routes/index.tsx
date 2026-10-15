@@ -240,79 +240,50 @@ function Index() {
             />
           </Reveal>
 
-          <Reveal>
-            <div
-              className="pointer-events-auto inline-flex w-full max-w-[20rem] flex-col items-center gap-4 px-5 pb-8 pt-6 sm:w-auto sm:max-w-none sm:px-10 sm:pb-10 sm:pt-8"
-              style={{
-                backgroundImage: `url('/hero_bg.png')`,
-                backgroundSize: "100% 100%",
-                backgroundRepeat: "no-repeat",
-                filter:
-                  "drop-shadow(0 10px 0 rgba(0,0,0,0.45)) drop-shadow(0 14px 28px rgba(0,0,0,0.55))",
-              }}
-            >
-              <div className="flex flex-col items-center gap-2 sm:gap-3">
-                <p
-                  className="pixel-heading text-[9px] uppercase tracking-[0.15em] text-[#f5ead0] sm:text-sm sm:tracking-[0.2em]"
-                  style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.55)" }}
-                >
-                  BIET DAVANGERE PRESENTS
-                </p>
-                <h1
-                  className="pixel-heading text-2xl leading-relaxed text-[#ffffff] sm:text-5xl lg:text-6xl"
-                  style={{
-                    textShadow: "4px 4px 0 #000, 0 0 30px rgba(251,191,36,0.45)",
-                  }}
-                >
-                  MINEARENA
-                </h1>
-                <h2
-                  className="pixel-heading text-[10px] text-primary sm:text-2xl"
-                  style={{ textShadow: "2px 2px 0 #000" }}
-                >
-                  1.0 · NATIONAL HACKATHON
-                </h2>
+          <Reveal delay={0.1}>
+            <div className="pointer-events-auto flex flex-col items-center gap-3 sm:gap-4">
+              <p
+                className="max-w-md text-center font-terminal text-base text-[#f5ead0] sm:text-2xl"
+                style={{ textShadow: "2px 2px 0 #000, 0 2px 8px rgba(0,0,0,0.7)" }}
+              >
+                Join us at SSM Cultural Hall, BIET Davangere
+              </p>
 
-                <p className="max-w-md text-center font-terminal text-base text-[#f5ead0] sm:text-2xl">
-                  Join us at SSM Cultural Hall, BIET Davangere
-                </p>
-
-                {/* Date + prize: calendar and trophy icons on all sizes; divider between them from sm up */}
-                <span
-                  className="inline-flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 px-2 py-1.5 font-pixel text-[7px] uppercase tracking-normal text-[#3a2a18] select-none sm:w-auto sm:gap-x-4 sm:px-4 sm:text-xs sm:tracking-[0.2em]"
-                  style={{
-                    background: "#a9772f",
-                    border: "2px solid #2b1d10",
-                    boxShadow:
-                      "inset 2px 2px 0 rgba(255,255,255,0.25), inset -2px -2px 0 rgba(0,0,0,0.35)",
-                  }}
-                >
-                  <span className="inline-flex items-center gap-1 sm:gap-2">
-                    <CalendarDays aria-hidden="true" className="h-3 w-3 sm:h-4 sm:w-4" />
-                    Nov 13–14, 2026
-                  </span>
-                  <span aria-hidden="true" className="hidden h-4 w-px bg-[#3a2a18]/50 sm:block" />
-                  <span className="inline-flex items-center gap-1 sm:gap-2">
-                    <Trophy aria-hidden="true" className="h-3 w-3 sm:h-4 sm:w-4" />
-                    ₹75,000 Prize Pool
-                  </span>
+              {/* Date + prize: calendar and trophy icons on all sizes; divider between them from sm up */}
+              <span
+                className="inline-flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 px-3 py-1.5 font-pixel text-[8px] uppercase tracking-normal text-[#3a2a18] select-none sm:w-auto sm:gap-x-4 sm:px-4 sm:text-xs sm:tracking-[0.2em]"
+                style={{
+                  background: "#a9772f",
+                  border: "2px solid #2b1d10",
+                  boxShadow:
+                    "inset 2px 2px 0 rgba(255,255,255,0.25), inset -2px -2px 0 rgba(0,0,0,0.35)",
+                }}
+              >
+                <span className="inline-flex items-center gap-1 sm:gap-2">
+                  <CalendarDays aria-hidden="true" className="h-3 w-3 sm:h-4 sm:w-4" />
+                  Nov 13–14, 2026
                 </span>
+                <span aria-hidden="true" className="hidden h-4 w-px bg-[#3a2a18]/50 sm:block" />
+                <span className="inline-flex items-center gap-1 sm:gap-2">
+                  <Trophy aria-hidden="true" className="h-3 w-3 sm:h-4 sm:w-4" />
+                  ₹75,000 Prize Pool
+                </span>
+              </span>
 
-                {/* Buttons: side by side on phones, wrap if needed from sm up */}
-                <div className="mt-2 flex w-full flex-nowrap items-stretch justify-center gap-2 sm:mt-4 sm:w-auto sm:flex-wrap sm:items-center sm:gap-4">
-                  <a
-                    href="#about"
-                    className="mc-button min-w-0 flex-1 px-2 py-2.5 text-[7px] sm:flex-none sm:px-8 sm:py-3 sm:text-sm"
-                  >
-                    EXPLORE DUNGEON
-                  </a>
-                  <a
-                    href="#prizes"
-                    className="mc-button mc-button-gold min-w-0 flex-1 px-2 py-2.5 text-[7px] sm:flex-none sm:px-8 sm:py-3 sm:text-sm"
-                  >
-                    VIEW LOOT ₹75K
-                  </a>
-                </div>
+              {/* Buttons: side by side on phones, wrap if needed from sm up */}
+              <div className="mt-2 flex w-full flex-nowrap items-stretch justify-center gap-2 sm:mt-4 sm:w-auto sm:flex-wrap sm:items-center sm:gap-4">
+                <a
+                  href="#about"
+                  className="mc-button min-w-0 flex-1 px-3 py-2.5 text-[8px] sm:flex-none sm:px-8 sm:py-3 sm:text-sm"
+                >
+                  EXPLORE DUNGEON
+                </a>
+                <a
+                  href="#prizes"
+                  className="mc-button mc-button-gold min-w-0 flex-1 px-3 py-2.5 text-[8px] sm:flex-none sm:px-8 sm:py-3 sm:text-sm"
+                >
+                  VIEW LOOT ₹75K
+                </a>
               </div>
             </div>
           </Reveal>
