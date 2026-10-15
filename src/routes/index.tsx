@@ -1,21 +1,12 @@
-import mineArenaLogo from "@/assets/mine-arena-logo.PNG";
 import { createFileRoute } from "@tanstack/react-router";
-import {
-  CalendarDays,
-  MapPin,
-  Users,
-  Clock,
-  Trophy,
-  HelpCircle,
-  ChevronDown,
-} from "lucide-react";
+import { Users, Clock, Trophy, HelpCircle } from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { CursorFollower } from "../components/CursorFollower";
 import { PrizesSection } from "../components/PrizesSection";
 import { SponsorsSection } from "../components/SponsorsSection";
 import { SectionSeam } from "../components/SectionSeam";
 import { Reveal } from "../components/Reveal";
-import campusHero from "../assets/voxel-biet-campus.png.asset.json";
+import { ScrollSequence } from "@/components/ScrollSequence";
 
 import aboutBg from "@/assets/about_bg.png";
 import aboutLeft from "@/assets/about_left.png";
@@ -23,6 +14,7 @@ import aboutRight from "@/assets/about_right.png";
 import tracksBg from "@/assets/tracks_bg.png";
 import tracksLeft from "@/assets/tracks_left.png";
 import tracksRight from "@/assets/tracks_right.png";
+import deepslateIronOre from "@/assets/deepslate-iron-ore.png";
 import timelineBg from "@/assets/timeline_bg.png";
 import timelineLeft from "@/assets/timeline_left.png";
 import timelineRight from "@/assets/timeline_right.png";
@@ -40,7 +32,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "MINEARENA 1.0 is a national-level 24-hour Minecraft-themed hackathon at Bapuji Institute of Engineering and Technology, Davangere. ₹75,000 prize pool. Nov 13–14, 2026.",
+          "MINEARENA 1.0 is a national-level 24-hour Minecraft-themed hackathon at Bapuji Institute of Engineering and Technology, Davangere. ₹75,000 prize pool. Nov 12–13, 2026.",
       },
       {
         property: "og:title",
@@ -49,7 +41,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Innovate. Build. Transform. A national-level 24-hour hackathon at BIET Davangere with a ₹75,000 prize pool. Nov 13–14, 2026.",
+          "Innovate. Build. Transform. A national-level 24-hour hackathon at BIET Davangere with a ₹75,000 prize pool. Nov 12–13, 2026.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -60,28 +52,34 @@ export const Route = createFileRoute("/")({
 
 const TRACKS = [
   {
-    title: "IoT & Hardware",
+    title: "AGENTIC AI & AUTONOMOUS WORKFLOWS",
     oreIcon: "/copper_stone.png",
-    barColor: "#b5651d",
-    desc: "Wire up sensors, boards, and signals. Build something that reaches out of the screen and into the real physical world.",
+    barColor: "#41a9ff",
+    desc: "Agents that plan, use tools, and execute multi-step tasks.",
   },
   {
-    title: "Agentic AI / GenAI",
+    title: "GENAI FOR ENTERPRISE",
     oreIcon: "/diamond_deepslate.png",
-    barColor: "#4c3a8c",
-    desc: "Agents that plan, tools they call, models that generate. Ship autonomous AI that actually does the work, not just chats about it.",
+    barColor: "#ff66ff",
+    desc: "Build practical generative AI solutions for real business workflows.",
   },
   {
-    title: "Blockchain / Web3",
+    title: "FINTECH: OPEN BANKING & EMBEDDED FINANCE",
     oreIcon: "/gold_nether.png",
-    barColor: "#caa23a",
-    desc: "Smart contracts, dApps, and on-chain decentralized tooling. Build for a world where trust lives in the code.",
+    barColor: "#f7c948",
+    desc: "Reimagine payments, financial APIs, and embedded financial experiences.",
   },
   {
-    title: "Open Innovation",
+    title: "HEALTHTECH & DIGITAL HEALTH",
     oreIcon: "/grass.png",
-    barColor: "#4a7c4e",
-    desc: "No rails, no boundaries. If it solves a pressing real-world problem and you can demo a prototype in 24 hours, build it.",
+    barColor: "#ff4d4d",
+    desc: "Build technology for healthcare, patient care, and digital wellness.",
+  },
+  {
+    title: "DATA ENGINEERING & REAL-TIME ANALYTICS",
+    oreIcon: deepslateIronOre,
+    barColor: "#36e6b8",
+    desc: "Turn streaming data into reliable pipelines and real-time insights.",
   },
 ];
 
@@ -102,17 +100,17 @@ const TIMELINE = [
     desc: "Selected teams qualify for the on-campus round at BIET Davangere.",
   },
   {
-    date: "Nov 5–12, 2026",
+    date: "Nov 5–11, 2026",
     title: "Confirmation & Fee Payment",
     desc: "Selected teams complete registration formalities and confirmation.",
   },
   {
-    date: "November 13, 2026",
+    date: "November 12, 2026",
     title: "24-Hour Hackathon Begins",
     desc: "Opening ceremony and coding kick-off at SSM Cultural Hall, BIET.",
   },
   {
-    date: "November 14, 2026",
+    date: "November 13, 2026",
     title: "Judging & Loot Distribution",
     desc: "Final pitches to judges, evaluation, and prize ceremony.",
   },
@@ -218,84 +216,9 @@ function Index() {
       <Navbar />
       <CursorFollower />
 
-      {/* ===================== HERO SECTION ===================== */}
-      <section
-        id="home"
-        className="relative flex min-h-screen items-center justify-center overflow-hidden pb-20 pt-24 sm:pb-24 sm:pt-28"
-      >
-        <img
-          src={campusHero.url}
-          alt="Voxel art of the BIET campus at sunset"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/15 to-black/50" />
-
-        <div className="relative z-10 flex flex-col items-center px-4 text-center">
-          {/* Logo above the card (all sizes) */}
-          <Reveal>
-            <img
-              src={mineArenaLogo}
-              alt="MINEARENA 1.0 — 24 Hours Hackathon"
-              className="mb-4 h-auto w-[92%] max-w-[22rem] drop-shadow-[0_6px_10px_rgba(0,0,0,0.5)] sm:mb-6 sm:w-full sm:max-w-[34rem] lg:max-w-[38rem]"
-            />
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="pointer-events-auto flex flex-col items-center gap-3 sm:gap-4">
-              <p
-                className="max-w-md text-center font-terminal text-base text-[#f5ead0] sm:text-2xl"
-                style={{ textShadow: "2px 2px 0 #000, 0 2px 8px rgba(0,0,0,0.7)" }}
-              >
-                Join us at SSM Cultural Hall, BIET Davangere
-              </p>
-
-              {/* Date + prize: calendar and trophy icons on all sizes; divider between them from sm up */}
-              <span
-                className="inline-flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 px-3 py-1.5 font-pixel text-[8px] uppercase tracking-normal text-[#3a2a18] select-none sm:w-auto sm:gap-x-4 sm:px-4 sm:text-xs sm:tracking-[0.2em]"
-                style={{
-                  background: "#a9772f",
-                  border: "2px solid #2b1d10",
-                  boxShadow:
-                    "inset 2px 2px 0 rgba(255,255,255,0.25), inset -2px -2px 0 rgba(0,0,0,0.35)",
-                }}
-              >
-                <span className="inline-flex items-center gap-1 sm:gap-2">
-                  <CalendarDays aria-hidden="true" className="h-3 w-3 sm:h-4 sm:w-4" />
-                  Nov 13–14, 2026
-                </span>
-                <span aria-hidden="true" className="hidden h-4 w-px bg-[#3a2a18]/50 sm:block" />
-                <span className="inline-flex items-center gap-1 sm:gap-2">
-                  <Trophy aria-hidden="true" className="h-3 w-3 sm:h-4 sm:w-4" />
-                  ₹75,000 Prize Pool
-                </span>
-              </span>
-
-              {/* Buttons: side by side on phones, wrap if needed from sm up */}
-              <div className="mt-2 flex w-full flex-nowrap items-stretch justify-center gap-2 sm:mt-4 sm:w-auto sm:flex-wrap sm:items-center sm:gap-4">
-                <a
-                  href="#about"
-                  className="mc-button min-w-0 flex-1 px-3 py-2.5 text-[8px] sm:flex-none sm:px-8 sm:py-3 sm:text-sm"
-                >
-                  EXPLORE DUNGEON
-                </a>
-                <a
-                  href="#prizes"
-                  className="mc-button mc-button-gold min-w-0 flex-1 px-3 py-2.5 text-[8px] sm:flex-none sm:px-8 sm:py-3 sm:text-sm"
-                >
-                  VIEW LOOT ₹75K
-                </a>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-
-        <a
-          href="#about"
-          className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-primary hover:text-white sm:bottom-8"
-          aria-label="Scroll down"
-        >
-          <ChevronDown className="h-8 w-8 animate-bounce" />
-        </a>
+      {/* ===================== HERO SCROLL SEQUENCE ===================== */}
+      <section id="home" className="relative w-full">
+        <ScrollSequence />
       </section>
       <SectionSeam />
 
@@ -344,16 +267,15 @@ function Index() {
                     </h2>
                     <div className="my-2 h-[3px] w-12 bg-[#3a2a17]/40 sm:my-3 sm:h-1 sm:w-16" />
                     <p className="font-terminal text-xs leading-[1.2] text-[#3a2a17d9] sm:text-base sm:leading-relaxed">
-                      MINEARENA 1.0 is BIET Davangere's flagship 24-hour national
-                      hackathon, uniting top student developers, creators, and
-                      innovators from across India to solve high-impact challenges.
+                      MINEARENA 1.0 is BIET Davangere's flagship 24-hour national hackathon, uniting
+                      top student developers, creators, and innovators from across India to solve
+                      high-impact challenges.
                     </p>
                     <p className="mt-2 font-terminal text-xs leading-[1.2] text-[#3a2a17d9] sm:mt-3 sm:text-base sm:leading-relaxed">
-                      Hosted at the historic SSM Cultural Hall, participants
-                      receive dedicated mentorship, high-speed connectivity, meals,
-                      and a platform to build solutions from scratch. Just like
-                      Minecraft, there are no boundaries — only the blocks you
-                      place.
+                      Hosted at the historic SSM Cultural Hall, participants receive dedicated
+                      mentorship, high-speed connectivity, meals, and a platform to build solutions
+                      from scratch. Just like Minecraft, there are no boundaries — only the blocks
+                      you place.
                     </p>
                   </div>
 
@@ -361,21 +283,39 @@ function Index() {
                     <div className="grid grid-cols-3 text-center">
                       <div className="border-r-2 border-[#3a2a17]/40 px-1 py-1.5 sm:py-2">
                         <Clock className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
-                        <span className="pixel-heading mt-1 block text-[12px] leading-none text-[#3a2a17] sm:text-[28px]">24</span>
-                        <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">HRS</span>
-                        <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">Hacking</span>
+                        <span className="pixel-heading mt-1 block text-[12px] leading-none text-[#3a2a17] sm:text-[28px]">
+                          24
+                        </span>
+                        <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">
+                          HRS
+                        </span>
+                        <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">
+                          Hacking
+                        </span>
                       </div>
                       <div className="border-r-2 border-[#3a2a17]/40 px-1 py-1.5 sm:py-2">
                         <Users className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
-                        <span className="pixel-heading mt-1 block text-[12px] leading-none text-[#3a2a17] sm:text-[28px]">50</span>
-                        <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">TOP</span>
-                        <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">Teams</span>
+                        <span className="pixel-heading mt-1 block text-[12px] leading-none text-[#3a2a17] sm:text-[28px]">
+                          50
+                        </span>
+                        <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">
+                          TOP
+                        </span>
+                        <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">
+                          Teams
+                        </span>
                       </div>
                       <div className="px-1 py-1.5 sm:py-2">
                         <Trophy className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
-                        <span className="pixel-heading mt-1 block text-[10px] leading-none text-[#3a2a17] sm:text-[26px]">₹75K</span>
-                        <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">POOL</span>
-                        <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">Prize</span>
+                        <span className="pixel-heading mt-1 block text-[10px] leading-none text-[#3a2a17] sm:text-[26px]">
+                          ₹75K
+                        </span>
+                        <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">
+                          POOL
+                        </span>
+                        <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">
+                          Prize
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -472,7 +412,7 @@ function Index() {
       <SectionSeam />
 
       {/* ===================== TRACKS SECTION ===================== */}
-      
+
       <section
         id="tracks"
         className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 sm:px-6 md:py-24"
@@ -512,89 +452,106 @@ function Index() {
 
           {/* Hanging Minecraft Oak Signs */}
           <div className="grid w-full grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-10">
-            {TRACKS.map((t, idx) => (
-              <Reveal key={t.title} delay={idx * 0.1}>
-                {/* Phones: narrow sign under its beam (like the poster). sm and up: full column width. */}
-                <div className="relative mx-auto w-[70%] pt-2.5 sm:w-full sm:pt-3">
-                  {/* Oak Log Header Beam (stays still) */}
+            {TRACKS.map((t, idx) => {
+              const isCenterCard = t.title === "DATA ENGINEERING & REAL-TIME ANALYTICS";
+
+              return (
+                <Reveal
+                  key={t.title}
+                  delay={idx * 0.1}
+                  className={
+                    isCenterCard
+                      ? "col-span-1 flex w-full justify-center sm:col-span-2"
+                      : "flex w-full justify-center sm:block"
+                  }
+                >
+                  {/* Sign card container: standardized width matching columns on all screen sizes */}
                   <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute -left-2.5 -right-2.5 top-0 h-2.5 sm:-left-3 sm:-right-3 sm:h-3"
-                    style={{
-                      backgroundImage: "url('/oak_log.png')",
-                      backgroundSize: "16px 16px",
-                      imageRendering: "pixelated",
-                      boxShadow:
-                        "inset 0 2px 0 rgba(255,255,255,0.16), inset 0 -2px 0 rgba(0,0,0,0.4)",
-                    }}
-                  />
-
-                  {/* Swinging part: chains + signboard pivot from the beam (hover / focus / tap) */}
-                  <div className="mc-swing outline-none" tabIndex={0}>
-                    {/* Dual Iron Chains */}
-                    <div className="mx-auto flex w-[64%] justify-between sm:w-1/2">
-                      {[0, 1].map((n) => (
-                        <div
-                          key={n}
-                          aria-hidden="true"
-                          className="h-3 w-1 sm:h-5 sm:w-1.5"
-                          style={{
-                            backgroundColor: "#6e6e6e",
-                            borderLeft: "2px solid #8f8f8f",
-                            borderRight: "2px solid #2e2e2e",
-                            boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.45)",
-                          }}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Signboard */}
+                    className={`relative w-[85%] pt-2.5 sm:pt-3 ${
+                      isCenterCard ? "sm:w-[calc(50%-0.75rem)]" : "sm:w-full"
+                    }`}
+                  >
+                    {/* Oak Log Header Beam (stays still) */}
                     <div
-                      className="flex w-full flex-col gap-1.5 p-2.5 text-left sm:gap-2 sm:p-4"
+                      aria-hidden="true"
+                      className="pointer-events-none absolute -left-2.5 -right-2.5 top-0 h-2.5 sm:-left-3 sm:-right-3 sm:h-3"
                       style={{
-                        backgroundImage:
-                          "linear-gradient(rgba(233,207,157,0.65), rgba(233,207,157,0.65)), url('/oak_sign.png')",
-                        backgroundSize: "auto, 48px 48px",
+                        backgroundImage: "url('/oak_log.png')",
+                        backgroundSize: "16px 16px",
                         imageRendering: "pixelated",
-                        border: "3px solid #4b3418",
                         boxShadow:
-                          "inset 0 3px 0 rgba(255,255,255,0.18), inset 0 -3px 0 rgba(0,0,0,0.28), 0 10px 24px rgba(0,0,0,0.45)",
+                          "inset 0 2px 0 rgba(255,255,255,0.16), inset 0 -2px 0 rgba(0,0,0,0.4)",
                       }}
-                    >
-                      <div className="flex items-center gap-2 sm:gap-3">
-                        <img
-                          src={t.oreIcon}
-                          alt=""
-                          className="h-4 w-4 shrink-0 sm:h-7 sm:w-7"
-                          style={{ imageRendering: "pixelated" }}
-                        />
-                        <h3
-                          className="pixel-heading text-[8px] uppercase leading-[1.5] sm:text-base sm:leading-normal"
-                          style={{
-                            color: "#241608",
-                            textShadow: "1px 1px 0 rgba(255,255,255,0.3)",
-                          }}
-                        >
-                          {REVEALING_SOON ? "Revealing soon" : t.title}
-                        </h3>
+                    />
+
+                    {/* Swinging part: chains + signboard pivot from the beam (hover / focus / tap) */}
+                    <div className="mc-swing flex h-full flex-col outline-none" tabIndex={0}>
+                      {/* Dual Iron Chains */}
+                      <div className="mx-auto flex w-[64%] justify-between sm:w-1/2">
+                        {[0, 1].map((n) => (
+                          <div
+                            key={n}
+                            aria-hidden="true"
+                            className="h-3 w-1 sm:h-5 sm:w-1.5"
+                            style={{
+                              backgroundColor: "#6e6e6e",
+                              borderLeft: "2px solid #8f8f8f",
+                              borderRight: "2px solid #2e2e2e",
+                              boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.45)",
+                            }}
+                          />
+                        ))}
                       </div>
 
+                      {/* Signboard with equal heights & aligned content */}
                       <div
-                        aria-hidden="true"
-                        className="h-[2px] w-full"
-                        style={{ backgroundColor: t.barColor, opacity: 0.8 }}
-                      />
+                        className="flex w-full flex-1 flex-col gap-2 p-2.5 text-left sm:gap-2.5 sm:p-4"
+                        style={{
+                          backgroundImage:
+                            "linear-gradient(rgba(233,207,157,0.65), rgba(233,207,157,0.65)), url('/oak_sign.png')",
+                          backgroundSize: "auto, 48px 48px",
+                          imageRendering: "pixelated",
+                          border: "3px solid #4b3418",
+                          boxShadow:
+                            "inset 0 3px 0 rgba(255,255,255,0.18), inset 0 -3px 0 rgba(0,0,0,0.28), 0 10px 24px rgba(0,0,0,0.45)",
+                        }}
+                      >
+                        {/* Title Header with Ore Icon: aligned min-height across single and multi-line titles */}
+                        <div className="flex min-h-[2.2rem] items-center gap-2 sm:min-h-[3.25rem] sm:gap-3">
+                          <img
+                            src={t.oreIcon}
+                            alt=""
+                            className="h-4 w-4 shrink-0 sm:h-7 sm:w-7"
+                            style={{ imageRendering: "pixelated" }}
+                          />
+                          <h3
+                            className="pixel-heading text-[8px] uppercase leading-[1.5] sm:text-base sm:leading-snug"
+                            style={{
+                              color: "#241608",
+                              textShadow: "1px 1px 0 rgba(255,255,255,0.3)",
+                            }}
+                          >
+                            {t.title}
+                          </h3>
+                        </div>
 
-                      {!REVEALING_SOON && (
-                        <p className="font-terminal text-base leading-snug text-[#241608] sm:text-2xl sm:leading-relaxed">
+                        {/* Divider Bar */}
+                        <div
+                          aria-hidden="true"
+                          className="h-[2px] w-full shrink-0"
+                          style={{ backgroundColor: t.barColor, opacity: 0.8 }}
+                        />
+
+                        {/* Description */}
+                        <p className="font-terminal flex-1 text-base leading-snug text-[#241608] sm:text-2xl sm:leading-relaxed">
                           {t.desc}
                         </p>
-                      )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -797,71 +754,74 @@ function Index() {
       <SectionSeam />
 
       {/* ===================== RULES SECTION ===================== */}
-        <section id="rules" className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 sm:px-6 sm:py-24">
-          {/* Background & Flanks */}
-          <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden bg-[#3c0909]">
-            <img
-              src={prevBg}
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-[#3a0606]/40" />
+      <section
+        id="rules"
+        className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 sm:px-6 sm:py-24"
+      >
+        {/* Background & Flanks */}
+        <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden bg-[#3c0909]">
+          <img
+            src={prevBg}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-[#3a0606]/40" />
 
-            {/* Flanks: phones = pinned top-to-bottom edge strips; sm and up = your original sizing */}
-            <img
-              src={prevLeft}
-              alt=""
-              className="pointer-events-none absolute inset-y-0 left-0 h-full w-[26vw] select-none object-cover object-left sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
-            />
-            <img
-              src={prevRight}
-              alt=""
-              className="pointer-events-none absolute inset-y-0 right-0 h-full w-[26vw] select-none object-cover object-right sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
-            />
-          </div>
+          {/* Flanks: phones = pinned top-to-bottom edge strips; sm and up = your original sizing */}
+          <img
+            src={prevLeft}
+            alt=""
+            className="pointer-events-none absolute inset-y-0 left-0 h-full w-[26vw] select-none object-cover object-left sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
+          />
+          <img
+            src={prevRight}
+            alt=""
+            className="pointer-events-none absolute inset-y-0 right-0 h-full w-[26vw] select-none object-cover object-right sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
+          />
+        </div>
 
-          <div className="relative z-10 mx-auto w-full min-w-0 max-w-3xl">
-            <Reveal>
-              <p className="mb-2 text-center font-terminal text-lg tracking-wider text-red-200/80 sm:text-xl">
-                ▸ The Laws of the Arena
-              </p>
-              <h2
-                className="pixel-heading mb-7 text-center text-3xl uppercase text-[#ff5555] sm:mb-10 sm:text-4xl"
-                style={{ textShadow: "0 0 10px rgba(255, 85, 85, 0.5), 2px 2px 0px #3a0000" }}
-              >
-                RULES OF ENGAGEMENT
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div
-                className="border-[3px] border-[#3a2615] p-5 sm:p-8"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(rgba(26, 18, 6, 0.88), rgba(26, 18, 6, 0.88)), url('/dirt.png')",
-                  backgroundSize: "auto, 32px 32px",
-                  backgroundRepeat: "repeat",
-                  imageRendering: "pixelated",
-                  boxShadow:
-                    "inset 0 0 0 2px rgba(255,255,255,0.1), inset 0 0 0 4px #120b03, 0 10px 24px rgba(0,0,0,0.5)",
-                }}
-              >
-                <ul className="space-y-5 sm:space-y-4">
-                  {RULES.map((rule, i) => (
-                    <li
-                      key={rule}
-                      className="flex items-start gap-3 font-terminal text-xl leading-tight text-foreground/90 sm:gap-4 sm:text-2xl"
-                    >
-                      <span className="pixel-heading shrink-0 pt-0.5 text-base text-[#ff5555] sm:pt-1 sm:text-xs">
-                        {String(i + 1).padStart(2, "0")}.
-                      </span>
-                      <span className="text-[#f5f5f0]">{rule}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-        </section>
+        <div className="relative z-10 mx-auto w-full min-w-0 max-w-3xl">
+          <Reveal>
+            <p className="mb-2 text-center font-terminal text-lg tracking-wider text-red-200/80 sm:text-xl">
+              ▸ The Laws of the Arena
+            </p>
+            <h2
+              className="pixel-heading mb-7 text-center text-3xl uppercase text-[#ff5555] sm:mb-10 sm:text-4xl"
+              style={{ textShadow: "0 0 10px rgba(255, 85, 85, 0.5), 2px 2px 0px #3a0000" }}
+            >
+              RULES OF ENGAGEMENT
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div
+              className="border-[3px] border-[#3a2615] p-5 sm:p-8"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(26, 18, 6, 0.88), rgba(26, 18, 6, 0.88)), url('/dirt.png')",
+                backgroundSize: "auto, 32px 32px",
+                backgroundRepeat: "repeat",
+                imageRendering: "pixelated",
+                boxShadow:
+                  "inset 0 0 0 2px rgba(255,255,255,0.1), inset 0 0 0 4px #120b03, 0 10px 24px rgba(0,0,0,0.5)",
+              }}
+            >
+              <ul className="space-y-5 sm:space-y-4">
+                {RULES.map((rule, i) => (
+                  <li
+                    key={rule}
+                    className="flex items-start gap-3 font-terminal text-xl leading-tight text-foreground/90 sm:gap-4 sm:text-2xl"
+                  >
+                    <span className="pixel-heading shrink-0 pt-0.5 text-base text-[#ff5555] sm:pt-1 sm:text-xs">
+                      {String(i + 1).padStart(2, "0")}.
+                    </span>
+                    <span className="text-[#f5f5f0]">{rule}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       <SectionSeam />
 
@@ -996,7 +956,8 @@ function Index() {
         <div
           className="absolute inset-0 -z-10 h-full w-full opacity-80"
           style={{
-            backgroundImage: "linear-gradient(rgba(18, 11, 3, 0.95), rgba(18, 11, 3, 0.95)), url('/bedrock.png')",
+            backgroundImage:
+              "linear-gradient(rgba(18, 11, 3, 0.95), rgba(18, 11, 3, 0.95)), url('/bedrock.png')",
             backgroundSize: "auto, 64px 64px",
             backgroundRepeat: "repeat",
             imageRendering: "pixelated",
@@ -1009,9 +970,15 @@ function Index() {
               MINEARENA 1.0
             </h2>
             <address className="flex flex-col gap-1 not-italic mt-2">
-              <span className="font-terminal text-xl text-white/70">Bapuji Institute of Engineering and Technology</span>
-              <span className="font-terminal text-xl text-white/70">SSM Cultural Hall, BIET Campus</span>
-              <span className="font-terminal text-xl text-white/70">Davangere, Karnataka 577004</span>
+              <span className="font-terminal text-xl text-white/70">
+                Bapuji Institute of Engineering and Technology
+              </span>
+              <span className="font-terminal text-xl text-white/70">
+                SSM Cultural Hall, BIET Campus
+              </span>
+              <span className="font-terminal text-xl text-white/70">
+                Davangere, Karnataka 577004
+              </span>
               <a
                 href="https://maps.app.goo.gl/Lu44xXnxbPg5pUDB8"
                 target="_blank"
@@ -1039,10 +1006,16 @@ function Index() {
                 style={{ imageRendering: "pixelated" }}
               />
               <div className="flex flex-col justify-center gap-1">
-                <span className="pixel-heading text-[10px] text-[#ffff00] sm:text-xs" style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.8)" }}>
+                <span
+                  className="pixel-heading text-[10px] text-[#ffff00] sm:text-xs"
+                  style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.8)" }}
+                >
                   Advancement Made!
                 </span>
-                <span className="pixel-heading text-[10px] text-white sm:text-xs" style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.8)" }}>
+                <span
+                  className="pixel-heading text-[10px] text-white sm:text-xs"
+                  style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.8)" }}
+                >
                   The Bottom of the World
                 </span>
               </div>
@@ -1079,22 +1052,60 @@ function Index() {
 
           <div className="flex flex-col items-center gap-8 text-center md:items-end md:text-right">
             <div className="flex flex-col items-center gap-3 md:items-end">
-              <h3 className="pixel-heading text-sm uppercase tracking-[0.2em] text-white">Contact Us</h3>
+              <h3 className="pixel-heading text-sm uppercase tracking-[0.2em] text-white">
+                Contact Us
+              </h3>
               <div className="flex flex-col gap-2.5 font-terminal text-xl">
-                <a href="mailto:codecommit@bietdvg.edu" className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white">codecommit@bietdvg.edu</a>
-                <a href="tel:+919886634901" className="group -my-1.5 inline-block py-1.5 text-white/70 hover:text-white">
-                  <span className="block text-sm text-white/45 group-hover:text-white/70">Aditya Aradhya</span>
+                <a
+                  href="mailto:codecommit@bietdvg.edu"
+                  className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white"
+                >
+                  codecommit@bietdvg.edu
+                </a>
+                <a
+                  href="tel:+919886634901"
+                  className="group -my-1.5 inline-block py-1.5 text-white/70 hover:text-white"
+                >
+                  <span className="block text-sm text-white/45 group-hover:text-white/70">
+                    Aditya Aradhya
+                  </span>
                   +91 98866 34901
                 </a>
               </div>
             </div>
             <div className="flex flex-col items-center gap-3 md:items-end">
-              <h3 className="pixel-heading text-sm uppercase tracking-[0.2em] text-white">Quick Links</h3>
+              <h3 className="pixel-heading text-sm uppercase tracking-[0.2em] text-white">
+                Quick Links
+              </h3>
               <nav className="flex flex-col gap-1.5 font-terminal text-xl">
-                <a href="https://www.bietdvg.edu/" target="_blank" rel="noreferrer noopener" className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white">BIET Official Website</a>
-                <a href="/under-construction" className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white">About Code Commit</a>
-                <a href="https://www.bietdvg.edu/" target="_blank" rel="noreferrer noopener" className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white">College Home</a>
-                <a href="/under-construction" className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white">FAQs</a>
+                <a
+                  href="https://www.bietdvg.edu/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white"
+                >
+                  BIET Official Website
+                </a>
+                <a
+                  href="/under-construction"
+                  className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white"
+                >
+                  About Code Commit
+                </a>
+                <a
+                  href="https://www.bietdvg.edu/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white"
+                >
+                  College Home
+                </a>
+                <a
+                  href="/under-construction"
+                  className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white"
+                >
+                  FAQs
+                </a>
               </nav>
             </div>
           </div>

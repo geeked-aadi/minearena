@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import dirt from "../assets/dirt.png.asset.json";
 import grass from "../assets/grass.png.asset.json";
+import navbarLogo from "@/assets/navbar-logo.PNG";
 
 const LINKS = [
   { id: "about", label: "ABOUT" },
@@ -55,7 +56,7 @@ export function Navbar() {
         />
         {/* Dirt body */}
         <div
-          className="flex items-center justify-between gap-4 rounded-b-[14px] border-2 border-[#1f2e14] px-4 py-2 shadow-[0_10px_28px_rgb(0_0_0/0.4)] md:px-6"
+          className="flex items-center justify-between gap-4 rounded-b-[14px] border-2 border-[#1f2e14] px-2 pt-1 pb-3 shadow-[0_10px_28px_rgb(0_0_0/0.4)] md:px-4"
           style={{
             backgroundImage: `url(${dirt.url || "/dirt.png"})`,
             backgroundSize: "32px 32px",
@@ -63,18 +64,16 @@ export function Navbar() {
             imageRendering: "pixelated",
           }}
         >
-          <button onClick={() => scrollTo("home")} className="flex shrink-0 items-center gap-2">
-            <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-md border-2 border-[#1f2e14] bg-background/70 p-1 shadow-[inset_0_0_0_2px_rgba(255,255,255,0.15)]">
-              <img
-                src="/nav_logo.jpg"
-                alt="MineArena logo"
-                className="h-full w-full rounded-sm object-cover"
-              />
-            </span>
-            <span className="text-left leading-tight" style={textShadow}>
-              <span className="pixel-heading block text-[10px] text-foreground">MINE ARENA</span>
-              <span className="pixel-heading block text-[8px] text-primary">1.0 · HACKATHON</span>
-            </span>
+          <button
+            onClick={() => scrollTo("home")}
+            className="flex h-10 shrink-0 items-center justify-center self-center transition-transform hover:scale-105 active:scale-95"
+            aria-label="MINEARENA Hackathon Home"
+          >
+            <img
+              src={navbarLogo}
+              alt="MINEARENA 1.0"
+              className="block h-7 w-auto object-contain align-middle drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] sm:h-8"
+            />
           </button>
 
           <nav className="hidden items-center gap-1.5 md:flex">

@@ -1,0 +1,15 @@
+<svg width="640" height="220" viewBox="0 0 640 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="220" rx="18" fill="#F7F7F8"/>
+  <rect x="28" y="36" width="156" height="148" rx="20" fill="#0A0F1B"/>
+  <path d="M92 73.5C71.5661 73.5 54.5 90.5661 54.5 111V112.75C54.5 133.184 71.5661 150.25 92 150.25H125.75C146.183 150.25 163.25 133.184 163.25 112.75V111C163.25 90.5661 146.183 73.5 125.75 73.5H92ZM110.5 90.25H124.5C138.031 90.25 149 101.219 149 114.75C149 128.281 138.031 139.25 124.5 139.25H110.5V90.25Z" fill="#5EF2A6"/>
+  <path d="M71 86.5L87.5 104L70.5 121.5H98.5L115.5 103.5L99 86.5H71Z" fill="#131B28"/>
+  <path d="M121.5 86.5L138.5 104L122 121.5H148.5L165 104L149 86.5H121.5Z" fill="#131B28"/>
+  <path d="M95 56V46H131V56H95Z" fill="#5EF2A6"/>
+  <path d="M95 164V174H131V164H95Z" fill="#5EF2A6"/>
+  <rect x="202" y="76" width="12" height="68" rx="6" fill="#0A0F1B"/>
+  <rect x="226" y="76" width="12" height="68" rx="6" fill="#0A0F1B"/>
+  <rect x="250" y="76" width="12" height="68" rx="6" fill="#0A0F1B"/>
+  <path d="M296 76H392C408.569 76 422 89.4315 422 106V106C422 122.569 408.569 136 392 136H296V76Z" fill="#0A0F1B"/>
+  <text x="298" y="128" fill="#0A0F1B" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" letter-spacing="2">DEVFOLIO</text>
+  <rect x="308" y="148" width="154" height="10" rx="5" fill="#5EF2A6"/>
+</svg>

@@ -1,8 +1,8 @@
-const fs = require('fs');
-let code = fs.readFileSync('src/routes/index.tsx', 'utf8');
+const fs = require("fs");
+let code = fs.readFileSync("src/routes/index.tsx", "utf8");
 
-const heroStart = code.indexOf('{/* ===================== HERO SECTION ===================== */}');
-const heroEnd = code.indexOf('<SectionSeam />');
+const heroStart = code.indexOf("{/* ===================== HERO SECTION ===================== */}");
+const heroEnd = code.indexOf("<SectionSeam />");
 
 if (heroStart !== -1 && heroEnd !== -1) {
   const newHero = `{/* ===================== HERO SECTION ===================== */}
@@ -86,7 +86,7 @@ if (heroStart !== -1 && heroEnd !== -1) {
       </section>
 
       `;
-  
+
   code = code.substring(0, heroStart) + newHero + code.substring(heroEnd);
-  fs.writeFileSync('src/routes/index.tsx', code);
+  fs.writeFileSync("src/routes/index.tsx", code);
 }

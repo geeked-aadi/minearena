@@ -92,7 +92,9 @@
     background-color: var(--color-creeper);
     color: var(--color-primary-foreground);
     text-shadow: 2px 2px 0 oklch(0.3 0.08 145);
-    transition: transform 0.05s ease, box-shadow 0.05s ease;
+    transition:
+      transform 0.05s ease,
+      box-shadow 0.05s ease;
   }
 
   .mc-button:hover {
