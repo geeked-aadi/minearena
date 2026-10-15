@@ -7,6 +7,7 @@ import {
 } from "@/hooks/useFramePreloader";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Overlay } from "@/components/Overlay";
+import { useIsMobile } from "@/hooks/use-mobile"; // Mobile detection hook
 
 // ============================================================================
 // [CONFIGURATION] 3. SCROLL LENGTH & SMOOTHING FACTOR
@@ -27,6 +28,11 @@ export function ScrollSequence({
   scrollLengthVh = SCROLL_LENGTH_VH,
   smoothingFactor = SMOOTHING_FACTOR,
 }: ScrollSequenceProps = {}) {
+  // Detect mobile viewport to tweak scroll length and canvas sizing
+  const isMobile = useIsMobile();
+  // Cap scroll length on mobile to avoid excessively long scroll travel
+  const effectiveScrollVh = isMobile ? Math.min(scrollLengthVh, 600) : scrollLengthVh;
+
   const sectionRef = useRef<HTMLElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -170,13 +176,13 @@ export function ScrollSequence({
     <section
       ref={sectionRef}
       className="relative w-full bg-black"
-      style={{ height: `${scrollLengthVh}vh` }}
+      style={{ height: `${effectiveScrollVh}vh` }}
       aria-label="MINE ARENA 1.0 Scrollytelling Sequence"
     >
       {/* Sticky pinned full-viewport container (100dvh for mobile address bar resilience) */}
       <div className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-black">
         {/* Full-viewport Canvas */}
-        <canvas ref={canvasRef} className="block h-[100dvh] w-full bg-black touch-none" />
+        <canvas ref={canvasRef} className="block h-screen min-h-[100dvh] w-full bg-black touch-none" />
 
         {/* Ambient atmospheric overlay */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />

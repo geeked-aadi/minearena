@@ -1,3 +1,5 @@
+import specialPlaque from "@/assets/Special Recognition Neon Voxel Banner.png";
+import consolationPlaque from "@/assets/Voxel Neon Consolation Prize Banner.png";
 import { Reveal } from "./Reveal";
 
 /*
@@ -18,8 +20,8 @@ type Prize = {
   alt: string;
 };
 
-const SPECIAL_PLAQUE = "/Special%20Recognition%20Neon%20Voxel%20Banner.png";
-const CONSOLATION_PLAQUE = "/Voxel%20Neon%20Consolation%20Prize%20Banner.png";
+const SPECIAL_PLAQUE = specialPlaque;
+const CONSOLATION_PLAQUE = consolationPlaque;
 
 // Top row: 1st, 2nd
 const MAIN_PRIZES: Prize[] = [
@@ -91,19 +93,21 @@ export function PrizeColumn({
   const bobDelay = `${index * 0.4}s`;
   const glowColor = getPrizeGlowColor(prize.place);
 
+  const mobileWidth = isSmall ? "100%" : "96%";
+
   return (
     <>
       {/* Plaque Container: 96% width */}
-      <div className="relative" style={{ width: "96%", transformOrigin: "center bottom" }}>
+      <div className="relative w-full max-w-[11rem] sm:max-w-none" style={{ width: mobileWidth, transformOrigin: "center bottom" }}>
         <div className="mc-bob" style={{ "--bob-delay": bobDelay } as React.CSSProperties}>
-          <img src={prize.plaque} alt={prize.alt} className="relative h-auto w-full" />
+          <img src={prize.plaque} alt={prize.alt} className="relative h-auto w-full object-contain" />
         </div>
       </div>
 
       {/* Crystal Container: 28% width, 3% mt */}
       <div
         className="relative z-10"
-        style={{ width: "28%", marginTop: "3%", transformOrigin: "center bottom" }}
+        style={{ width: isSmall ? "24%" : "28%", marginTop: "3%", transformOrigin: "center bottom" }}
       >
         <div
           className="pointer-events-none absolute -inset-[60%]"
@@ -117,9 +121,11 @@ export function PrizeColumn({
       {/* Pillar Container: 59% width, 2% mt, hidden overflow for rising animation */}
       <div
         className="relative z-10 overflow-hidden [aspect-ratio:var(--pillar-ar,0.5)] lg:[aspect-ratio:auto]"
-        style={
-          { width: "59%", marginTop: "2%", "--pillar-ar": prize.pillarAr } as React.CSSProperties
-        }
+        style={{
+          width: isSmall ? "52%" : "59%",
+          marginTop: "2%",
+          "--pillar-ar": prize.pillarAr,
+        } as React.CSSProperties}
       >
         <div
           className="absolute inset-0 mc-pillar-rise lg:static lg:inset-auto lg:h-full lg:w-full"
@@ -134,7 +140,7 @@ export function PrizeColumn({
       </div>
 
       {/* Podium Container: 100% width, -10% mt */}
-      <div className="relative z-20 w-full" style={{ marginTop: "-10%" }}>
+      <div className="relative z-20 w-full" style={{ marginTop: isSmall ? "-8%" : "-10%" }}>
         <img src="/podium.webp" alt="" loading="lazy" className="h-auto w-full" />
       </div>
     </>
@@ -178,7 +184,7 @@ export function PrizesSection() {
           <Reveal
             key={firstPrize.place}
             delay={0.0}
-            className="order-1 col-span-6 mx-auto flex w-full max-w-[12rem] flex-col items-center justify-end lg:col-span-1 lg:max-w-none"
+            className="order-1 col-span-6 mx-auto flex w-full min-w-0 max-w-[11rem] flex-col items-center justify-end sm:max-w-[12rem] lg:col-span-1 lg:max-w-none"
           >
             <PrizeColumn prize={firstPrize} index={0} isSmall={false} />
           </Reveal>
@@ -187,7 +193,7 @@ export function PrizesSection() {
           <Reveal
             key={secondPrize.place}
             delay={0.1}
-            className="order-2 col-span-6 mx-auto flex w-full max-w-[12rem] flex-col items-center justify-end lg:col-span-1 lg:max-w-none"
+            className="order-2 col-span-6 mx-auto flex w-full min-w-0 max-w-[11rem] flex-col items-center justify-end sm:max-w-[12rem] lg:col-span-1 lg:max-w-none"
           >
             <PrizeColumn prize={secondPrize} index={1} isSmall={false} />
           </Reveal>
@@ -197,7 +203,7 @@ export function PrizesSection() {
             <Reveal
               key={prize.place}
               delay={0.2 + i * 0.1}
-              className="order-3 col-span-4 mx-auto flex w-full max-w-[8rem] flex-col items-center justify-end sm:max-w-[9rem] lg:col-span-1 lg:max-w-none"
+              className="order-3 col-span-4 mx-auto flex w-full min-w-0 max-w-[7rem] flex-col items-center justify-end sm:max-w-[9rem] lg:col-span-1 lg:max-w-none"
             >
               <PrizeColumn prize={prize} index={i + 2} isSmall={true} />
             </Reveal>
