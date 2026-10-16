@@ -976,15 +976,19 @@ function Index() {
               <span className="font-terminal text-xl text-white/70">
                 Davangere, Karnataka 577004
               </span>
-              <a
-                href="https://maps.app.goo.gl/wfuG4jpV2ipWKHoA8"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-terminal text-xl -my-1.5 mt-1 inline-block py-1.5 text-white/70 underline underline-offset-4 transition-colors hover:text-white"
-              >
-                View on Google Maps
-              </a>
+
             </address>
+            <div className="mt-4">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61810.79661930812!2d75.88058242782064!3d14.474650640980292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bba256183723769%3A0xc0d54a9de2b6f57c!2sBIET%20Davangere!5e0!3m2!1sen!2sin!4v1792172093468!5m2!1sen!2sin"
+                width="600"
+                height="450"
+                style={{border:0}}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
           </div>
 
           <div className="flex flex-col items-center gap-6">
