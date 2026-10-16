@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import helloGif from "../assets/minecraft-hello.gif.asset.json";
+import helloGif from "../assets/minecraft-hello.gif";
 
 /**
  * Minecraft "Hello" sticker that smoothly trails the mouse cursor.
@@ -58,7 +58,7 @@ export function CursorFollower() {
   return (
     <img
       ref={ref}
-      src={helloGif.url}
+      src={helloGif}
       alt=""
       aria-hidden
       className="pointer-events-none fixed left-0 top-0 z-50 h-20 w-20 opacity-0 transition-opacity duration-500"

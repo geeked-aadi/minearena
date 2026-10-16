@@ -8,6 +8,7 @@ import namana from "@/assets/namana.jpeg";
 import logicBrackets from "@/assets/logicbrackets.jpeg";
 import elevenLabs from "@/assets/elevenlabs.jpeg";
 import devpost from "@/assets/devpost.jpg";
+import inube from "@/assets/inube.jpg";
 import { Reveal } from "./Reveal";
 
 type Sponsor = { name: string; url: string; logo: string };
@@ -29,6 +30,7 @@ const SPONSORS: Sponsor[] = [
   { name: "Namana", url: "https://namana.co.in", logo: namana },
   { name: "Logic Brackets", url: "https://logicbrackets.com", logo: logicBrackets },
   { name: "Eleven Labs", url: "https://elevenlabs.io", logo: elevenLabs },
+  { name: "Inube", url: "https://www.inube.com", logo: inube },
   { name: "Devpost", url: "https://devpost.com", logo: devpost },
 ];
 
@@ -118,7 +120,7 @@ export function SponsorsSection() {
             ▸ The MineArena is built on
           </p>
           <h2 className="pixel-heading mb-8 text-center text-2xl uppercase text-foreground text-glow-green sm:text-4xl md:mb-12">
-            SPONSORS
+            Our Partners
           </h2>
         </Reveal>
 

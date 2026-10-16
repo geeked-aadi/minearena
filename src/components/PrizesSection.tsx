@@ -1,6 +1,16 @@
-import specialPlaque from "@/assets/Special Recognition Neon Voxel Banner.png";
-import consolationPlaque from "@/assets/Voxel Neon Consolation Prize Banner.png";
 import { Reveal } from "./Reveal";
+
+import pillar1 from "@/assets/pillar-1.png";
+import pillar2 from "@/assets/pillar-2.png";
+import pillar3 from "@/assets/pillar-3.png";
+import pillar4 from "@/assets/pillar-4.png";
+import plaque1 from "@/assets/plaque-1.png";
+import plaque2 from "@/assets/plaque-2.png";
+import plaque3 from "@/assets/plaque-3.png";
+import plaque4 from "@/assets/plaque-4.png";
+import podium from "@/assets/podium.png";
+import crystal from "@/assets/crystal.webp";
+import sculk from "@/assets/sculk_still.png";
 
 /*
   Layout (matches the prizes poster):
@@ -13,33 +23,24 @@ type Prize = {
   place: string;
   plaque: string;
   pillar: string;
-  width: number;
-  podiumWidth: number;
   /** Phones only: pillar box width / height. Lower = taller visible pillar. */
   pillarAr: number;
   alt: string;
 };
 
-const SPECIAL_PLAQUE = specialPlaque;
-const CONSOLATION_PLAQUE = consolationPlaque;
-
 // Top row: 1st, 2nd
 const MAIN_PRIZES: Prize[] = [
   {
     place: "1ST",
-    plaque: "/plaque-1.png",
-    pillar: "/pillar-1.webp",
-    width: 150,
-    podiumWidth: 300,
+    plaque: plaque1,
+    pillar: pillar1,
     pillarAr: 0.45,
     alt: "1st Place Plaque — ₹30,000",
   },
   {
     place: "2ND",
-    plaque: "/plaque-2.webp",
-    pillar: "/pillar-2.webp",
-    width: 120,
-    podiumWidth: 260,
+    plaque: plaque2,
+    pillar: pillar2,
     pillarAr: 0.45,
     alt: "2nd Place Plaque — ₹20,000",
   },
@@ -49,28 +50,22 @@ const MAIN_PRIZES: Prize[] = [
 const OTHER_PRIZES: Prize[] = [
   {
     place: "Special Recognition (Award 1)",
-    plaque: SPECIAL_PLAQUE,
-    pillar: "/pillar-3.webp",
-    width: 90,
-    podiumWidth: 190,
+    plaque: plaque3,
+    pillar: pillar3,
     pillarAr: 0.49,
     alt: "Special Recognition Award 1 Plaque — ₹10,000",
   },
   {
     place: "Special Recognition (Award 2)",
-    plaque: SPECIAL_PLAQUE,
-    pillar: "/pillar-3.webp",
-    width: 90,
-    podiumWidth: 190,
+    plaque: plaque3,
+    pillar: pillar3,
     pillarAr: 0.49,
     alt: "Special Recognition Award 2 Plaque — ₹10,000",
   },
   {
     place: "Consolation Prize",
-    plaque: CONSOLATION_PLAQUE,
-    pillar: "/pillar-5.png",
-    width: 90,
-    podiumWidth: 190,
+    plaque: plaque4,
+    pillar: pillar4,
     pillarAr: 0.49,
     alt: "Consolation Prize Plaque — ₹5,000",
   },
@@ -93,39 +88,50 @@ export function PrizeColumn({
   const bobDelay = `${index * 0.4}s`;
   const glowColor = getPrizeGlowColor(prize.place);
 
-  const mobileWidth = isSmall ? "100%" : "96%";
-
   return (
     <>
-      {/* Plaque Container: 96% width */}
-      <div className="relative w-full max-w-[11rem] sm:max-w-none" style={{ width: mobileWidth, transformOrigin: "center bottom" }}>
+      {/* Plaque */}
+      <div
+        className="relative"
+        style={{ width: isSmall ? "100%" : "96%", transformOrigin: "center bottom" }}
+      >
         <div className="mc-bob" style={{ "--bob-delay": bobDelay } as React.CSSProperties}>
-          <img src={prize.plaque} alt={prize.alt} className="relative h-auto w-full object-contain" />
+          <img
+            src={prize.plaque}
+            alt={prize.alt}
+            className="relative h-auto w-full object-contain"
+          />
         </div>
       </div>
 
-      {/* Crystal Container: 28% width, 3% mt */}
+      {/* Crystal */}
       <div
         className="relative z-10"
-        style={{ width: isSmall ? "24%" : "28%", marginTop: "3%", transformOrigin: "center bottom" }}
+        style={{
+          width: isSmall ? "24%" : "28%",
+          marginTop: "3%",
+          transformOrigin: "center bottom",
+        }}
       >
         <div
           className="pointer-events-none absolute -inset-[60%]"
           style={{ background: `radial-gradient(closest-side, ${glowColor}, transparent 70%)` }}
         />
         <div className="mc-bob relative" style={{ "--bob-delay": bobDelay } as React.CSSProperties}>
-          <img src="/crystal.webp" alt="" className="block h-auto w-full mc-crystal" />
+          <img src={crystal} alt="" className="block h-auto w-full mc-crystal" />
         </div>
       </div>
 
-      {/* Pillar Container: 59% width, 2% mt, hidden overflow for rising animation */}
+      {/* Pillar: hidden overflow for rising animation */}
       <div
         className="relative z-10 overflow-hidden [aspect-ratio:var(--pillar-ar,0.5)] lg:[aspect-ratio:auto]"
-        style={{
-          width: isSmall ? "52%" : "59%",
-          marginTop: "2%",
-          "--pillar-ar": prize.pillarAr,
-        } as React.CSSProperties}
+        style={
+          {
+            width: isSmall ? "52%" : "59%",
+            marginTop: "2%",
+            "--pillar-ar": prize.pillarAr,
+          } as React.CSSProperties
+        }
       >
         <div
           className="absolute inset-0 mc-pillar-rise lg:static lg:inset-auto lg:h-full lg:w-full"
@@ -139,9 +145,9 @@ export function PrizeColumn({
         </div>
       </div>
 
-      {/* Podium Container: 100% width, -10% mt */}
+      {/* Podium */}
       <div className="relative z-20 w-full" style={{ marginTop: isSmall ? "-8%" : "-10%" }}>
-        <img src="/podium.webp" alt="" loading="lazy" className="h-auto w-full" />
+        <img src={podium} alt="" loading="lazy" className="h-auto w-full" />
       </div>
     </>
   );
@@ -161,7 +167,7 @@ export function PrizesSection() {
         aria-hidden="true"
         className="absolute inset-0 -z-10"
         style={{
-          backgroundImage: "url('/sculk_still.png')",
+          backgroundImage: `url('${sculk}')`,
           backgroundSize: "32px 32px",
           backgroundRepeat: "repeat",
           imageRendering: "pixelated",
@@ -180,7 +186,6 @@ export function PrizesSection() {
 
         {/* Below lg: 12 columns (top row 6+6, bottom row 4+4+4). lg: 5 columns, single row. */}
         <div className="mt-6 grid w-full grid-cols-12 items-end gap-x-2 gap-y-8 sm:mt-12 sm:gap-x-4 sm:gap-y-10 lg:grid-cols-5 lg:gap-x-3">
-          {/* 1st */}
           <Reveal
             key={firstPrize.place}
             delay={0.0}
@@ -189,7 +194,6 @@ export function PrizesSection() {
             <PrizeColumn prize={firstPrize} index={0} isSmall={false} />
           </Reveal>
 
-          {/* 2nd */}
           <Reveal
             key={secondPrize.place}
             delay={0.1}
@@ -198,7 +202,6 @@ export function PrizesSection() {
             <PrizeColumn prize={secondPrize} index={1} isSmall={false} />
           </Reveal>
 
-          {/* Special Recognition 1, Special Recognition 2, Consolation */}
           {OTHER_PRIZES.map((prize, i) => (
             <Reveal
               key={prize.place}

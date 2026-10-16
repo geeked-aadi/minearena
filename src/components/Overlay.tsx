@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import mineArenaLogo from "@/assets/mine-arena-logo.PNG";
+import mineArenaLogo from "@/assets/navbar-logo.PNG";
 
 const REGISTRATION_URL =
   "https://minearena-1-0.devpost.com/?preview_token=E6ZpH5CiiYbb1%2BpTW%2F6ykttDuJCuTv%2BdWtVjaduSeds%3D";

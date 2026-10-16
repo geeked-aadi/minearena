@@ -15,6 +15,7 @@ import tracksBg from "@/assets/tracks_bg.png";
 import tracksLeft from "@/assets/tracks_left.png";
 import tracksRight from "@/assets/tracks_right.png";
 import deepslateIronOre from "@/assets/deepslate-iron-ore.png";
+import netheriteOre from "@/assets/netherite-ore.png";
 import timelineBg from "@/assets/timeline_bg.png";
 import timelineLeft from "@/assets/timeline_left.png";
 import timelineRight from "@/assets/timeline_right.png";
@@ -80,6 +81,12 @@ const TRACKS = [
     oreIcon: deepslateIronOre,
     barColor: "#36e6b8",
     desc: "Turn streaming data into reliable pipelines and real-time insights.",
+  },
+  {
+    title: "ClimateTech And Carbon Intelligence",
+    oreIcon: netheriteOre,
+    barColor: "#7ef9a5",
+    desc: "Build climate resilience solutions, carbon tracking systems, and sustainability intelligence for a greener future.",
   },
 ];
 
@@ -408,7 +415,6 @@ function Index() {
       <SectionSeam />
 
       {/* ===================== TRACKS SECTION ===================== */}
-
       <section
         id="tracks"
         className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 sm:px-6 md:py-24"
@@ -448,106 +454,94 @@ function Index() {
 
           {/* Hanging Minecraft Oak Signs */}
           <div className="grid w-full grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-10">
-            {TRACKS.map((t, idx) => {
-              const isCenterCard = t.title === "DATA ENGINEERING & REAL-TIME ANALYTICS";
-
-              return (
-                <Reveal
-                  key={t.title}
-                  delay={idx * 0.1}
-                  className={
-                    isCenterCard
-                      ? "col-span-1 flex w-full justify-center sm:col-span-2"
-                      : "flex w-full justify-center sm:block"
-                  }
-                >
-                  {/* Sign card container: standardized width matching columns on all screen sizes */}
+            {TRACKS.map((t, idx) => (
+              <Reveal
+                key={t.title}
+                delay={idx * 0.1}
+                className="flex w-full justify-center sm:block"
+              >
+                {/* Sign card container */}
+                <div className="relative w-[85%] pt-2.5 sm:w-full sm:pt-3">
+                  {/* Oak Log Header Beam (stays still) */}
                   <div
-                    className={`relative w-[85%] pt-2.5 sm:pt-3 ${
-                      isCenterCard ? "sm:w-[calc(50%-0.75rem)]" : "sm:w-full"
-                    }`}
-                  >
-                    {/* Oak Log Header Beam (stays still) */}
-                    <div
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -left-2.5 -right-2.5 top-0 h-2.5 sm:-left-3 sm:-right-3 sm:h-3"
-                      style={{
-                        backgroundImage: "url('/oak_log.png')",
-                        backgroundSize: "16px 16px",
-                        imageRendering: "pixelated",
-                        boxShadow:
-                          "inset 0 2px 0 rgba(255,255,255,0.16), inset 0 -2px 0 rgba(0,0,0,0.4)",
-                      }}
-                    />
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -left-2.5 -right-2.5 top-0 h-2.5 sm:-left-3 sm:-right-3 sm:h-3"
+                    style={{
+                      backgroundImage: "url('/oak_log.png')",
+                      backgroundSize: "16px 16px",
+                      imageRendering: "pixelated",
+                      boxShadow:
+                        "inset 0 2px 0 rgba(255,255,255,0.16), inset 0 -2px 0 rgba(0,0,0,0.4)",
+                    }}
+                  />
 
-                    {/* Swinging part: chains + signboard pivot from the beam (hover / focus / tap) */}
-                    <div className="mc-swing flex h-full flex-col outline-none" tabIndex={0}>
-                      {/* Dual Iron Chains */}
-                      <div className="mx-auto flex w-[64%] justify-between sm:w-1/2">
-                        {[0, 1].map((n) => (
-                          <div
-                            key={n}
-                            aria-hidden="true"
-                            className="h-3 w-1 sm:h-5 sm:w-1.5"
-                            style={{
-                              backgroundColor: "#6e6e6e",
-                              borderLeft: "2px solid #8f8f8f",
-                              borderRight: "2px solid #2e2e2e",
-                              boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.45)",
-                            }}
-                          />
-                        ))}
-                      </div>
-
-                      {/* Signboard with equal heights & aligned content */}
-                      <div
-                        className="flex w-full flex-1 flex-col gap-2 p-2.5 text-left sm:gap-2.5 sm:p-4"
-                        style={{
-                          backgroundImage:
-                            "linear-gradient(rgba(233,207,157,0.65), rgba(233,207,157,0.65)), url('/oak_sign.png')",
-                          backgroundSize: "auto, 48px 48px",
-                          imageRendering: "pixelated",
-                          border: "3px solid #4b3418",
-                          boxShadow:
-                            "inset 0 3px 0 rgba(255,255,255,0.18), inset 0 -3px 0 rgba(0,0,0,0.28), 0 10px 24px rgba(0,0,0,0.45)",
-                        }}
-                      >
-                        {/* Title Header with Ore Icon: aligned min-height across single and multi-line titles */}
-                        <div className="flex min-h-[2.2rem] items-center gap-2 sm:min-h-[3.25rem] sm:gap-3">
-                          <img
-                            src={t.oreIcon}
-                            alt=""
-                            className="h-4 w-4 shrink-0 sm:h-7 sm:w-7"
-                            style={{ imageRendering: "pixelated" }}
-                          />
-                          <h3
-                            className="pixel-heading text-[8px] uppercase leading-[1.5] sm:text-base sm:leading-snug"
-                            style={{
-                              color: "#241608",
-                              textShadow: "1px 1px 0 rgba(255,255,255,0.3)",
-                            }}
-                          >
-                            {t.title}
-                          </h3>
-                        </div>
-
-                        {/* Divider Bar */}
+                  {/* Swinging part: chains + signboard pivot from the beam (hover / focus / tap) */}
+                  <div className="mc-swing flex h-full flex-col outline-none" tabIndex={0}>
+                    {/* Dual Iron Chains */}
+                    <div className="mx-auto flex w-[64%] justify-between sm:w-1/2">
+                      {[0, 1].map((n) => (
                         <div
+                          key={n}
                           aria-hidden="true"
-                          className="h-[2px] w-full shrink-0"
-                          style={{ backgroundColor: t.barColor, opacity: 0.8 }}
+                          className="h-3 w-1 sm:h-5 sm:w-1.5"
+                          style={{
+                            backgroundColor: "#6e6e6e",
+                            borderLeft: "2px solid #8f8f8f",
+                            borderRight: "2px solid #2e2e2e",
+                            boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.45)",
+                          }}
                         />
+                      ))}
+                    </div>
 
-                        {/* Description */}
-                        <p className="font-terminal flex-1 text-base leading-snug text-[#241608] sm:text-2xl sm:leading-relaxed">
-                          {t.desc}
-                        </p>
+                    {/* Signboard with equal heights & aligned content */}
+                    <div
+                      className="flex w-full flex-1 flex-col gap-2 p-2.5 text-left sm:gap-2.5 sm:p-4"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(rgba(233,207,157,0.65), rgba(233,207,157,0.65)), url('/oak_sign.png')",
+                        backgroundSize: "auto, 48px 48px",
+                        imageRendering: "pixelated",
+                        border: "3px solid #4b3418",
+                        boxShadow:
+                          "inset 0 3px 0 rgba(255,255,255,0.18), inset 0 -3px 0 rgba(0,0,0,0.28), 0 10px 24px rgba(0,0,0,0.45)",
+                      }}
+                    >
+                      {/* Title Header with Ore Icon */}
+                      <div className="flex min-h-[2.2rem] items-center gap-2 sm:min-h-[3.25rem] sm:gap-3">
+                        <img
+                          src={t.oreIcon}
+                          alt=""
+                          className="h-4 w-4 shrink-0 sm:h-7 sm:w-7"
+                          style={{ imageRendering: "pixelated" }}
+                        />
+                        <h3
+                          className="pixel-heading text-[8px] uppercase leading-[1.5] sm:text-base sm:leading-snug"
+                          style={{
+                            color: "#241608",
+                            textShadow: "1px 1px 0 rgba(255,255,255,0.3)",
+                          }}
+                        >
+                          {t.title}
+                        </h3>
                       </div>
+
+                      {/* Divider Bar */}
+                      <div
+                        aria-hidden="true"
+                        className="h-[2px] w-full shrink-0"
+                        style={{ backgroundColor: t.barColor, opacity: 0.8 }}
+                      />
+
+                      {/* Description */}
+                      <p className="font-terminal flex-1 text-base leading-snug text-[#241608] sm:text-2xl sm:leading-relaxed">
+                        {t.desc}
+                      </p>
                     </div>
                   </div>
-                </Reveal>
-              );
-            })}
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -976,7 +970,7 @@ function Index() {
                 Davangere, Karnataka 577004
               </span>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=BIET%20Davangere%2C%20Shamanur%20Road%2C%20Karnataka%20577004"
+                href="https://maps.app.goo.gl/wfuG4jpV2ipWKHoA8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-terminal text-xl -my-1.5 mt-1 inline-block py-1.5 text-white/70 underline underline-offset-4 transition-colors hover:text-white"
@@ -1059,13 +1053,22 @@ function Index() {
                   codecommit@bietdvg.edu
                 </a>
                 <a
-                  href="tel:+919886634901"
+                  href="tel:+919448667576"
                   className="group -my-1.5 inline-block py-1.5 text-white/70 hover:text-white"
                 >
                   <span className="block text-sm text-white/45 group-hover:text-white/70">
-                    Aditya Aradhya
+                    V Chaitanya Chowdari
                   </span>
-                  +91 98866 34901
+                  +91 94486 67576
+                </a>
+                <a
+                  href="tel:+918277257286"
+                  className="group -my-1.5 inline-block py-1.5 text-white/70 hover:text-white"
+                >
+                  <span className="block text-sm text-white/45 group-hover:text-white/70">
+                    Prajwal P Raikar
+                  </span>
+                  +91 82772 57286
                 </a>
               </div>
             </div>
@@ -1109,7 +1112,7 @@ function Index() {
 
         <div className="relative z-10 w-full max-w-6xl border-t border-white/10 pt-6">
           <p className="text-center font-terminal text-lg uppercase tracking-[0.15em] text-white/70">
-            © 2026 Code Commit · Bapuji Institute of Engineering and Technology
+            © 2026 Code Commit · Designed & Developed by Code Commit Team
           </p>
         </div>
       </footer>
