@@ -5,13 +5,14 @@ import rakuten from "@/assets/rakuten.png";
 import cleo from "@/assets/cleo.png";
 import prolim from "@/assets/prolim.png";
 import namana from "@/assets/namana.jpeg";
-import logicBrackets from "@/assets/logicbrackets.jpeg";
+import logicBrackets from "@/assets/logic-brackets.png";
 import elevenLabs from "@/assets/elevenlabs.jpeg";
-import devpost from "@/assets/devpost.jpg";
 import inube from "@/assets/inube.jpg";
 import { Reveal } from "./Reveal";
 
 type Sponsor = { name: string; url: string; logo: string };
+
+const FALLBACK_ICON = "/item-diamond.png";
 
 const ITEM_ICONS = [
   "/item-diamond.png",
@@ -24,14 +25,13 @@ const ITEM_ICONS = [
 ] as const;
 
 const SPONSORS: Sponsor[] = [
-  { name: "Rakuten", url: "https://www.rakuten.com", logo: rakuten },
   { name: "Cleo", url: "https://www.cleo.com", logo: cleo },
-  { name: "Prolim", url: "https://www.prolim.com", logo: prolim },
   { name: "Namana", url: "https://namana.co.in", logo: namana },
+  { name: "Inube", url: "https://www.inube.com", logo: inube },
+  { name: "Rakuten", url: "https://www.rakuten.com", logo: rakuten },
+  { name: "Prolim", url: "https://www.prolim.com", logo: prolim },
   { name: "Logic Brackets", url: "https://logicbrackets.com", logo: logicBrackets },
   { name: "Eleven Labs", url: "https://elevenlabs.io", logo: elevenLabs },
-  { name: "Inube", url: "https://www.inube.com", logo: inube },
-  { name: "Devpost", url: "https://devpost.com", logo: devpost },
 ];
 
 function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
@@ -40,15 +40,27 @@ function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
   const isLink = sponsor.url && sponsor.url !== "#";
 
   return (
-    <Reveal delay={index * 0.12}>
+    <Reveal
+      delay={index * 0.12}
+      className="min-w-0 md:last:col-span-2 md:last:mx-auto md:last:w-[calc(50%-0.75rem)]"
+    >
       {/* MOBILE SIZE KNOB */}
-      <div className="mx-auto w-[66%] [zoom:0.6] md:w-auto md:[zoom:1]">
+      <div className="mx-auto w-[66%] [zoom:0.6] md:w-full md:[zoom:1]">
         {/* Minecraft advancement-window panel */}
-        <div className="mc-gui mc-notch p-3">
+        <div className="mc-gui mc-notch box-border w-full p-3">
           {/* Title bar: item icon + inset label + status lamp */}
           <div className="flex items-center gap-3">
             <span className="mc-gui mc-notch flex h-11 w-11 shrink-0 items-center justify-center bg-[#c6c6c6] p-1">
-              <img src={itemIcon} alt="" className="h-7 w-7 object-contain" style={{ imageRendering: "pixelated" }} />
+              <img
+                src={itemIcon}
+                alt=""
+                className="h-7 w-7 object-contain"
+                style={{ imageRendering: "pixelated" }}
+                onError={(e) => {
+                  const img = e.currentTarget;
+                  if (!img.src.endsWith(FALLBACK_ICON)) img.src = FALLBACK_ICON;
+                }}
+              />
             </span>
             <div className="mc-slot flex h-8 min-w-0 flex-1 items-center justify-center px-3">
               <h3 className="pixel-heading truncate text-xs uppercase" style={{ color: "oklch(0.85 0.02 120)" }}>
@@ -68,10 +80,18 @@ function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
                 target={isLink ? "_blank" : undefined}
                 rel={isLink ? "noreferrer noopener" : undefined}
                 aria-label={sponsor.name}
-                className="mc-gold-frame mc-notch mc-shine block w-full max-w-xs transition-transform hover:-translate-y-1"
+                className="mc-gold-frame mc-notch mc-shine box-border block w-full max-w-xs transition-transform hover:-translate-y-1"
               >
-                <span className="m-2 flex aspect-[2.6/1] items-center justify-center bg-white" style={{ boxShadow: "inset 0 0 0 2px rgba(0,0,0,0.85)" }}>
-                  <img src={sponsor.logo} alt={sponsor.name} className="h-12 w-auto object-contain" />
+                {/* No w-full here: with m-2 it overflows the frame and hides the right gold border */}
+                <span
+                  className="m-2 flex aspect-[2.6/1] items-center justify-center bg-white p-3"
+                  style={{ boxShadow: "inset 0 0 0 2px rgba(0,0,0,0.85)" }}
+                >
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="max-h-20 w-full max-w-[80%] object-contain"
+                  />
                 </span>
               </a>
             </div>
@@ -105,7 +125,7 @@ export function SponsorsSection() {
         <img src={sponsorBgRight} alt="" className="pointer-events-none absolute bottom-0 right-0 h-auto w-[46%] max-w-[35rem] select-none object-right opacity-95 sm:w-[40%] lg:w-[34%]" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full min-w-0 max-w-5xl text-center">
+      <div className="relative z-10 mx-auto w-full min-w-0 max-w-5xl px-1 text-center">
         {/* Glow halo behind advancement window */}
         <div
           aria-hidden="true"
@@ -124,7 +144,7 @@ export function SponsorsSection() {
           </h2>
         </Reveal>
 
-        <div className="grid items-start gap-3 md:grid-cols-2 md:gap-6 lg:gap-8">
+        <div className="grid items-start gap-3 md:grid-cols-[repeat(2,minmax(0,1fr))] md:gap-6 lg:gap-8">
           {SPONSORS.map((sponsor, i) => (
             <SponsorCard key={sponsor.name} sponsor={sponsor} index={i} />
           ))}

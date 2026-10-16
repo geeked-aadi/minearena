@@ -94,10 +94,10 @@ const TIMELINE = [
   {
     date: "October 15, 2026",
     title: "Registrations Open",
-    desc: "Registration and first-round ideation submissions begin.",
+    desc: "Registration and first-round ideation submissions begins for the tracks provided.",
   },
   {
-    date: "October 30, 2026",
+    date: "October 31, 2026",
     title: "Idea Submission Deadline",
     desc: "First-round ideation submissions close. Final call for team entries.",
   },
@@ -146,12 +146,9 @@ const FAQ_GROUPS = [
       },
       {
         q: "Can I have team members from other colleges?",
-        a: "Absolutely — cross-college teams are allowed, as long as every member is a current college student.",
+        a: "No — cross-college teams are  not allowed, Every member must be  college student",
       },
-      {
-        q: "What if I don't know how to code?",
-        a: "No problem — design, hardware and idea tracks exist, and mentors will help you level up.",
-      },
+      
     ],
   },
   {
@@ -159,7 +156,7 @@ const FAQ_GROUPS = [
     items: [
       {
         q: "How can I apply?",
-        a: "Registrations open Oct 15, 2026 — fill the form and submit your ideation entry before Oct 30.",
+        a: "Registrations open Oct 15, 2026 — fill the form and submit your ideation entry before Oct 31.",
       },
       {
         q: "How much will it cost?",
@@ -176,7 +173,7 @@ const FAQ_GROUPS = [
     items: [
       {
         q: "What are the problem statements?",
-        a: "Tracks across IoT, AI/GenAI, Blockchain and Open Innovation — problem statements and guidelines revealed at the opening ceremony.",
+        a: "Problem statements and guidelines revealed at the opening ceremony.",
       },
       {
         q: "What can I build?",
