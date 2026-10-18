@@ -21,6 +21,12 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Unused / archival asset folders
+/InnoHacks 4.0_files/
+/mc-assets/
+/mc-gifs/
+/scratch/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
