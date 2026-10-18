@@ -184,7 +184,7 @@ const FAQ_GROUPS = [
       },
       {
         q: "Can I have team members from other colleges?",
-        a: "No — cross-college teams are  not allowed, Every member must be  college student",
+        a: " No, inter-college teams are not allowed. However, inter-branch teams are allowed, provided all team members must belong to the same college.",
       },
       
     ],
