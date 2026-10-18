@@ -1060,10 +1060,10 @@ function Index() {
               </h3>
               <div className="flex flex-col gap-2.5 font-terminal text-xl">
                 <a
-                  href="mailto:codecommit@bietdvg.edu"
+                  href="mailto:gdg@bietdvg.edu"
                   className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white"
                 >
-                  codecommit@bietdvg.edu
+                  gdg@bietdvg.edu
                 </a>
                 <a
                   href="tel:+919448667576"
