@@ -23,7 +23,7 @@ export function buildFrameUrl(frameIndex: number): string {
 
   // <PATTERN>: Select or modify the pattern here:
   // Option 1: 3-digit hyphen format (current assets in repo)
-  const fileName = `frame-${String(safeIndex).padStart(3, "0")}.jpg`;
+  const fileName = `frames_${String(safeIndex).padStart(4, "0")}.jpg`;
 
   // Option 2: 4-digit underscore format (uncomment if using frame_0001.jpg ... frame_0508.jpg)
   // const fileName = `frame_${String(safeIndex).padStart(4, "0")}.jpg`;

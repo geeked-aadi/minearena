@@ -440,12 +440,12 @@ function Index() {
           <img
             src={tracksLeft}
             alt=""
-            className="pointer-events-none absolute inset-y-0 left-0 h-full w-[34vw] select-none object-cover object-left sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.46))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
+            className="pointer-events-none absolute inset-y-0 left-0 h-full w-auto select-none object-cover object-left sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.46))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
           />
           <img
             src={tracksRight}
             alt=""
-            className="pointer-events-none absolute inset-y-0 right-0 h-full w-[34vw] select-none object-cover object-right sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
+            className="pointer-events-none absolute inset-y-0 right-0 h-full w-auto select-none object-cover object-right sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
           />
         </div>
 
@@ -571,7 +571,7 @@ function Index() {
           <img
             src={timelineLeft}
             alt=""
-            className="pointer-events-none absolute bottom-0 left-0 h-full w-auto max-w-[26vw] select-none object-cover object-left sm:h-[min(100%,calc(38vw/0.64))] sm:max-w-none lg:h-full lg:max-w-[46vw]"
+            className="pointer-events-none absolute bottom-0 left-0 h-full w-auto select-none object-cover object-left sm:h-[min(100%,calc(38vw/0.64))] lg:h-full lg:max-w-[46vw]"
           />
           {/* RIGHT flank */}
           <img
@@ -768,12 +768,12 @@ function Index() {
           <img
             src={prevLeft}
             alt=""
-            className="pointer-events-none absolute inset-y-0 left-0 h-full w-[26vw] select-none object-cover object-left sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
+            className="pointer-events-none absolute inset-y-0 left-0 h-full w-auto select-none object-cover object-left sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-[26vw] lg:h-full lg:max-w-[46vw]"
           />
           <img
             src={prevRight}
             alt=""
-            className="pointer-events-none absolute inset-y-0 right-0 h-full w-[26vw] select-none object-cover object-right sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-none lg:h-full lg:max-w-[46vw]"
+            className="pointer-events-none absolute inset-y-0 right-0 h-full w-auto select-none object-cover object-right sm:inset-y-auto sm:bottom-0 sm:h-[min(100%,calc(38vw/0.5))] sm:w-auto sm:max-w-[26vw] lg:h-full lg:max-w-[46vw]"
           />
         </div>
 
@@ -848,12 +848,12 @@ function Index() {
           <img
             src={faqLeft}
             alt=""
-            className="pointer-events-none absolute bottom-0 left-0 h-[min(100%,calc(40vw/0.64))] w-auto max-w-none select-none object-cover object-left sm:h-[min(100%,calc(38vw/0.64))] lg:h-full lg:max-w-[46vw]"
+            className="pointer-events-none absolute bottom-0 left-0 h-full w-auto select-none object-cover object-left sm:h-[min(100%,calc(38vw/0.64))] lg:h-full lg:max-w-[46vw]"
           />
           <img
             src={faqRight}
             alt=""
-            className="pointer-events-none absolute bottom-0 right-0 h-[min(100%,calc(40vw/0.82))] w-auto max-w-none select-none object-cover object-right sm:h-[min(100%,calc(38vw/0.82))] lg:h-full lg:max-w-[46vw]"
+            className="pointer-events-none absolute bottom-0 right-0 h-full w-auto select-none object-cover object-right sm:h-[min(100%,calc(38vw/0.82))] lg:h-full lg:max-w-[46vw]"
           />
         </div>
 
@@ -962,11 +962,11 @@ function Index() {
         />
 
         <div className="relative z-10 grid w-full max-w-6xl gap-12 md:grid-cols-3 md:items-start md:gap-8">
-          <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-left">
+          <div className="flex w-full min-w-0 flex-col items-center gap-4 text-center md:items-start md:text-left">
             <h2 className="pixel-heading text-2xl text-primary text-glow-green sm:text-3xl">
               MINEARENA 1.0
             </h2>
-            <address className="flex flex-col gap-1 not-italic mt-2">
+            <address className="mt-2 flex flex-col gap-1 not-italic">
               <span className="font-terminal text-xl text-white/70">
                 Bapuji Institute of Engineering and Technology
               </span>
@@ -976,14 +976,14 @@ function Index() {
               <span className="font-terminal text-xl text-white/70">
                 Davangere, Karnataka 577004
               </span>
-
             </address>
-            <div className="mt-4">
+
+            {/* Map: fluid width, fixed aspect ratio, never wider than its column */}
+            <div className="mt-4 w-full max-w-[600px] overflow-hidden border-[3px] border-[#3a2615]">
               <iframe
+                title="MineArena venue: BIET Davangere"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61810.79661930812!2d75.88058242782064!3d14.474650640980292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bba256183723769%3A0xc0d54a9de2b6f57c!2sBIET%20Davangere!5e0!3m2!1sen!2sin!4v1792172093468!5m2!1sen!2sin"
-                width="600"
-                height="450"
-                style={{border:0}}
+                className="block aspect-[4/3] w-full border-0"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"
@@ -991,10 +991,10 @@ function Index() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex min-w-0 flex-col items-center gap-6">
             {/* Advancement Banner */}
             <div
-              className="relative w-full max-w-[420px] select-none border-[3px] border-[#3a2615] bg-[#1a1206] p-4 flex items-center gap-4"
+              className="relative flex w-full max-w-[420px] select-none items-center gap-4 border-[3px] border-[#3a2615] bg-[#1a1206] p-4"
               style={{
                 boxShadow:
                   "inset 0 0 0 2px rgba(255,255,255,0.1), inset 0 0 0 4px #120b03, 0 10px 24px rgba(0,0,0,0.5)",
@@ -1029,6 +1029,7 @@ function Index() {
                   href="https://www.instagram.com/codecommit_biet"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Instagram"
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-all hover:-translate-y-0.5 hover:border-[#e4405f] hover:bg-white/10 hover:text-[#e4405f]"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-[18px] w-[18px]">
@@ -1041,6 +1042,7 @@ function Index() {
                   href="https://www.linkedin.com/company/bietcodecommit/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="LinkedIn"
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-all hover:-translate-y-0.5 hover:border-[#4da3e8] hover:bg-white/10 hover:text-[#4da3e8]"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-[18px] w-[18px]">
@@ -1051,7 +1053,7 @@ function Index() {
             </ul>
           </div>
 
-          <div className="flex flex-col items-center gap-8 text-center md:items-end md:text-right">
+          <div className="flex min-w-0 flex-col items-center gap-8 text-center md:items-end md:text-right">
             <div className="flex flex-col items-center gap-3 md:items-end">
               <h3 className="pixel-heading text-sm uppercase tracking-[0.2em] text-white">
                 Contact Us
