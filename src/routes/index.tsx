@@ -1060,10 +1060,10 @@ function Index() {
               </h3>
               <div className="flex flex-col gap-2.5 font-terminal text-xl">
                 <a
-                  href="mailto:gdg@bietdvg.edu"
+                  href="mailto:codecommit@bietdvg.edu"
                   className="-my-1.5 inline-block py-1.5 text-white/70 hover:text-white"
                 >
-                  gdg@bietdvg.edu
+                  codecommit@bietdvg.edu
                 </a>
                 <a
                   href="tel:+919448667576"
@@ -1127,19 +1127,7 @@ function Index() {
           <p className="text-center font-terminal text-lg uppercase tracking-[0.15em] text-white/70">
             © 2026 Code Commit · Designed & Developed by Code Commit Team
           </p>
-          <div className="mt-3 flex justify-center">
-            <a
-              href="https://github.com/geeked-aadi/minearena"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub repository"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-all hover:-translate-y-0.5 hover:border-[#f5f5f5] hover:bg-white/10 hover:text-white"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-[18px] w-[18px]" aria-hidden="true">
-                <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.59-4.04-1.59-.54-1.38-1.32-1.75-1.32-1.75-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.78 1.29 3.45.99.11-.77.41-1.29.75-1.59-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.83.58A12 12 0 0 0 12 .5Z" />
-              </svg>
-            </a>
-          </div>
+
         </div>
       </footer>
     </div>
