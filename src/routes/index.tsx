@@ -50,6 +50,7 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
+const REGISTER_GUIDE_URL = "https://youtu.be/VI1WYXkr9eY?si=Qw0zvICF2B1WmSO_";
 
 const SOCIAL_LINKS = [
   {
@@ -132,7 +133,21 @@ const TIMELINE = [
   {
     date: "October 15, 2026",
     title: "Registrations Open",
-    desc: "Registration and first-round ideation submissions begins for the tracks provided.",
+    desc: (
+      <>
+        Registration and first-round ideation submissions begin for the tracks provided. Not sure
+        how to apply? Our coordinator has uploaded a video guide on how to register —{" "}
+        <a
+          href="https://youtu.be/VI1WYXkr9eY?si=Qw0zvICF2B1WmSO_"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="font-semibold underline underline-offset-2 hover:opacity-80"
+        >
+          click here
+        </a>
+        .
+      </>
+    ),
   },
   {
     date: "October 31, 2026",
@@ -160,7 +175,6 @@ const TIMELINE = [
     desc: "Final pitches to judges, evaluation, and prize ceremony.",
   },
 ];
-
 const RULES = [
   "Teams of 2–4 players only.",
   "All code must be written during the 24-hour event window.",
@@ -184,9 +198,8 @@ const FAQ_GROUPS = [
       },
       {
         q: "Can I have team members from other colleges?",
-        a: " No, inter-college teams are not allowed. However, inter-branch teams are allowed, provided all team members must belong to the same college.",
+        a: "No, inter-college teams are not allowed. However, inter-branch teams are allowed, provided all team members must belong to the same college.",
       },
-      
     ],
   },
   {
@@ -195,6 +208,23 @@ const FAQ_GROUPS = [
       {
         q: "How can I apply?",
         a: "Registrations open Oct 15, 2026 — fill the form and submit your ideation entry before Oct 31.",
+      },
+      {
+        q: "How can I register?",
+        a: (
+          <>
+            Our coordinator has uploaded a video guide on how to register. Kindly check it out —{" "}
+            <a
+              href="https://youtu.be/VI1WYXkr9eY?si=Qw0zvICF2B1WmSO_"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="font-semibold underline underline-offset-2 hover:opacity-80"
+            >
+              click here
+            </a>
+            .
+          </>
+        ),
       },
       {
         q: "How much will it cost?",
@@ -317,49 +347,64 @@ function Index() {
                     </p>
                   </div>
 
-                  <div className="mt-4 rounded-none border-2 border-[#3a2a17] bg-[#e9e0ca]/90 p-1.5 shadow-[inset_0_0_0_2px_rgba(255,255,255,0.2)] sm:mt-6 sm:p-2">
-                    <div className="grid grid-cols-3 text-center">
-                      <div className="border-r-2 border-[#3a2a17]/40 px-1 py-1.5 sm:py-2">
-                        <Clock className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
-                        <span className="pixel-heading mt-1 block text-[12px] leading-none text-[#3a2a17] sm:text-[28px]">
-                          24
-                        </span>
-                        <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">
-                          HRS
-                        </span>
-                        <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">
-                          Hacking
-                        </span>
-                      </div>
-                      <div className="border-r-2 border-[#3a2a17]/40 px-1 py-1.5 sm:py-2">
-                        <Users className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
-                        <span className="pixel-heading mt-1 block text-[12px] leading-none text-[#3a2a17] sm:text-[28px]">
-                          50
-                        </span>
-                        <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">
-                          TOP
-                        </span>
-                        <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">
-                          Teams
-                        </span>
-                      </div>
-                      <div className="px-1 py-1.5 sm:py-2">
-                        <Trophy className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
-                        <span className="pixel-heading mt-1 block text-[10px] leading-none text-[#3a2a17] sm:text-[26px]">
-                          ₹75K
-                        </span>
-                        <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">
-                          POOL
-                        </span>
-                        <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">
-                          Prize
-                        </span>
+                  <div>
+                    <div className="mt-4 rounded-none border-2 border-[#3a2a17] bg-[#e9e0ca]/90 p-1.5 shadow-[inset_0_0_0_2px_rgba(255,255,255,0.2)] sm:mt-6 sm:p-2">
+                      <div className="grid grid-cols-3 text-center">
+                        <div className="border-r-2 border-[#3a2a17]/40 px-1 py-1.5 sm:py-2">
+                          <Clock className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
+                          <span className="pixel-heading mt-1 block text-[12px] leading-none text-[#3a2a17] sm:text-[28px]">
+                            24
+                          </span>
+                          <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">
+                            HRS
+                          </span>
+                          <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">
+                            Hacking
+                          </span>
+                        </div>
+                        <div className="border-r-2 border-[#3a2a17]/40 px-1 py-1.5 sm:py-2">
+                          <Users className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
+                          <span className="pixel-heading mt-1 block text-[12px] leading-none text-[#3a2a17] sm:text-[28px]">
+                            50
+                          </span>
+                          <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">
+                            TOP
+                          </span>
+                          <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">
+                            Teams
+                          </span>
+                        </div>
+                        <div className="px-1 py-1.5 sm:py-2">
+                          <Trophy className="mx-auto h-4 w-4 text-[#3a2a17] sm:h-7 sm:w-7" />
+                          <span className="pixel-heading mt-1 block text-[10px] leading-none text-[#3a2a17] sm:text-[26px]">
+                            ₹75K
+                          </span>
+                          <span className="pixel-heading block text-[8px] text-[#3a2a17] sm:text-xs">
+                            POOL
+                          </span>
+                          <span className="font-terminal text-[9px] text-[#3a2a17]/80 sm:text-xs">
+                            Prize
+                          </span>
+                        </div>
                       </div>
                     </div>
+
+                    {/* How to register button */}
+                    <a
+                      href={REGISTER_GUIDE_URL}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="mc-shine mt-3 flex items-center justify-center gap-2 border-2 border-[#7a4f05] bg-[#fbbf24] px-3 py-2 text-center font-pixel text-[9px] uppercase text-[#1a1206] shadow-[inset_2px_2px_0_rgba(255,255,255,0.3),inset_-2px_-2px_0_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 sm:mt-4 sm:py-3 sm:text-[13px]"
+                    >
+                      <span aria-hidden="true">▶</span>
+                      How to Register
+                      <span aria-hidden="true">→</span>
+                    </a>
                   </div>
                 </div>
               </div>
             </Reveal>
+
             {/* Right Page: Notice Board with social links */}
             <Reveal delay={0.2} className="relative z-30 h-full">
               <div className="relative z-30 h-full">

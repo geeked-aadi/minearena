@@ -4,6 +4,10 @@ import dirt from "../assets/dirt.png.asset.json";
 import grass from "../assets/grass.png.asset.json";
 import navbarLogo from "@/assets/navbar-logo.PNG";
 
+const REGISTER_URL =
+  "https://minearena-1-0.devpost.com/?preview_token=E6ZpH5CiiYbb1%2BpTW%2F6ykttDuJCuTv%2BdWtVjaduSeds%3D";
+const GUIDE_URL = "https://youtu.be/VI1WYXkr9eY?si=Qw0zvICF2B1WmSO_";
+
 const LINKS = [
   { id: "about", label: "ABOUT" },
   { id: "tracks", label: "TRACKS" },
@@ -56,7 +60,7 @@ export function Navbar() {
         />
         {/* Dirt body */}
         <div
-          className="flex items-center justify-between gap-4 rounded-b-[14px] border-2 border-[#1f2e14] px-2 pt-1 pb-3 shadow-[0_10px_28px_rgb(0_0_0/0.4)] md:px-4"
+          className="flex items-center justify-between gap-2 rounded-b-[14px] border-2 border-[#1f2e14] px-2 pt-1 pb-3 shadow-[0_10px_28px_rgb(0_0_0/0.4)] sm:gap-4 md:px-4"
           style={{
             backgroundImage: `url(${dirt.url || "/dirt.png"})`,
             backgroundSize: "32px 32px",
@@ -76,35 +80,59 @@ export function Navbar() {
             />
           </button>
 
-          <nav className="hidden items-center gap-1.5 md:flex">
+          {/* Full nav row: xl and up (there isn't room for 9 items below that) */}
+          <nav className="hidden items-center gap-1 xl:flex">
             {LINKS.map(({ id, label }) => (
               <button
                 key={id}
                 onClick={() => scrollTo(id)}
                 style={textShadow}
-                className={`pixel-heading px-3 py-1.5 text-[9px] tracking-[0.15em] transition-colors ${
+                className={`pixel-heading px-2.5 py-1.5 text-[9px] tracking-[0.15em] transition-colors ${
                   active === id ? "text-primary" : "text-foreground/85 hover:text-foreground"
                 }`}
               >
                 {label}
               </button>
             ))}
+            <a
+              href={GUIDE_URL}
+              target="_blank"
+              rel="noreferrer noopener"
+              style={textShadow}
+              className="pixel-heading px-2.5 py-1.5 text-[9px] tracking-[0.15em] text-[#fbbf24] transition-colors hover:text-white"
+            >
+              ▶ HOW TO REGISTER
+            </a>
           </nav>
 
-          <button
-            type="button"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-9 w-9 items-center justify-center border border-border bg-secondary/80 md:hidden text-foreground"
-            aria-label="Toggle navigation menu"
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          {/* Right group: Register Now (always visible) + hamburger (below xl) */}
+          <div className="flex shrink-0 items-center gap-2">
+            <a
+              href={REGISTER_URL}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Register Now"
+              className="mc-shine pixel-heading border-2 border-[#7a4f05] bg-[#fbbf24] px-2.5 py-2 text-[8px] uppercase tracking-[0.08em] text-[#1a1206] shadow-[inset_2px_2px_0_rgba(255,255,255,0.3),inset_-2px_-2px_0_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 sm:px-3.5 sm:text-[9px]"
+            >
+              <span className="sm:hidden">REGISTER</span>
+              <span className="hidden sm:inline">REGISTER NOW</span>
+            </a>
+
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="flex h-9 w-9 items-center justify-center border border-border bg-secondary/80 text-foreground xl:hidden"
+              aria-label="Toggle navigation menu"
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
-        {/* Mobile dropdown */}
+        {/* Mobile / tablet dropdown */}
         {mobileOpen && (
           <div
-            className="mt-2 flex flex-col gap-1 border-2 border-[#1f2e14] p-3 shadow-xl md:hidden"
+            className="mt-2 flex flex-col gap-1 border-2 border-[#1f2e14] p-3 shadow-xl xl:hidden"
             style={{
               backgroundImage: `url(${dirt.url})`,
               backgroundSize: "32px 32px",
@@ -123,6 +151,16 @@ export function Navbar() {
                 ▸ {label}
               </button>
             ))}
+            <a
+              href={GUIDE_URL}
+              target="_blank"
+              rel="noreferrer noopener"
+              onClick={() => setMobileOpen(false)}
+              style={textShadow}
+              className="pixel-heading py-2 text-left text-[10px] tracking-wider text-[#fbbf24] transition-colors hover:text-white"
+            >
+              ▶ HOW TO REGISTER
+            </a>
           </div>
         )}
       </div>
