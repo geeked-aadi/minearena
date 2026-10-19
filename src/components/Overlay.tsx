@@ -4,6 +4,8 @@ import mineArenaLogo from "@/assets/navbar-logo.PNG";
 const REGISTRATION_URL =
   "https://minearena-1-0.devpost.com/?preview_token=E6ZpH5CiiYbb1%2BpTW%2F6ykttDuJCuTv%2BdWtVjaduSeds%3D";
 
+const HOW_TO_REGISTER_URL = "https://www.youtube.com/watch?v=VI1WYXkr9eY";
+
 export type OverlayItemConfig = {
   id: string;
   start: number;
@@ -115,7 +117,7 @@ const FINAL_CARD_STAGGER = [
     id: "final-cta",
     start: 490,
     render: () => (
-      <div className="pt-2">
+      <div className="flex flex-col items-center justify-center gap-3 pt-2 sm:flex-row sm:gap-4">
         <a
           href={REGISTRATION_URL}
           target="_blank"
@@ -123,6 +125,14 @@ const FINAL_CARD_STAGGER = [
           className="pointer-events-auto inline-flex items-center justify-center border-2 border-[#1a1206] bg-[#dba213] px-6 py-3 font-pixel text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-[#1a1206] shadow-[inset_2px_2px_0_rgba(255,255,255,0.4),inset_-2px_-2px_0_rgba(0,0,0,0.4),0_4px_0_#1a1206] transition-transform hover:-translate-y-0.5 active:translate-y-0.5 hover:brightness-110"
         >
           Register Now
+        </a>
+        <a
+          href={HOW_TO_REGISTER_URL}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="pointer-events-auto inline-flex items-center justify-center border-2 border-[#dba213] bg-black/40 px-6 py-3 font-pixel text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-[#dba213] shadow-[0_4px_0_#1a1206] backdrop-blur-sm transition-transform hover:-translate-y-0.5 active:translate-y-0.5 hover:bg-[#dba213]/15"
+        >
+          How to Register
         </a>
       </div>
     ),
