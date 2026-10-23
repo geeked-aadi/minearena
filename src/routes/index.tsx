@@ -179,7 +179,6 @@ const RULES = [
   "Teams of 2–4 players only.",
   "All code must be written during the 24-hour event window.",
   "Open-source libraries and APIs are allowed; pre-built projects are disqualified.",
-  "Hardware hacks are welcome — bring your own components and boards.",
   "Be respectful. Griefing other teams means instant disqualification.",
   "Judges' decisions are final, indestructible like bedrock.",
 ];
@@ -245,7 +244,7 @@ const FAQ_GROUPS = [
       },
       {
         q: "What can I build?",
-        a: "Anything that solves the problem: apps, tools, hardware, agents — if you can demo it, it counts.",
+        a: "Anything that solves the problem: apps, tools, agents — if you can demo it, it counts.",
       },
       {
         q: "Can I start working on my hack before the event?",
