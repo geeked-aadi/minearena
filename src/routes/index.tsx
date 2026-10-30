@@ -264,6 +264,10 @@ const FAQ_GROUPS = [
         a: "Meals, snacks, coffee, Wi-Fi, power, rest zones and mentor support — all on us.",
       },
       {
+        q: "Will I get a participation certificate?",
+        a: "Yes! We will provide a participation certificate to every participant who takes part in the hackathon. There is no need to request it separately. If you don't receive yours or spot a mistake in your details, write to codecommit@bietdvg.edu.",
+      },
+      {
         q: "Will organizers cover travel for shortlisted teams?",
         a: "Travel is on the participants; everything inside the venue is covered by us.",
       },
